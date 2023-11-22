@@ -26,9 +26,13 @@ form{
     "textarea textarea"
     "submit submit"
     ;
-    width: 80%;
+    width: 50%;
     min-width: 300px;
     margin: auto;
+}
+
+.error{
+    color: red;
 }
 
 .name{
@@ -81,6 +85,25 @@ input[type="submit"]{
 input::placeholder{
     font-size: 0.6rem;
     text-transform: uppercase;
+}
+
+.resultChild{
+    width: fit-content;
+    margin: 0 auto;
+    border : solid 1px black;
+    background-color: var(--colorOne);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.resultForm{
+    display: none;
+}
+
+.list{
+    display: block;
 }
 
 @media screen and (max-width : 500px){

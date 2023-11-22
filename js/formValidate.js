@@ -2,13 +2,29 @@
 const inputsSansSubmit = document.querySelectorAll('input:not([type="submit"])');
 const inputSubmit = document.querySelector("input[type=submit]");
 const formulaire = document.querySelector("form")
+const textarea = document.querySelector("textarea")
+const error = document.querySelector(".error")
+let limiteCaracteres = 50;
 
-let information = {
+textarea.addEventListener("input", function() {
+    let longueurTexte = textarea.value.length;
+
+    //si la longueur du text est plus grande que la limite
+    if (longueurTexte > limiteCaracteres) {
+        textarea.value = textarea.value.substring(0, limiteCaracteres);
+        error.textContent = limiteCaracteres + " caractères (limite atteinte)";
+        textarea.readOnly = false
+    }else{
+        error.textContent = ""
+    }
+});
+
+let information = [{
     Nom: "",
     Prenom: "",
     Mail: "",
     Description: ""
-}
+}]
 
 let inputSaisie = false
 var formulaireValide = true;
@@ -44,12 +60,26 @@ function informationSubmit(e) {
     });
 
     if (!formulaireValide) {
-        console.log("Veuillez remplir tout les champs")
+        error.textContent = "Veuillez remplir tout les champs";
     } else {
+        inputsSansSubmit.forEach(element => {
+            element.value = ""
+        })
         console.log(information)
+
+        document.querySelector("textarea").value = ""
+        document.querySelector(".resultForm").classList.add("list")
+
+        return document.querySelector(".resultForm").innerHTML += `
+        <div class="resultChild">
+            <p>Nom : ${information.Nom}</p>
+            <p>Prenom : ${information.Prenom}</p>
+            <p> Email : ${information.Mail}</p>
+            <p>Description : ${information.Description}</p>
+        </div>
+            `
     }
 }
-
 
 formulaire.addEventListener("submit", informationSubmit)
 
