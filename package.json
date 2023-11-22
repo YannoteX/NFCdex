@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jsonpack": "^1.1.5",
+    "lzwcompress": "^1.1.0"
+  }
+}
