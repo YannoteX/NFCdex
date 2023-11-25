@@ -6,7 +6,7 @@ const textarea = document.querySelector("textarea")
 const error = document.querySelector(".error")
 let limiteCaracteres = 50;
 
-textarea.addEventListener("input", function() {
+textarea.addEventListener("input", function () {
     let longueurTexte = textarea.value.length;
 
     //si la longueur du text est plus grande que la limite
@@ -14,7 +14,7 @@ textarea.addEventListener("input", function() {
         textarea.value = textarea.value.substring(0, limiteCaracteres);
         error.textContent = limiteCaracteres + " caractères (limite atteinte)";
         textarea.readOnly = false
-    }else{
+    } else {
         error.textContent = ""
     }
 });
@@ -82,13 +82,3 @@ function informationSubmit(e) {
 }
 
 formulaire.addEventListener("submit", informationSubmit)
-
-
-
-
-
-
-
-
-
-
