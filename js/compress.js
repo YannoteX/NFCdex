@@ -9,10 +9,12 @@ let json = {
 
 let pack = jsonpack.pack(json)
 
+console.log("jsonpack")
 console.log(pack)
 
 pack = lzwCompress.pack(json);
 
+console.log("lzwcompress")
 console.log(pack)
 
 
