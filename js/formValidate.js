@@ -6,6 +6,21 @@ const textarea = document.querySelector("textarea")
 const error = document.querySelector(".error")
 let limiteCaracteres = 50;
 
+let information = {
+    Nom: "",
+    Prenom: "",
+    Mail: "",
+    Description: ""
+}
+
+
+let inputSaisie = false
+var formulaireValide = true;
+
+// Pour la lecture NFC
+const ndef = new NDEFReader();
+
+
 textarea.addEventListener("input", function() {
     let longueurTexte = textarea.value.length;
 
@@ -19,15 +34,6 @@ textarea.addEventListener("input", function() {
     }
 });
 
-let information = [{
-    Nom: "",
-    Prenom: "",
-    Mail: "",
-    Description: ""
-}]
-
-let inputSaisie = false
-var formulaireValide = true;
 
 
 function informationSubmit(e) {
@@ -62,24 +68,43 @@ function informationSubmit(e) {
     if (!formulaireValide) {
         error.textContent = "Veuillez remplir tout les champs";
     } else {
-        inputsSansSubmit.forEach(element => {
-            element.value = ""
-        })
-        console.log(information)
-
-        document.querySelector("textarea").value = ""
-        document.querySelector(".resultForm").classList.add("list")
-
-        return document.querySelector(".resultForm").innerHTML += `
-        <div class="resultChild">
-            <p>Nom : ${information.Nom}</p>
-            <p>Prenom : ${information.Prenom}</p>
-            <p> Email : ${information.Mail}</p>
-            <p>Description : ${information.Description}</p>
-        </div>
-            `
+        // code du write
     }
 }
+
+
+async function writeTag() {
+    await ndef.scan();
+
+    ndef.onreading = (e) => {
+        if (isValidRecord(e.message.records)){
+            const encoder = new TextEncoder();
+
+            ndef.write({
+                id: "A7G5UI924G66EP4",
+                recordType: "mime",
+                mediaType: "application.json",
+                data: encoder.encode(JSON.stringify(information))
+            });
+        }
+    }
+}
+
+
+function isValidRecord(record) {
+    if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
+        return true;
+    }
+    else {
+        NFCMessage("Le Tag NFC n'est pas un NFCmon.");
+    }
+}
+
+
+function NFCMessage(message) {
+    console.log(message);
+}
+
 
 formulaire.addEventListener("submit", informationSubmit)
 
