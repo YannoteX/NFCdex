@@ -81,10 +81,13 @@ async function writeTag() {
             const encoder = new TextEncoder();
 
             ndef.write({
-                id: "A7G5UI924G66EP4",
-                recordType: "mime",
-                mediaType: "application.json",
-                data: encoder.encode(JSON.stringify(information))
+                records: [
+                {
+                    id: "A7G5UI924G66EP4",
+                    recordType: "mime",
+                    mediaType: "application.json",
+                    data: encoder.encode(JSON.stringify(information))
+                }]
             });
         }
     }
