@@ -68,7 +68,7 @@ function informationSubmit(e) {
     if (!formulaireValide) {
         error.textContent = "Veuillez remplir tout les champs";
     } else {
-        // code du write
+        writeTag()
     }
 }
 
