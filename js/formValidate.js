@@ -95,9 +95,10 @@ async function writeTag() {
                     mediaType: "application.json",
                     data: encoder.encode(JSON.stringify(information))
                 }]
+            }).then(() => {
+                NFCMessage(information.nom + " a été enregsitré dans ton tag NFCmon")
+                abortController.abort();
             });
-            NFCMessage(information.nom + " a été enregsitré dans ton tag NFCmon")
-            abortController.abort();
         }
     }
 }
