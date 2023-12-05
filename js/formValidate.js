@@ -6,6 +6,26 @@ const textarea = document.querySelector("textarea")
 const error = document.querySelector(".error")
 let limiteCaracteres = 50;
 
+let information = {
+    Nom: "",
+    Prenom: "",
+    Mail: "",
+    Description: ""
+}
+
+
+let inputSaisie = false
+var formulaireValide = true;
+
+// Pour la lecture NFC
+const ndef = new NDEFReader();
+
+const abortController = new AbortController();
+abortController.signal.onabort = event => {
+  console.log("Abort NFC Operations")
+};
+
+
 textarea.addEventListener("input", function() {
     let longueurTexte = textarea.value.length;
 
@@ -19,18 +39,10 @@ textarea.addEventListener("input", function() {
     }
 });
 
-let information = [{
-    Nom: "",
-    Prenom: "",
-    Mail: "",
-    Description: ""
-}]
-
-let inputSaisie = false
-var formulaireValide = true;
 
 
 function informationSubmit(e) {
+    
     e.preventDefault();
 
     inputsSansSubmit.forEach((element, index) => {
@@ -62,24 +74,55 @@ function informationSubmit(e) {
     if (!formulaireValide) {
         error.textContent = "Veuillez remplir tout les champs";
     } else {
-        inputsSansSubmit.forEach(element => {
-            element.value = ""
-        })
-        console.log(information)
-
-        document.querySelector("textarea").value = ""
-        document.querySelector(".resultForm").classList.add("list")
-
-        return document.querySelector(".resultForm").innerHTML += `
-        <div class="resultChild">
-            <p>Nom : ${information.Nom}</p>
-            <p>Prenom : ${information.Prenom}</p>
-            <p> Email : ${information.Mail}</p>
-            <p>Description : ${information.Description}</p>
-        </div>
-            `
+        writeTag();
     }
 }
+
+
+async function writeTag() {
+
+    await ndef.scan({ signal: abortController.signal });
+
+    ndef.onreading = (e) => {
+        if (isValidRecord(e.message.records)){
+            const encoder = new TextEncoder();
+
+            ndef.write({
+                records: [
+                {
+                    id: "A7G5UI924G66EP4",
+                    recordType: "mime",
+                    mediaType: "application.json",
+                    data: encoder.encode(JSON.stringify(information))
+                }]
+            }).then(() => {
+                NFCMessage(information.Nom + " a été enregsitré dans ton tag NFCmon");
+                console.log(information);
+                abortController.abort();
+            }).catch((error) => {
+                NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
+            });
+        }
+    }
+}
+
+
+function isValidRecord(record) {
+
+    if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
+        return true;
+    }
+    else {
+        NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
+        return false;
+    }
+}
+
+
+function NFCMessage(message) {
+    console.log(message);
+}
+
 
 formulaire.addEventListener("submit", informationSubmit)
 
