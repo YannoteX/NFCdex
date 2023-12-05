@@ -22,7 +22,7 @@ const ndef = new NDEFReader();
 
 const abortController = new AbortController();
 abortController.signal.onabort = event => {
-  // All NFC operations have been aborted.
+  console.log("Abort NFC Operations")
 };
 
 
@@ -96,7 +96,7 @@ async function writeTag() {
                     data: encoder.encode(JSON.stringify(information))
                 }]
             });
-
+            NFCMessage(Information.nom + " a été enregsitré dans ton tag NFCmon")
             abortController.abort();
         }
     }
@@ -109,7 +109,7 @@ function isValidRecord(record) {
         return true;
     }
     else {
-        NFCMessage("Le Tag NFC n'est pas un NFCmon.");
+        NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
         return false;
     }
 }
