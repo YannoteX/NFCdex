@@ -68,6 +68,8 @@ function informationSubmit(e) {
     } else {
 
         scanTag().then(async (validation) => {
+            NFCMessage("then");
+
             if (validation) {
 
                 const encoder = new TextEncoder();
@@ -93,15 +95,17 @@ function informationSubmit(e) {
 
 
 async function scanTag() {
+    NFCMessage("Scan Tag");
     await ndef.scan();
 
     return ndef.onreading = async (e) => {
-
+        NFCMessage("onreading");
         if (isValidRecord(e.message.records)) {
-
+            NFCMessage("true");
             return true;
         }
         else {
+            NFCMessage("false");
             return false;
         }
     }
