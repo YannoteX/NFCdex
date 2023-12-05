@@ -55,8 +55,6 @@ function informationSubmit(e) {
             }
 
             information.Description = document.querySelector("textarea").value
-        } else {
-
         }
 
     })
@@ -68,27 +66,43 @@ function informationSubmit(e) {
     if (!formulaireValide) {
         error.textContent = "Veuillez remplir tout les champs";
     } else {
-        writeTag()
+
+        scanTag().then(async (validation) => {
+            if (validation) {
+
+                const encoder = new TextEncoder();
+                await ndef.write({
+                    records: [
+                        {
+                            id: "A7G5UI924G66EP4",
+                            recordType: "mime",
+                            mediaType: "application.json",
+                            data: encoder.encode(JSON.stringify(information))
+                        }]
+                });
+
+
+            } else {
+
+                NFCMessage("Le Tag NFC n'est pas un NFCmon.");
+
+            }
+        });
     }
 }
 
 
-async function writeTag() {
+async function scanTag() {
     await ndef.scan();
 
-    ndef.onreading = (e) => {
-        if (isValidRecord(e.message.records)) {
-            const encoder = new TextEncoder();
+    return ndef.onreading = async (e) => {
 
-            ndef.write({
-                records: [
-                    {
-                        id: "A7G5UI924G66EP4",
-                        recordType: "mime",
-                        mediaType: "application.json",
-                        data: encoder.encode(JSON.stringify(information))
-                    }]
-            });
+        if (isValidRecord(e.message.records)) {
+
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }
@@ -100,7 +114,7 @@ function isValidRecord(record) {
         return true;
     }
     else {
-        NFCMessage("Le Tag NFC n'est pas un NFCmon.");
+        return false
     }
 
     //return true;
