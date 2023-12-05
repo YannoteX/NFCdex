@@ -26,7 +26,7 @@ abortController.signal.onabort = event => {
 };
 
 
-textarea.addEventListener("input", function() {
+textarea.addEventListener("input", function () {
     let longueurTexte = textarea.value.length;
 
     //si la longueur du text est plus grande que la limite
@@ -34,7 +34,7 @@ textarea.addEventListener("input", function() {
         textarea.value = textarea.value.substring(0, limiteCaracteres);
         error.textContent = limiteCaracteres + " caractères (limite atteinte)";
         textarea.readOnly = false
-    }else{
+    } else {
         error.textContent = ""
     }
 });
@@ -61,8 +61,6 @@ function informationSubmit(e) {
             }
 
             information.Description = document.querySelector("textarea").value
-        } else {
-
         }
 
     })
@@ -74,14 +72,12 @@ function informationSubmit(e) {
     if (!formulaireValide) {
         error.textContent = "Veuillez remplir tout les champs";
     } else {
-        writeTag()
-    }
-}
 
+        scanTag().then(async (validation) => {
+            NFCMessage("then");
 
 async function writeTag() {
-
-    await ndef.scan({ signal: abortController.signal });
+    await ndef.scan();
 
     ndef.onreading = (e) => {
         if (isValidRecord(e.message.records)){
@@ -96,8 +92,6 @@ async function writeTag() {
                     data: encoder.encode(JSON.stringify(information))
                 }]
             });
-
-            abortController.abort();
         }
     }
 }
@@ -110,8 +104,9 @@ function isValidRecord(record) {
     }
     else {
         NFCMessage("Le Tag NFC n'est pas un NFCmon.");
-        return false;
     }
+    */
+   return true;
 }
 
 
@@ -121,13 +116,3 @@ function NFCMessage(message) {
 
 
 formulaire.addEventListener("submit", informationSubmit)
-
-
-
-
-
-
-
-
-
-
