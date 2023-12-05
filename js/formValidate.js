@@ -98,7 +98,7 @@ async function scanTag() {
     NFCMessage("Scan Tag");
     await ndef.scan();
 
-    return ndef.onreading = async (e) => {
+    return ndef.onreading = (e) => {
         NFCMessage("onreading");
         if (isValidRecord(e.message.records)) {
             NFCMessage("true");
