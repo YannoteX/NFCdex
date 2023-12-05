@@ -96,7 +96,7 @@ async function writeTag() {
                     data: encoder.encode(JSON.stringify(information))
                 }]
             });
-            NFCMessage(Information.nom + " a été enregsitré dans ton tag NFCmon")
+            NFCMessage(information.nom + " a été enregsitré dans ton tag NFCmon")
             abortController.abort();
         }
     }
