@@ -96,8 +96,8 @@ function informationSubmit(e) {
 
 async function scanTag() {
     NFCMessage("Scan Tag");
-    await ndef.scan();
-
+    return ndef.scan().then((records) => console.log(records));
+    /*
     return ndef.onreading = (e) => {
         NFCMessage("onreading");
         if (isValidRecord(e.message.records)) {
@@ -108,7 +108,7 @@ async function scanTag() {
             NFCMessage("false");
             return false;
         }
-    }
+    }*/
 }
 
 
