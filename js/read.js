@@ -53,3 +53,7 @@ function isValidRecord(record) {
 function updateView(){
     console.log(information)
 }
+
+function NFCMessage(message) {
+    console.log(message);
+}
