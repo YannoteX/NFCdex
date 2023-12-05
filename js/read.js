@@ -40,6 +40,8 @@ ndef.scan({ signal: abortController.signal }).then(() => {
 
 function isValidRecord(record) {
 
+    console.log(record)
+
     if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
         return true;
     }
