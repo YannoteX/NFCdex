@@ -7,17 +7,6 @@ let json = {
   Description: "Je suis un dev."
 };
 
-let pack = jsonpack.pack(json)
-
-console.log("jsonpack")
-console.log(pack)
-
-pack = lzwCompress.pack(json);
-
-console.log("lzwcompress")
-console.log(pack)
-
-
 async function readTag() {
   if ("NDEFReader" in window) {
     const ndef = new NDEFReader();
