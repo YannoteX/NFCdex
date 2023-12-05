@@ -20,6 +20,11 @@ var formulaireValide = true;
 // Pour la lecture NFC
 const ndef = new NDEFReader();
 
+const abortController = new AbortController();
+abortController.signal.onabort = event => {
+  // All NFC operations have been aborted.
+};
+
 
 textarea.addEventListener("input", function() {
     let longueurTexte = textarea.value.length;
@@ -37,6 +42,7 @@ textarea.addEventListener("input", function() {
 
 
 function informationSubmit(e) {
+    
     e.preventDefault();
 
     inputsSansSubmit.forEach((element, index) => {
@@ -74,7 +80,8 @@ function informationSubmit(e) {
 
 
 async function writeTag() {
-    await ndef.scan();
+
+    await ndef.scan({ signal: abortController.signal });
 
     ndef.onreading = (e) => {
         if (isValidRecord(e.message.records)){
@@ -89,21 +96,22 @@ async function writeTag() {
                     data: encoder.encode(JSON.stringify(information))
                 }]
             });
+
+            abortController.abort();
         }
     }
 }
 
 
 function isValidRecord(record) {
-    /*
+
     if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
         return true;
     }
     else {
         NFCMessage("Le Tag NFC n'est pas un NFCmon.");
+        return false;
     }
-    */
-   return true;
 }
 
 
