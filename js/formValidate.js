@@ -74,7 +74,7 @@ function informationSubmit(e) {
     if (!formulaireValide) {
         error.textContent = "Veuillez remplir tout les champs";
     } else {
-        writeTag()
+        writeTag();
     }
 }
 
@@ -96,8 +96,11 @@ async function writeTag() {
                     data: encoder.encode(JSON.stringify(information))
                 }]
             }).then(() => {
-                NFCMessage(information.nom + " a été enregsitré dans ton tag NFCmon")
+                NFCMessage(information.nom + " a été enregsitré dans ton tag NFCmon");
+                console.log(information);
                 abortController.abort();
+            }).catch((error) => {
+                NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
             });
         }
     }
