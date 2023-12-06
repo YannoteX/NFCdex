@@ -16,27 +16,28 @@ abortController.signal.onabort = event => {
 
 //
 
+async function scanTag() {
+    ndef.scan({ signal: abortController.signal }).then(() => {
 
-ndef.scan({ signal: abortController.signal }).then(() => {
+        ndef.onreadingerror = (e) => {
+            NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
+        };
 
-    ndef.onreadingerror = (e) => {
-        NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
-    };
+        ndef.onreading = (e) => {
 
-    ndef.onreading = (e) => {
-
-        const record = e.message.records[0];
-    
-        if (isValidRecord(record)){
-                
-            const decoder = new TextDecoder();
-    
-            information = record.data;
-    
-            updateView()
-        }
-    };
-});
+            const record = e.message.records[0];
+        
+            if (isValidRecord(record)){
+                    
+                const decoder = new TextDecoder();
+        
+                information = record.data;
+        
+                updateView()
+            }
+        };
+    });
+}
 
 function isValidRecord(record) {
 
@@ -62,7 +63,9 @@ function NFCMessage(message) {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("god").addEventListener("click", () => {
-        ndef.scan().then(() => {
+
+        abortController.abort();
+        ndef.scan({ signal: abortController.signal }).then(() => {
 
             const encoder = new TextEncoder()
             ndef.write({
@@ -74,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         mediaType: "application/json",
                         data: encoder.encode(JSON.stringify({}))
                     }]
-            }, { timeout: 3_000});
+            }, { timeout: 4_000});
+            abortController.abort();
+            scanTag()
         });
     });
 });
