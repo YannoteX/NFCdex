@@ -6,7 +6,11 @@ if ('NDEFReader' in window){
 
 else{
     if (navigator.presentation.receiver) {
-        console.log("ok");
+        console.log("receiver");
+    }
+
+    if(navigator.presentation.defaultRequest) {
+        console.log("presentation");
     }
     connection = 1;
 }
