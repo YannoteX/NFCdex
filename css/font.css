@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'NotoSansCondensed-Bold';
+    src: url('../assets/fonts/NotoSans_Condensed-Bold.ttf') format('truetype'),
+}
+
+@font-face {
+    font-family: 'NotoSansSoraSompeng-Regular';
+    src: url("../assets/fonts/NotoSansSoraSompeng-Regular.ttf") format('truetype');
+}
