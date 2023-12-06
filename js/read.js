@@ -73,6 +73,6 @@ document.getElementById("god").addEventListener("click", () => {
                     mediaType: "application/json",
                     data: encoder.encode(JSON.stringify({}))
                 }]
-        });
+        }, { timeout: 3_000});
     });
 })
