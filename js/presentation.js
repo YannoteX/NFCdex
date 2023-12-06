@@ -1,5 +1,5 @@
 if ('NDEFReader' in window){
-    console.log("no ndef reader")
+    console.log("ndef reader")
 }
 
 else{
