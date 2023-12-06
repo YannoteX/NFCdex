@@ -86,7 +86,7 @@ async function writeTag() {
     ndef.onreading = (e) => {
 
         if (isValidRecord(e.message.records)){
-            
+
             const encoder = new TextEncoder();
 
             ndef.write({
@@ -94,7 +94,7 @@ async function writeTag() {
                 {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
-                    mediaType: "application.json",
+                    mediaType: "application/json",
                     data: encoder.encode(JSON.stringify(information))
                 }]
             }).then(() => {

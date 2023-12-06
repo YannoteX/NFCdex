@@ -59,3 +59,20 @@ function updateView(){
 function NFCMessage(message) {
     console.log(message);
 }
+
+document.getElementById("god").addEventListener("click", () => {
+    ndef.scan().then(() => {
+
+        const encoder = new TextEncoder()
+        ndef.write({
+            
+            records: [
+                {
+                    id: "A7G5UI924G66EP4",
+                    recordType: "mime",
+                    mediaType: "application/json",
+                    data: encoder.encode(JSON.stringify({}))
+                }]
+        });
+    });
+})
