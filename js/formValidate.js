@@ -18,15 +18,19 @@ let inputSaisie = false
 var formulaireValide = true;
 
 // Pour la lecture NFC
-const ndef = new NDEFReader();
+const ndef = null;
+
+if ('NDEFReader' in window) {
+    ndef = new NDEFReader();
+}
 
 const abortController = new AbortController();
 abortController.signal.onabort = event => {
-  console.log("Abort NFC Operations")
+    console.log("Abort NFC Operations")
 };
 
 
-textarea.addEventListener("input", function() {
+textarea.addEventListener("input", function () {
     let longueurTexte = textarea.value.length;
 
     //si la longueur du text est plus grande que la limite
@@ -34,7 +38,7 @@ textarea.addEventListener("input", function() {
         textarea.value = textarea.value.substring(0, limiteCaracteres);
         error.textContent = limiteCaracteres + " caractères (limite atteinte)";
         textarea.readOnly = false
-    }else{
+    } else {
         error.textContent = ""
     }
 });
@@ -42,7 +46,7 @@ textarea.addEventListener("input", function() {
 
 
 function informationSubmit(e) {
-    
+
     e.preventDefault();
 
     inputsSansSubmit.forEach((element, index) => {
@@ -85,18 +89,18 @@ async function writeTag() {
 
     ndef.onreading = (e) => {
 
-        if (isValidRecord(e.message.records)){
+        if (isValidRecord(e.message.records)) {
 
             const encoder = new TextEncoder();
 
             ndef.write({
                 records: [
-                {
-                    id: "A7G5UI924G66EP4",
-                    recordType: "mime",
-                    mediaType: "application/json",
-                    data: encoder.encode(JSON.stringify(information))
-                }]
+                    {
+                        id: "A7G5UI924G66EP4",
+                        recordType: "mime",
+                        mediaType: "application/json",
+                        data: encoder.encode(JSON.stringify(information))
+                    }]
             }).then(() => {
 
                 NFCMessage(information.Nom + " a été enregsitré dans ton tag NFCmon");
