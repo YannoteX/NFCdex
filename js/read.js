@@ -29,7 +29,7 @@ async function scanTag() {
                     
                 const decoder = new TextDecoder();
         
-                information = decoder.decode(record.data);
+                information = JSON.parse(decoder.decode(record.data));
         
                 updateView()
             }
@@ -38,8 +38,6 @@ async function scanTag() {
 }
 
 function isValidRecord(record) {
-
-    console.log(record)
 
     if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
         return true;
