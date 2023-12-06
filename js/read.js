@@ -29,7 +29,7 @@ async function scanTag() {
                     
                 const decoder = new TextDecoder();
         
-                information = record.data;
+                information = decoder.decode(record.data);
         
                 updateView()
             }
