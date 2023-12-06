@@ -1,7 +1,12 @@
+let connection = null;
+
 if ('NDEFReader' in window){
-    console.log("ndef reader")
+    connection = 1;
 }
 
 else{
-    console.log("no ndef reader")
+    if (navigator.presentation.receiver) {
+        console.log("ok");
+    }
+    connection = 1;
 }
