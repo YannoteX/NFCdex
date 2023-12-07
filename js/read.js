@@ -8,10 +8,21 @@ let information = {
 // Pour la lecture NFC
 const ndef = new NDEFReader();
 
-const abortController = new AbortController();
+let abortController = new AbortController();
+
 abortController.signal.onabort = event => {
-  console.log("Abort NFC Operations")
+    console.log("Abort NFC Operations")
 };
+
+function abortAndReset() {
+
+    abortController.abort();
+    abortController = new AbortController();
+
+    abortController.signal.onabort = event => {
+        console.log("Abort NFC Operations")
+    };
+}
 //
 
 async function scanTag() {
@@ -24,13 +35,13 @@ async function scanTag() {
         ndef.onreading = (e) => {
 
             const record = e.message.records[0];
-        
-            if (isValidRecord(record)){
-                    
+
+            if (isValidRecord(record)) {
+
                 const decoder = new TextDecoder();
-        
+
                 information = JSON.parse(decoder.decode(record.data));
-        
+
                 updateView()
             }
         };
@@ -49,7 +60,7 @@ function isValidRecord(record) {
 }
 
 
-function updateView(){
+function updateView() {
     console.log(information)
 }
 
@@ -60,12 +71,13 @@ function NFCMessage(message) {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("god").addEventListener("click", () => {
 
-        abortController.abort();
+        abortAndReset();
+
         ndef.scan({ signal: abortController.signal }).then(() => {
 
             const encoder = new TextEncoder()
             ndef.write({
-                
+
                 records: [
                     {
                         id: "A7G5UI924G66EP4",
@@ -73,8 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         mediaType: "application/json",
                         data: encoder.encode(JSON.stringify({}))
                     }]
-            }, { timeout: 4_000});
-            abortController.abort();
+            }, { timeout: 4_000 });
+
+            abortAndReset();
+
             scanTag()
         });
     });

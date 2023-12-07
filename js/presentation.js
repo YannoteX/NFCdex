@@ -1,25 +1,9 @@
 let connection = null;
 
-document.addEventListener('DOMContentLoaded', function() {
-    if ('NDEFReader' in window){
-        if (navigator.presentation.receiver) {
-            console.log("receiver");
-        }
-
-        if(navigator.presentation.defaultRequest) {
-            console.log("presentation");
-        }
-        connection = 1;
+document.addEventListener('DOMContentLoaded', function () {
+    if ('NDEFReader' in window) {
     }
 
-    else{
-        if (navigator.presentation.receiver) {
-            console.log("receiver");
-        }
-
-        if(navigator.presentation.defaultRequest) {
-            console.log("presentation");
-        }
-        connection = 1;
+    else {
     }
 });
