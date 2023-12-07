@@ -37,10 +37,14 @@ function phoneMode() {
 
                         const decoder = new TextDecoder();
 
-                        information = JSON.parse(decoder.decode(record.data));
+                        json = JSON.parse(decoder.decode(record.data));
 
-                        updateView()
-
+                        if (json) {
+                            updateView(json);
+                        }
+                        else {
+                            NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
+                        }
                     }
                 }
 
@@ -100,8 +104,8 @@ function phoneMode() {
     }
 
 
-    function updateView() {
-        console.log(information)
+    function updateView(jsonObject) {
+        console.log(jsonObject)
     }
 
     function NFCMessage(message, color = "ffffff") {
