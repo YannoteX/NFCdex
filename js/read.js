@@ -70,7 +70,7 @@ function NFCMessage(message) {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("god").addEventListener("click", () => {
-
+        console.log("GodMod");
         abortAndReset();
 
         ndef.scan({ signal: abortController.signal }).then(() => {
