@@ -118,15 +118,13 @@ async function writeTag() {
 
 function isValidRecord(record) {
 
-    /*if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
+    if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
         return true;
     }
     else {
         NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
         return false;
-    }*/
-
-    return true;
+    }
 }
 
 
