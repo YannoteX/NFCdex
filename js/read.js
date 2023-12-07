@@ -22,8 +22,8 @@ async function scanTag() {
             NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
         };
 
-        if (scanAction === "read") {
-            ndef.onreading = (e) => {
+        ndef.onreading = (e) => {
+            if (scanAction === "read") {
 
                 const record = e.message.records[0];
 
@@ -34,26 +34,27 @@ async function scanTag() {
                     information = JSON.parse(decoder.decode(record.data));
 
                     updateView()
+
                 }
-            };
-        }
+            }
 
-        else if (scanAction === "write") {
+            else if (scanAction === "write") {
 
-        }
+            }
 
-        else if (scanAction === "setNFCmon") {
+            else if (scanAction === "setNFCmon") {
 
-            ndef.write({
+                ndef.write({
 
-                records: [
-                    {
-                        id: "A7G5UI924G66EP4",
-                        recordType: "mime",
-                        mediaType: "application/json",
-                        data: encoder.encode(JSON.stringify({}))
-                    }]
-            });
+                    records: [
+                        {
+                            id: "A7G5UI924G66EP4",
+                            recordType: "mime",
+                            mediaType: "application/json",
+                            data: encoder.encode(JSON.stringify({}))
+                        }]
+                });
+            }
         }
     });
 }
