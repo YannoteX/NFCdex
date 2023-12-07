@@ -44,6 +44,8 @@ async function scanTag() {
 
             else if (scanAction === "setNFCmon") {
 
+                var encoder = new TextEncoder();
+
                 ndef.write({
 
                     records: [
