@@ -8,43 +8,53 @@ let information = {
 // Pour la lecture NFC
 const ndef = new NDEFReader();
 
-let abortController = new AbortController();
+let scanAction = "read";
 
-abortController.signal.onabort = event => {
-    console.log("Abort NFC Operations")
-};
-
-function abortAndReset() {
-
-    abortController.abort();
-    abortController = new AbortController();
-
-    abortController.signal.onabort = event => {
-        console.log("Abort NFC Operations")
-    };
+function setAction(action) {
+    scanAction = action
 }
 //
 
 async function scanTag() {
-    ndef.scan({ signal: abortController.signal }).then(() => {
+    ndef.scan().then(() => {
 
         ndef.onreadingerror = (e) => {
             NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
         };
 
-        ndef.onreading = (e) => {
+        if (scanAction === "read") {
+            ndef.onreading = (e) => {
 
-            const record = e.message.records[0];
+                const record = e.message.records[0];
 
-            if (isValidRecord(record)) {
+                if (isValidRecord(record)) {
 
-                const decoder = new TextDecoder();
+                    const decoder = new TextDecoder();
 
-                information = JSON.parse(decoder.decode(record.data));
+                    information = JSON.parse(decoder.decode(record.data));
 
-                updateView()
-            }
-        };
+                    updateView()
+                }
+            };
+        }
+
+        else if (scanAction === "write") {
+
+        }
+
+        else if (scanAction === "setNFCmon") {
+
+            ndef.write({
+
+                records: [
+                    {
+                        id: "A7G5UI924G66EP4",
+                        recordType: "mime",
+                        mediaType: "application/json",
+                        data: encoder.encode(JSON.stringify({}))
+                    }]
+            });
+        }
     });
 }
 
@@ -70,30 +80,12 @@ function NFCMessage(message) {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("god").addEventListener("click", () => {
-        console.log("GodMod");
 
-        abortAndReset();
-
-        ndef.scan({ signal: abortController.signal }).then(() => {
-
-            const encoder = new TextEncoder()
-
-            setTimeout(() => { abortAndReset(); }, 4_000);
-
-            ndef.write({
-
-                records: [
-                    {
-                        id: "A7G5UI924G66EP4",
-                        recordType: "mime",
-                        mediaType: "application/json",
-                        data: encoder.encode(JSON.stringify({}))
-                    }]
-            });
-
-            scanTag()
-        });
+        setAction("setNFCmon");
+        setTimeout(() => setAction("read"), 4_000)
     });
 });
+
+
 
 scanTag();
