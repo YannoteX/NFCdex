@@ -5,6 +5,7 @@ let information = {
     Description: ""
 }
 
+let scanAction = "read";
 
 if ('NDEFReader' in window) {
     phoneMode()
@@ -17,12 +18,6 @@ else {
 function phoneMode() {
     // Pour la lecture NFC
     const ndef = new NDEFReader();
-
-    let scanAction = "read";
-
-    function setAction(action) {
-        scanAction = action
-    }
     //
 
     async function scanTag() {
@@ -127,4 +122,13 @@ function phoneMode() {
 
 function desktopMode() {
 
+}
+
+
+function NFCMessage(message, color = "ffffff") {
+    console.log(message);
+}
+
+function setAction(action) {
+    scanAction = action
 }
