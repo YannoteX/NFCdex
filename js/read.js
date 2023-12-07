@@ -87,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }]
             }, { timeout: 4_000 });
 
-            abortAndReset();
-
             scanTag()
         });
     });
