@@ -71,11 +71,15 @@ function NFCMessage(message) {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("god").addEventListener("click", () => {
         console.log("GodMod");
+
         abortAndReset();
 
         ndef.scan({ signal: abortController.signal }).then(() => {
 
             const encoder = new TextEncoder()
+
+            setTimeout(() => { abortAndReset(); }, 4_000);
+
             ndef.write({
 
                 records: [
@@ -85,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         mediaType: "application/json",
                         data: encoder.encode(JSON.stringify({}))
                     }]
-            }, { timeout: 4_000 });
+            });
 
             scanTag()
         });
