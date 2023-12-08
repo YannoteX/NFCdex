@@ -8,18 +8,14 @@ let information = {
 let scanAction = "read";
 
 if ('NDEFReader' in window) {
+    const ndef = new NDEFReader();
     phoneMode()
 }
 else {
     desktopMode()
 }
 
-const ndef = new NDEFReader();
-
-async function phoneMode() {
-    // Pour la lecture NFC
-    const ndef = new NDEFReader();
-    //
+function phoneMode() {
 
     async function scanTag() {
         ndef.scan().then(() => {
@@ -125,7 +121,7 @@ async function phoneMode() {
 }
 
 
-async function desktopMode() {
+function desktopMode() {
 
 }
 
