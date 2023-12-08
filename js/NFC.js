@@ -10,13 +10,6 @@ let ndef = null;
 
 if ('NDEFReader' in window) {
     ndef = new NDEFReader();
-    phoneMode()
-}
-else {
-    desktopMode()
-}
-
-function phoneMode() {
 
     async function scanTag() {
         ndef.scan().then(() => {
@@ -120,12 +113,9 @@ function phoneMode() {
 
     scanTag()
 }
-
-
-function desktopMode() {
-
+else {
+    desktopMode()
 }
-
 
 function NFCMessage(message, color = "ffffff") {
     console.log(message);
