@@ -6,7 +6,7 @@ let information = {
 }
 
 let scanAction = "read";
-const ndef = null;
+let ndef = null;
 
 if ('NDEFReader' in window) {
     ndef = new NDEFReader();
