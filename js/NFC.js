@@ -12,14 +12,6 @@ try {
     // Pour la lecture NFC
     const ndef = new NDEFReader();
     //
-    phoneMode(ndef);
-}
-catch (e) {
-    desktopMode();
-}
-
-
-async function phoneMode(ndef) {
 
     async function scanTag() {
         ndef.scan().then(() => {
@@ -123,9 +115,7 @@ async function phoneMode(ndef) {
 
     await scanTag()
 }
-
-
-async function desktopMode() {
+catch (e) {
 
 }
 
