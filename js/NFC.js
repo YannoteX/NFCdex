@@ -6,9 +6,28 @@ let information = {
 }
 
 let scanAction = "read";
-const ndef = new NDEFReader;
+let hasNFC = null;
 
-if ('NDEFReader' in window) {
+try {
+    hasNFC = await navigator.permissions.query({ name: 'nfc' });
+}
+catch (e) {
+    hasNFC = false;
+}
+
+if (hasNFC) {
+    phoneMode()
+}
+else {
+    desktopMode()
+}
+
+
+function phoneMode() {
+    // Pour la lecture NFC
+    const ndef = new NDEFReader();
+    //
+
     async function scanTag() {
         ndef.scan().then(() => {
 
@@ -51,7 +70,7 @@ if ('NDEFReader' in window) {
 
                 else if (scanAction === "setNFCmon") {
 
-                    writeTag({}, "Tag NFCmon initialisé", "Echec dans l'initailisation");
+                    writeTag({}, "Tag NFCmon initialisé");
                 }
 
                 else {
@@ -111,9 +130,12 @@ if ('NDEFReader' in window) {
 
     scanTag()
 }
-else {
-    desktopMode()
+
+
+function desktopMode() {
+
 }
+
 
 function NFCMessage(message, color = "ffffff") {
     console.log(message);
