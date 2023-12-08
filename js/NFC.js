@@ -9,26 +9,17 @@ let scanAction = "read";
 let hasNFC = null;
 
 try {
-    hasNFC = navigator.permissions.query({ name: 'nfc' });
+    // Pour la lecture NFC
+    const ndef = new NDEFReader();
+    //
+    phoneMode();
 }
 catch (e) {
-    hasNFC = false;
-}
-
-if (hasNFC) {
-    phoneMode().then(() => {
-        NFCMessage("Bienvenue sur le NFCDex !");
-    });
-}
-else {
-    desktopMode()
+    desktopMode();
 }
 
 
 async function phoneMode() {
-    // Pour la lecture NFC
-    const ndef = new NDEFReader();
-    //
 
     async function scanTag() {
         ndef.scan().then(() => {
