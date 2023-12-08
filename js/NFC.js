@@ -6,9 +6,10 @@ let information = {
 }
 
 let scanAction = "read";
+const ndef = null;
 
 if ('NDEFReader' in window) {
-    const ndef = new NDEFReader();
+    ndef = new NDEFReader();
     phoneMode()
 }
 else {
