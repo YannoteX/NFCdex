@@ -1,34 +1,47 @@
 //recupérer les données du formulaire
-const inputsSansSubmit = document.querySelectorAll('input:not([type="submit"])');
-const inputSubmit = document.querySelector("input[type=submit]");
-const formulaire = document.querySelector("form")
-const textarea = document.querySelector("textarea")
-const error = document.querySelector(".error")
-let limiteCaracteres = 50;
+const inputsSansSubmit = document.querySelectorAll(
+    'input:not([type="submit"])'
+);
 
-let information = {
+const formulaire = document.querySelector("form");
+const textarea = document.querySelector("textarea");
+const error = document.querySelector(".error");
+const selectTypeNFCmon = document.getElementById("Type");
+const selectHabitatNFCmon = document.getElementById("Habitat");
+const input = document.querySelector("input");
+const inputClose = document.querySelector(".close");
+
+input.addEventListener("click", () => {
+    formulaire.classList.add("display");
+    document.querySelector(".form-section").classList.add("dark");
+});
+
+inputClose.addEventListener("click", () => {
+    formulaire.classList.remove("display")
+    document.querySelector(".form-section").classList.remove("dark");
+})
+
+let parentElementSection = document.querySelector(".form-section");
+let enfantElementForm = formulaire;
+
+parentElementSection.addEventListener('click', function () {
+    formulaire.classList.remove("display")
+    document.querySelector(".form-section").classList.remove("dark");
+});
+
+enfantElementForm.addEventListener('click', function (event) {
+    event.stopPropagation();
+});
+
+let limiteCaracteres = 100;
+
+export let information = {
+    Photo: "",
     Nom: "",
-    Prenom: "",
-    Mail: "",
-    Description: ""
-}
-
-
-let inputSaisie = false
-var formulaireValide = true;
-
-// Pour la lecture NFC
-const ndef = null;
-
-if ('NDEFReader' in window) {
-    ndef = new NDEFReader();
-}
-
-const abortController = new AbortController();
-abortController.signal.onabort = event => {
-    console.log("Abort NFC Operations")
+    Type: "",
+    Habitat: "",
+    Description: "",
 };
-
 
 textarea.addEventListener("input", function () {
     let longueurTexte = textarea.value.length;
@@ -37,112 +50,35 @@ textarea.addEventListener("input", function () {
     if (longueurTexte > limiteCaracteres) {
         textarea.value = textarea.value.substring(0, limiteCaracteres);
         error.textContent = limiteCaracteres + " caractères (limite atteinte)";
-        textarea.readOnly = false
+        textarea.readOnly = false;
     } else {
-        error.textContent = ""
+        error.textContent = "";
     }
 });
 
-
-
 function informationSubmit(e) {
-
     e.preventDefault();
 
-    inputsSansSubmit.forEach((element, index) => {
-        e.preventDefault();
-        if (element.value !== "") {
-            switch (index) {
-                case 0:
-                    information.Nom = element.value
-                    break;
-                case 1:
-                    information.Prenom = element.value
-                    break;
+    const formData = new FormData(document.querySelector("form"));
 
-                default:
-                    information.Mail = element.value
-            }
+    let PhotoUrl = formData.get("Photo");
+    let Nom = formData.get("Nom");
+    let TypeValue = formData.get("TypeValue");
+    let HabitatValue = formData.get("HabitatValue");
+    let Description = selectHabitatNFCmon.value;
 
-            information.Description = document.querySelector("textarea").value
-        } else {
+    information.Photo = PhotoUrl;
+    information.Nom = Nom
+    information.Type = TypeValue;
+    information.Habitat = HabitatValue;
+    information.Description = Description;
 
-        }
 
-    })
+    this.reset();
 
-    let formulaireValide = Array.from(inputsSansSubmit).every(function (input) {
-        return input.value !== ""; // Vérifier que la valeur de chaque champ n'est pas vide
-    });
-
-    if (!formulaireValide) {
-        error.textContent = "Veuillez remplir tout les champs";
-    } else {
-        writeTag();
-    }
+    console.log(information)
 }
 
-
-async function writeTag() {
-
-    await ndef.scan({ signal: abortController.signal });
-
-    ndef.onreading = (e) => {
-
-        if (isValidRecord(e.message.records)) {
-
-            const encoder = new TextEncoder();
-
-            ndef.write({
-                records: [
-                    {
-                        id: "A7G5UI924G66EP4",
-                        recordType: "mime",
-                        mediaType: "application/json",
-                        data: encoder.encode(JSON.stringify(information))
-                    }]
-            }).then(() => {
-
-                NFCMessage(information.Nom + " a été enregsitré dans ton tag NFCmon");
-                abortController.abort();
-
-            }).catch((error) => {
-
-                NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
-
-            });
-        }
-    }
-}
-
-
-function isValidRecord(record) {
-
-    /*if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
-        return true;
-    }
-    else {
-        NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
-        return false;
-    }*/
-
-    return true;
-}
-
-
-function NFCMessage(message) {
-    console.log(message);
-}
-
-
-formulaire.addEventListener("submit", informationSubmit)
-
-
-
-
-
-
-
-
+formulaire.addEventListener("submit", informationSubmit);
 
 
