@@ -14,10 +14,9 @@ else {
     desktopMode()
 }
 
-
+const ndef = new NDEFReader();
 function phoneMode() {
     // Pour la lecture NFC
-    const ndef = new NDEFReader();
     //
 
     async function scanTag() {
