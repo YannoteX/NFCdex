@@ -16,10 +16,12 @@ catch (e) {
 }
 
 if (hasNFC) {
-    await phoneMode()
+    phoneMode().then(() => {
+        NFCMessage("Bienvenue sur le NFCDex !");
+    });
 }
 else {
-    await desktopMode()
+    desktopMode()
 }
 
 
