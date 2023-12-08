@@ -40,9 +40,9 @@ nav {
   transform: translate(-10%, -50%) scale(1.1);
 }
 
-.close{
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 4px #000000);
+.close {
+  cursor: pointer;
+  filter: drop-shadow(5px 5px 4px #000000);
 }
 
 
@@ -83,11 +83,9 @@ form {
   border-radius: 20px;
   flex-direction: column;
   grid-gap: 10px;
-  background: linear-gradient(
-    180deg,
-    var(--primaryColor),
-    var(--secondary) 79.53%
-  );
+  background: linear-gradient(180deg,
+      var(--primaryColor),
+      var(--secondary) 79.53%);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-500px);
