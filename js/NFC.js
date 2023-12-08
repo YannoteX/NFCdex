@@ -113,7 +113,7 @@ try {
         });
     });
 
-    await scanTag()
+    scanTag()
 }
 catch (e) {
 
