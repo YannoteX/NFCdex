@@ -1,0 +1,17 @@
+@import url("./font.css");
+
+
+:root{
+    --background : #f3fbf3;
+    --primaryColor : #48bd4c;
+    --secondary : #90d7c1;
+    --accent : #72c9cc;
+    --colortxt : #050D05;
+    --titre : 'NotoSansCondensed-Bold';
+    --paragraphe : 'NotoSansSoraSompeng-Regular';
+}
+
+
+
+
+
