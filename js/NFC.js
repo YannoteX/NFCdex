@@ -103,21 +103,21 @@ function phoneMode() {
 
     }
 
-
-    function updateView(jsonObject) {
-        console.log(jsonObject)
-    }
-
-    function NFCMessage(message, color = "ffffff") {
-        console.log(message);
-    }
-
     scanTag()
 }
 
 
 function desktopMode() {
 
+}
+
+
+function updateView(jsonObject) {
+    console.log(jsonObject)
+}
+
+function NFCMessage(message, color = "ffffff") {
+    console.log(message);
 }
 
 
