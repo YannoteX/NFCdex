@@ -6,11 +6,9 @@ let information = {
 }
 
 let scanAction = "read";
-let ndef = null;
+const ndef = new NDEFReader;
 
 if ('NDEFReader' in window) {
-    ndef = new NDEFReader();
-
     async function scanTag() {
         ndef.scan().then(() => {
 
