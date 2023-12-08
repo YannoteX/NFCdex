@@ -16,14 +16,14 @@ catch (e) {
 }
 
 if (hasNFC) {
-    phoneMode()
+    await phoneMode()
 }
 else {
-    desktopMode()
+    await desktopMode()
 }
 
 
-function phoneMode() {
+async function phoneMode() {
     // Pour la lecture NFC
     const ndef = new NDEFReader();
     //
@@ -128,11 +128,11 @@ function phoneMode() {
         });
     });
 
-    scanTag()
+    await scanTag()
 }
 
 
-function desktopMode() {
+async function desktopMode() {
 
 }
 
