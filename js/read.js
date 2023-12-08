@@ -1,4 +1,6 @@
-let information = {
+ import { information } from "./formValidate"
+ 
+ information = {
     Nom: "",
     Prenom: "",
     Mail: "",
