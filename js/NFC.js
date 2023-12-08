@@ -51,7 +51,7 @@ if ('NDEFReader' in window) {
 
                 else if (scanAction === "setNFCmon") {
 
-                    writeTag({}, "Tag NFCmon initialisé");
+                    writeTag({}, "Tag NFCmon initialisé", "Echec dans l'initailisation");
                 }
 
                 else {
