@@ -9,7 +9,7 @@ let scanAction = "read";
 let hasNFC = null;
 
 try {
-    hasNFC = await navigator.permissions.query({ name: 'nfc' });
+    hasNFC = navigator.permissions.query({ name: 'nfc' });
 }
 catch (e) {
     hasNFC = false;
