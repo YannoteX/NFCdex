@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "jsonpack": "^1.1.5",
-    "lzwcompress": "^1.1.0"
+    "lzwcompress": "^1.1.0",
+    "webp-converter": "^2.3.3"
   }
 }
