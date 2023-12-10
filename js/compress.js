@@ -43,6 +43,6 @@ async function writeTag() {
 }
 
 function consoleLog(data) {
-  var logElement = document.getElementById('log');
+  let logElement = document.getElementById('log');
   logElement.innerHTML += data + '\n';
 }

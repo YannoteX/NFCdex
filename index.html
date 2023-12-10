@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="js/NFC.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="js/library/jsonpack.js"></script>
     <script defer src="js/library/lzwCompress.js"></script>
@@ -31,7 +32,6 @@
                 <!-- <p><a href="form.html">form</a></small></p> -->
                 <form action="">
 
-
                     <svg class="close" width="28" height="28" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -41,7 +41,8 @@
 
                     <span class="name">
                         <span class="PhotoNom">
-                            <input type="file" name="Photo" accept=".webp, .png, .jpeg" required>
+                            <img id="imagePreview" alt="">
+                            <input type="file" id="imageInput" name="Photo" accept=".webp, .png, .jpeg" required>
                             <label for="">Nom</label>
                             <input type="text" name="Nom" placeholder="nom" minlength="5" maxlength="20">
                         </span>
@@ -81,19 +82,36 @@
 
             <section class="presentation-section">
                 <div class="content items">
-                    <h1>Titre de la Présentation</h2>
+                    <h1>NFCmon</h2>
                         <p>
-                            Explorez notre site avec la technologie NFCmon : collectionnez vos Pokémon préférés en un
-                            simple contact !
+                            Explore le NFCdex : tout les NFCmon de la terre en un contact ! 
                         </p>
+
+                        <span class="resultAffichageForm"></span>
+
 
                 </div>
 
                 <div class="fond-background-presentation items">
-                    <img src="" alt="Image de présentation">
-                    <span class="resultAffichageForm"></span>
+                    <img src="./assets/logo/anim1.svg" alt="Image de présentation">
                 </div>
 
+            </section>
+
+            <section>
+                <div class="application">
+                    <div class="left-application">
+                        <h2>Télécharger la PWA</h2>
+                        <div class="list-download">
+                            <img src="" alt="">
+                            <img src="" alt="">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <img src="" alt="MobileMockup">
+                    </div>
+                </div>
             </section>
 
     </main>
