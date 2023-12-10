@@ -1,114 +1,151 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url("./media-queries.css");
+@import url("./variables.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root{
-    --colorOne : #f1f1f1
+body,
+html {
+  background-color: var(--background);
+  transition: 0.5s;
+  height: 300vh;
 }
 
-h1{
-    text-align: center;
-    margin-bottom: 20px;
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primaryColor);
+  position: fixed;
+  width: 100%;
+  box-shadow: 5px 5px 9px 5px rgba(0, 0, 0, 0.18);
+  padding: 20px 5px;
+  z-index: 100;
 }
 
-form{
-    background-color: var(--colorOne);
-    border : solid 1px black;
-    padding: 10px 20px;
-    border-radius: 20px;
-    display: grid;
-    grid-gap: 5Px;
-    grid-template-areas: 
-    "inputName inputName"
-    "email email"
-    "textarea textarea"
-    "submit submit"
-    ;
-    width: 50%;
-    min-width: 300px;
-    margin: auto;
+#btnform {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--secondary);
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 1s all;
 }
 
-.error{
-    color: red;
+#btnform:hover {
+  transform: translate(-10%, -50%) scale(1.1);
 }
 
-.name{
-    display: flex;
-    grid-area: inputName;
-    justify-content: space-between;
-    grid-gap: 5px;
-}
-
-.titleName{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-.mail{
-    grid-area: email;
-    width: 100%;
-}
-
-.firstname{
-    grid-area : input2;
+.close {
+  cursor: pointer;
+  filter: drop-shadow(5px 5px 4px #000000);
 }
 
 
-.textarea{
-    display: flex;
-    flex-direction: column;
-    grid-area : textarea;
-    width: 100%;
+.form-section {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  transition: 1s all;
+  z-index: 1;
+  bottom: 0;
 }
 
-input{
-    padding: 4px;
+.dark {
+  background-color: #00000070;
+  height: 100vh;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000000;
 }
 
-label{
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: var(--titre);
 }
 
-input[type="submit"]{
-    grid-area : submit;
-    width: fit-content;
-    padding: 2px 10px;
+label,
+span {
+  font-family: var(--paragraphe);
+  font-weight: bold;
 }
 
-input::placeholder{
-    font-size: 0.6rem;
-    text-transform: uppercase;
+form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  flex-direction: column;
+  grid-gap: 10px;
+  background: linear-gradient(180deg,
+      var(--primaryColor),
+      var(--secondary) 79.53%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-500px);
+  transition: 1s all;
+  z-index: 2 !important;
 }
 
-.resultChild{
-    width: fit-content;
-    margin: 0 auto;
-    border : solid 1px black;
-    background-color: var(--colorOne);
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    text-align: center;
+form input,
+select {
+  padding: 5px 5px;
 }
 
-.resultForm{
-    display: none;
+input[type="file"] {
+  font-family: var(--paragraphe);
 }
 
-.list{
-    display: block;
+.Type,
+.PhotoNom,
+.Habitatselect {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 5px;
 }
 
-@media screen and (max-width : 500px){
-    form{
-        display: flex;
-        flex-direction: column;
-    }
+.error {
+  color: red;
+}
+
+.PhotoNom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.textarea {
+  display: flex;
+  flex-direction: column;
+  grid-area: textarea;
+  width: 100%;
+}
+
+input[type="submit"] {
+  grid-area: submit;
+  width: fit-content;
+  padding: 2px 10px;
+}
+
+input::placeholder {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+.list {
+  display: block;
+}
+
+.display {
+  display: flex;
+  transform: translateY(10%);
+  top: 10%;
+  opacity: 1;
+  visibility: visible;
 }

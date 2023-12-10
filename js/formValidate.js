@@ -1,10 +1,47 @@
 //recupérer les données du formulaire
-const inputsSansSubmit = document.querySelectorAll('input:not([type="submit"])');
-const inputSubmit = document.querySelector("input[type=submit]");
-const formulaire = document.querySelector("form")
-const textarea = document.querySelector("textarea")
-const error = document.querySelector(".error")
-let limiteCaracteres = 50;
+const inputsSansSubmit = document.querySelectorAll(
+    'input:not([type="submit"])'
+);
+
+const formulaire = document.querySelector("form");
+const textarea = document.querySelector("textarea");
+const error = document.querySelector(".error");
+const selectTypeNFCmon = document.getElementById("Type");
+const selectHabitatNFCmon = document.getElementById("Habitat");
+const input = document.querySelector("input");
+const inputClose = document.querySelector(".close");
+
+input.addEventListener("click", () => {
+    formulaire.classList.add("display");
+    document.querySelector(".form-section").classList.add("dark");
+});
+
+inputClose.addEventListener("click", () => {
+    formulaire.classList.remove("display")
+    document.querySelector(".form-section").classList.remove("dark");
+})
+
+let parentElementSection = document.querySelector(".form-section");
+let enfantElementForm = formulaire;
+
+parentElementSection.addEventListener('click', function () {
+    formulaire.classList.remove("display")
+    document.querySelector(".form-section").classList.remove("dark");
+});
+
+enfantElementForm.addEventListener('click', function (event) {
+    event.stopPropagation();
+});
+
+let limiteCaracteres = 100;
+
+export let information = {
+    Photo: "",
+    Nom: "",
+    Type: "",
+    Habitat: "",
+    Description: "",
+};
 
 textarea.addEventListener("input", function () {
     let longueurTexte = textarea.value.length;
@@ -13,72 +50,35 @@ textarea.addEventListener("input", function () {
     if (longueurTexte > limiteCaracteres) {
         textarea.value = textarea.value.substring(0, limiteCaracteres);
         error.textContent = limiteCaracteres + " caractères (limite atteinte)";
-        textarea.readOnly = false
+        textarea.readOnly = false;
     } else {
-        error.textContent = ""
+        error.textContent = "";
     }
 });
-
-let information = [{
-    Nom: "",
-    Prenom: "",
-    Mail: "",
-    Description: ""
-}]
-
-let inputSaisie = false
-var formulaireValide = true;
-
 
 function informationSubmit(e) {
     e.preventDefault();
 
-    inputsSansSubmit.forEach((element, index) => {
-        e.preventDefault();
-        if (element.value !== "") {
-            switch (index) {
-                case 0:
-                    information.Nom = element.value
-                    break;
-                case 1:
-                    information.Prenom = element.value
-                    break;
+    const formData = new FormData(document.querySelector("form"));
 
-                default:
-                    information.Mail = element.value
-            }
+    let PhotoUrl = formData.get("Photo");
+    let Nom = formData.get("Nom");
+    let TypeValue = formData.get("TypeValue");
+    let HabitatValue = formData.get("HabitatValue");
+    let Description = selectHabitatNFCmon.value;
 
-            information.Description = document.querySelector("textarea").value
-        } else {
+    information.Photo = PhotoUrl;
+    information.Nom = Nom
+    information.Type = TypeValue;
+    information.Habitat = HabitatValue;
+    information.Description = Description;
 
-        }
 
-    })
+    this.reset();
 
-    let formulaireValide = Array.from(inputsSansSubmit).every(function (input) {
-        return input.value !== ""; // Vérifier que la valeur de chaque champ n'est pas vide
-    });
-
-    if (!formulaireValide) {
-        error.textContent = "Veuillez remplir tout les champs";
-    } else {
-        inputsSansSubmit.forEach(element => {
-            element.value = ""
-        })
-        console.log(information)
-
-        document.querySelector("textarea").value = ""
-        document.querySelector(".resultForm").classList.add("list")
-
-        return document.querySelector(".resultForm").innerHTML += `
-        <div class="resultChild">
-            <p>Nom : ${information.Nom}</p>
-            <p>Prenom : ${information.Prenom}</p>
-            <p> Email : ${information.Mail}</p>
-            <p>Description : ${information.Description}</p>
-        </div>
-            `
-    }
+    console.log(information)
 }
 
-formulaire.addEventListener("submit", informationSubmit)
+formulaire.addEventListener("submit", informationSubmit);
+
+
