@@ -1,25 +1,31 @@
-//recupérer les données du formulaire
-const inputsSansSubmit = document.querySelectorAll(
-    'input:not([type="submit"])'
-);
-
 const formulaire = document.querySelector("form");
 const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
-const selectTypeNFCmon = document.getElementById("Type");
-const selectHabitatNFCmon = document.getElementById("Habitat");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
+
+
+function cacherElement() {
+    document.querySelector(".form-section").style.display = "none";
+}
+
+function apparaitElement() {
+    document.querySelector(".form-section").style.display = "block";
+}
 
 input.addEventListener("click", () => {
     formulaire.classList.add("display");
     document.querySelector(".form-section").classList.add("dark");
+    setTimeout(apparaitElement);
+
 });
 
 inputClose.addEventListener("click", () => {
     formulaire.classList.remove("display")
     document.querySelector(".form-section").classList.remove("dark");
+    setTimeout(cacherElement, 1000);
 })
+
 
 let parentElementSection = document.querySelector(".form-section");
 let enfantElementForm = formulaire;
@@ -27,6 +33,7 @@ let enfantElementForm = formulaire;
 parentElementSection.addEventListener('click', function () {
     formulaire.classList.remove("display")
     document.querySelector(".form-section").classList.remove("dark");
+    setTimeout(cacherElement, 1000);
 });
 
 enfantElementForm.addEventListener('click', function (event) {
@@ -35,13 +42,14 @@ enfantElementForm.addEventListener('click', function (event) {
 
 let limiteCaracteres = 100;
 
-export let information = {
+export let information = [{
     Photo: "",
     Nom: "",
     Type: "",
     Habitat: "",
     Description: "",
-};
+}]
+
 
 textarea.addEventListener("input", function () {
     let longueurTexte = textarea.value.length;
@@ -56,6 +64,29 @@ textarea.addEventListener("input", function () {
     }
 });
 
+function resultJsonForm(objectJson) {
+    const resultArray = Object.entries(objectJson)
+    resultArray.shift()
+    const resultAffichage = document.querySelector(".resultAffichageForm")
+
+    let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
+        return index === 1 ? elementPhoto.name : ""
+    }); 
+    
+
+    resultAffichage.innerHTML = `Photo : ${filteredElementsPhoto.join('')}`
+     resultAffichage.innerHTML += resultArray.map(([key, element], index) => {
+        if(index !== 0){
+            return `
+            <p>${key} : ${element}</p>
+            `  
+        }
+     
+    }).join('')
+
+}
+
+
 function informationSubmit(e) {
     e.preventDefault();
 
@@ -65,19 +96,29 @@ function informationSubmit(e) {
     let Nom = formData.get("Nom");
     let TypeValue = formData.get("TypeValue");
     let HabitatValue = formData.get("HabitatValue");
-    let Description = selectHabitatNFCmon.value;
+    let Description = formData.get("Description");
 
     information.Photo = PhotoUrl;
-    information.Nom = Nom
+    information.Nom = Nom;
     information.Type = TypeValue;
     information.Habitat = HabitatValue;
     information.Description = Description;
 
+    
+    resultJsonForm(information)
 
     this.reset();
 
-    console.log(information)
+
 }
+
+
+
+
+
+
+
+
 
 formulaire.addEventListener("submit", informationSubmit);
 

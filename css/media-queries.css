@@ -1,4 +1,15 @@
 @media screen and (max-width: 500px) {
+
+    h1, p{
+        text-align: center;
+    }
+
+    .presentation-section{
+        display: flex;
+        flex-direction: column;
+    }
+  
+
     form {
         display: flex;
         flex-direction: column;

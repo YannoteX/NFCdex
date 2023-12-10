@@ -19,8 +19,6 @@ const abortController = new AbortController();
 abortController.signal.onabort = event => {
     console.log("Abort NFC Operations")
 };
-//
-
 async function scanTag() {
     ndef.scan({ signal: abortController.signal }).then(() => {
 
