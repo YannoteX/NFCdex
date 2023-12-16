@@ -4,6 +4,7 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
+
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
 }
@@ -71,7 +72,7 @@ function resultJsonForm(objectJson) {
     return index === 1 ? elementPhoto.name : "";
   });
 
-  resultAffichage.innerHTML = `Photo : ${filteredElementsPhoto.join("")}`;
+  resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
   resultAffichage.innerHTML += resultArray
     .map(([key, element], index) => {
       if (index !== 0) {
@@ -83,9 +84,9 @@ function resultJsonForm(objectJson) {
     .join("");
 }
 
-document.getElementById("imageInput").addEventListener("change", () => {
+document.getElementById("imageInput").addEventListener("change", (e) => {
   const imagePreview = document.getElementById("imagePreview");
-  const file = event.target.files[0];
+  const file = e.target.files[0];
 
   if (file) {
     const reader = new FileReader();
@@ -103,6 +104,7 @@ function informationSubmit(e) {
 
   const formData = new FormData(document.querySelector("form"));
 
+
   let PhotoUrl = formData.get("Photo");
   let Nom = formData.get("Nom");
   let TypeValue = formData.get("TypeValue");
@@ -119,5 +121,6 @@ function informationSubmit(e) {
 
   this.reset();
 }
+
 
 formulaire.addEventListener("submit", informationSubmit);

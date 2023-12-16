@@ -1,14 +1,36 @@
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
 
     h1, p{
         text-align: center;
+    }
+
+    .pied-de-page{
+        flex-direction: column;
+        grid-gap: 50px;
+    }
+
+    .application{
+        flex-direction: column;
     }
 
     .presentation-section{
         display: flex;
         flex-direction: column;
     }
+
+    .item{
+        border: solid 2Px red;
+        height: 100%;
+    }
   
+    .fond-background-presentation{
+        height: 50% !important;
+    }
+
+    .presentation-section{
+        padding: 100px 0px 0px 0px;
+    }
+
 
     form {
         display: flex;
