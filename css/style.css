@@ -22,7 +22,7 @@ a{
 }
 
 a:hover{
-  color: var(--accent);
+  color: var(--secondary);
 }
 
 strong{
@@ -87,6 +87,20 @@ input[type="file"] {
 
 p{
   font-family: var(--paragraphe);
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 20px;
+  border: 2px solid var(--accent);
 }
 
 input[type="submit"] {
