@@ -95,7 +95,6 @@ function resultJsonForm(objectJson) {
 export function DataToJson (Data){
   return JSON.stringify(Data);
 }
-console.log("mikasa")
 
 // document.getElementById("imageInput").addEventListener("change", (e) => {
 //   const imagePreview = document.getElementById("imagePreview");
