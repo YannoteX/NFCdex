@@ -183,6 +183,8 @@ function phoneMode() {
 //     console.log(jsonObject)
 // }
 
+console.log("mikasa")
+
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
   
