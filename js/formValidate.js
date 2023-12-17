@@ -1,3 +1,5 @@
+import {setAction} from "/js/NFC.js"
+
 const formulaire = document.querySelector("form");
 const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
@@ -16,13 +18,16 @@ function apparaitElement() {
 input.addEventListener("click", () => {
   formulaire.classList.add("display");
   document.querySelector(".form-section").classList.add("dark");
+  setAction("none")
   setTimeout(apparaitElement);
+
 });
 
 inputClose.addEventListener("click", () => {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
+  setAction("none")
 });
 
 let parentElementSection = document.querySelector(".form-section");
@@ -102,6 +107,7 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
 function informationSubmit(e) {
   e.preventDefault();
 
+  setAction("right")
   const formData = new FormData(document.querySelector("form"));
 
 

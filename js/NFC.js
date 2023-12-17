@@ -10,7 +10,7 @@ else {
 }
 
 // Appeler desktopMode lorsque le mode de bureau est détecté
-if (window.innerWidth >= 1024) {
+if (window.innerWidth >= 1024 & 'NDEFReader' in window) {
     desktopMode();
 } else {
     phoneMode(); // Utiliser phoneMode pour les appareils mobiles
@@ -91,10 +91,6 @@ function desktopMode() {
     // Le reste du code pour desktopMode...
 }
 
-
-
-
-
 function phoneMode() {
     // Pour la lecture NFC
     const ndef = new NDEFReader();
@@ -106,7 +102,6 @@ function phoneMode() {
             ndef.onreadingerror = (e) => {
                 NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
             };
-
 
             ndef.onreading = (e) => {
 
@@ -190,21 +185,32 @@ function updateView(jsonObject) {
 
 function NFCMessage(message, color = "#FF0000") {
     const messageContainer = document.getElementById("nfc-mode-message");
+    
     const paragraph = document.createElement("p");
 
-    paragraph.style.color = color;
     paragraph.textContent = message;
-    messageContainer.innerHTML = 'sd';
+    paragraph.style.color = color;
 
     messageContainer.appendChild(paragraph);
-
 }
 
-function setAction(action) {
+export function setAction(action) {
     scanAction = action
 }
 
 
+
+
+//utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
+//quand le formulaire est envoyé mettre setAction en parametre right
+
+//ouvrir le form -> setAction("none")
+//envoie le form -> setAction("right")
+//ferme form -> setAction("read")
+//mentions légales -> setAction("setNFCmon")
+
+
+//click sur mentions legales (setnfcmon) 
 
 
 // document.addEventListener('DOMContentLoaded', () => {

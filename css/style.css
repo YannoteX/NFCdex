@@ -241,6 +241,7 @@ nav img {
 
 .download{
   background-color: var(--background);
+  padding: 30px 0;
 }
 
 .resultAffichageForm{
@@ -272,6 +273,7 @@ nav img {
 
 .application{
   display: flex;
+  grid-gap: 20px;
   justify-content: space-around;
   align-items: center;
   height: 100vh;
@@ -314,7 +316,7 @@ nav img {
 
 .left-application svg {
   width: 30%;
-  min-width: 200px;
+  min-width: 250px;
 }
 
 .container-phone{
