@@ -1,4 +1,6 @@
-import { information, DataToJson } from "/js/formValidate";
+import { information } from "/js/formValidate";
+import { DataToJson } from "/js/formValidate";
+
 let scanAction = "read";
 
 DataToJson(information)
@@ -183,7 +185,6 @@ function phoneMode() {
 //     console.log(jsonObject)
 // }
 
-console.log("mikasa")
 
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
