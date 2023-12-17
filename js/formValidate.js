@@ -15,10 +15,15 @@ function apparaitElement() {
   document.querySelector(".form-section").style.display = "block";
 }
 
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
 input.addEventListener("click", () => {
   formulaire.classList.add("display");
   document.querySelector(".form-section").classList.add("dark");
-  setAction("none")
+  isMobile() ? setAction("none") : ""
+
   setTimeout(apparaitElement);
 });
 
@@ -26,7 +31,7 @@ inputClose.addEventListener("click", () => {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
-  setAction("none")
+  isMobile() ? setAction("read") : ""
 });
 
 let parentElementSection = document.querySelector(".form-section");
@@ -36,7 +41,7 @@ parentElementSection.addEventListener("click", function () {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
-  setAction("none")
+  isMobile() ? setAction("read") : ""
 });
 
 enfantElementForm.addEventListener("click", function (event) {
@@ -99,15 +104,13 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
     reader.onload = function (e) {
       imagePreview.src = e.target.result;
     };
-
     reader.readAsDataURL(file);
   }
 });
 
 function informationSubmit(e) {
   e.preventDefault();
-
-  setAction("right")
+  isMobile() ? setAction("right") : ""
   const formData = new FormData(document.querySelector("form"));
 
 
@@ -130,3 +133,8 @@ function informationSubmit(e) {
 
 
 formulaire.addEventListener("submit", informationSubmit);
+
+document.querySelector(".ML").addEventListener("click", (e) => {
+  e.preventDefault();
+  isMobile() ? setAction("setNFCmon") : ""
+})

@@ -182,16 +182,15 @@ function updateView(jsonObject) {
     console.log(jsonObject)
 }
 
+
 function NFCMessage(message, color = "#FF0000") {
     const messageContainer = document.getElementById("nfc-mode-message");
     const paragraph = document.createElement("p");
 
-    paragraph.textContent = message;
+    paragraph.textContent = "message";
     paragraph.style.color = color;
-
     messageContainer.appendChild(paragraph);
 }
-
 
 export function setAction(action) {
     scanAction = action
