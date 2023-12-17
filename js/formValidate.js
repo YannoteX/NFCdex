@@ -134,7 +134,8 @@ function informationSubmit(e) {
   information.Description = Description;
 
   DataToJson(information);
-
+  resultJsonForm(information)
+  
   this.reset();
 }
 
