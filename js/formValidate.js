@@ -90,16 +90,12 @@ function resultJsonForm(objectJson) {
       }
     })
     .join("");
-
-    const resultObject = resultArray.reduce((acc, [key, value]) => {
-      acc[key] = value;
-      return acc;
-    }, {});
 }
 
-function DataToJson (Data){
+export function DataToJson (Data){
   return JSON.stringify(Data);
 }
+console.log("mikasa")
 
 // document.getElementById("imageInput").addEventListener("change", (e) => {
 //   const imagePreview = document.getElementById("imagePreview");

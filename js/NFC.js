@@ -1,6 +1,8 @@
-import { information } from "./formValidate";
+import { information, DataToJson } from "/js/formValidate";
 let scanAction = "read";
 
+DataToJson(information)
+console.log(information)
 
 if ('NDEFReader' in window) {
     phoneMode()
@@ -92,6 +94,8 @@ if (window.innerWidth >= 1024) {
 //     // Le reste du code pour desktopMode...
 // }
 
+console.log("eren")
+
 function phoneMode() {
     // Pour la lecture NFC
     const ndef = new NDEFReader();
@@ -127,7 +131,6 @@ function phoneMode() {
 
                 else if (scanAction === "write") {
                     if (isValidRecord(record)) {
-
                         writeTag(information,
                             information.Nom + " a été enregsitré dans ton tag NFCmon",
                             "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau");
@@ -160,7 +163,6 @@ function phoneMode() {
         let encoder = new TextEncoder();
 
         ndef.write({
-
             records: [
                 {
                     id: "A7G5UI924G66EP4",
@@ -175,7 +177,6 @@ function phoneMode() {
         });
 
     }
-
     scanTag()
 }
 
@@ -183,7 +184,21 @@ function updateView(jsonObject) {
     console.log(jsonObject)
 }
 
-console.log("eren")
+function updateView(jsonObject) {
+    const resultAffichage = document.querySelector(".resultAffichageDeux");
+  
+    resultAffichage.innerHTML = "";
+  
+    for (const key in jsonObject) {
+      if (Object.hasOwnProperty.call(jsonObject, key)) {
+        const value = jsonObject[key];
+        const paragraph = document.createElement("p");
+        paragraph.textContent = `${key}: ${value}`;
+  
+        resultAffichage.appendChild(paragraph);
+      }
+    }
+  }
 
 function NFCMessage(message, color = "#FF0000") {
     const messageContainer = document.getElementById("nfc-mode-message");
@@ -197,8 +212,6 @@ function NFCMessage(message, color = "#FF0000") {
 export function setAction(action) {
     scanAction = action
 }
-
-
 
 
 //utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
