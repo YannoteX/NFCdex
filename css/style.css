@@ -287,7 +287,7 @@ nav img {
 }
 
 .fond-background-presentation img {
-  width: 70%;
+  width: 80%;
   min-width: 300px;
 }
 
@@ -325,7 +325,7 @@ nav img {
 .phone{
   filter : drop-shadow(15px 20px 8px #00000040);
   width: 45%;
-  min-width: 200px;
+  min-width: 150px;
 }
 
 footer{

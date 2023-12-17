@@ -11,6 +11,11 @@
 
     .application{
         flex-direction: column;
+        grid-gap: 5px;
+    }
+
+    .application h2{
+        margin-bottom: 20px;
     }
 
     .presentation-section{

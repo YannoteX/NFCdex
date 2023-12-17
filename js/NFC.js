@@ -10,13 +10,12 @@ else {
 }
 
 // Appeler desktopMode lorsque le mode de bureau est détecté
-if (window.innerWidth >= 1024 & 'NDEFReader' in window) {
+if (window.innerWidth >= 1024) {
     desktopMode();
 } else {
     phoneMode(); // Utiliser phoneMode pour les appareils mobiles
 }
-
-
+    
 function desktopMode() {
 
     const ndef = new NDEFReader();
@@ -190,14 +189,12 @@ function updateView(jsonObject) {
 }
 
 function NFCMessage(message, color = "#FF0000") {
-
     const messageContainer = document.getElementById("nfc-mode-message");
     const paragraph = document.createElement("p");
 
-    paragraph.style.color = `#${color}`;
-
+    paragraph.style.color = color;
     paragraph.textContent = message;
-    messageContainer.innerHTML = '';
+    messageContainer.innerHTML = 'sd';
 
     messageContainer.appendChild(paragraph);
 
