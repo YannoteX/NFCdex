@@ -3,6 +3,7 @@
     h1, p{
         text-align: center;
     }
+
     .pied-de-page{
         flex-direction: column;
         grid-gap: 50px;
