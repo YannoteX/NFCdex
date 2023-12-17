@@ -94,7 +94,6 @@ if (window.innerWidth >= 1024) {
 //     // Le reste du code pour desktopMode...
 // }
 
-console.log("eren")
 
 function phoneMode() {
     // Pour la lecture NFC
@@ -180,9 +179,9 @@ function phoneMode() {
     scanTag()
 }
 
-function updateView(jsonObject) {
-    console.log(jsonObject)
-}
+// function updateView(jsonObject) {
+//     console.log(jsonObject)
+// }
 
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
