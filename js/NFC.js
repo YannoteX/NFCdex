@@ -125,7 +125,6 @@ function phoneMode() {
                 }
 
                 else if (scanAction === "write") {
-
                     if (isValidRecord(record)) {
 
                         writeTag(information,
@@ -185,7 +184,6 @@ function updateView(jsonObject) {
 
 function NFCMessage(message, color = "#FF0000") {
     const messageContainer = document.getElementById("nfc-mode-message");
-    
     const paragraph = document.createElement("p");
 
     paragraph.textContent = message;
@@ -193,6 +191,7 @@ function NFCMessage(message, color = "#FF0000") {
 
     messageContainer.appendChild(paragraph);
 }
+
 
 export function setAction(action) {
     scanAction = action

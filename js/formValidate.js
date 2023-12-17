@@ -20,7 +20,6 @@ input.addEventListener("click", () => {
   document.querySelector(".form-section").classList.add("dark");
   setAction("none")
   setTimeout(apparaitElement);
-
 });
 
 inputClose.addEventListener("click", () => {
@@ -37,6 +36,7 @@ parentElementSection.addEventListener("click", function () {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
+  setAction("none")
 });
 
 enfantElementForm.addEventListener("click", function (event) {
