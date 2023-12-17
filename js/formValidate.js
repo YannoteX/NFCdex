@@ -6,7 +6,6 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
-
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
 }
@@ -23,8 +22,8 @@ input.addEventListener("click", () => {
   formulaire.classList.add("display");
   document.querySelector(".form-section").classList.add("dark");
   isMobile() ? setAction("none") : ""
-
   setTimeout(apparaitElement);
+
 });
 
 inputClose.addEventListener("click", () => {
@@ -52,7 +51,6 @@ let limiteCaracteres = 100;
 
 export let information = [
   {
-    Photo: "",
     Nom: "",
     Type: "",
     Habitat: "",
@@ -78,11 +76,11 @@ function resultJsonForm(objectJson) {
   resultArray.shift();
   const resultAffichage = document.querySelector(".resultAffichageForm");
 
-  let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
-    return index === 1 ? elementPhoto.name : "";
-  });
+  // let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
+  //   return index === 1 ? elementPhoto.name : "";
+  // });
 
-  resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
+  // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
   resultAffichage.innerHTML += resultArray
     .map(([key, element], index) => {
       if (index !== 0) {
@@ -92,21 +90,30 @@ function resultJsonForm(objectJson) {
       }
     })
     .join("");
+
+    const resultObject = resultArray.reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
 }
 
-document.getElementById("imageInput").addEventListener("change", (e) => {
-  const imagePreview = document.getElementById("imagePreview");
-  const file = e.target.files[0];
+function DataToJson (Data){
+  return JSON.stringify(Data);
+}
 
-  if (file) {
-    const reader = new FileReader();
+// document.getElementById("imageInput").addEventListener("change", (e) => {
+//   const imagePreview = document.getElementById("imagePreview");
+//   const file = e.target.files[0];
 
-    reader.onload = function (e) {
-      imagePreview.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  }
-});
+//   if (file) {
+//     const reader = new FileReader();
+
+//     reader.onload = function (e) {
+//       imagePreview.src = e.target.result;
+//     };
+//     reader.readAsDataURL(file);
+//   }
+// });
 
 function informationSubmit(e) {
   e.preventDefault();
@@ -114,19 +121,19 @@ function informationSubmit(e) {
   const formData = new FormData(document.querySelector("form"));
 
 
-  let PhotoUrl = formData.get("Photo");
+  // let PhotoUrl = formData.get("Photo");
   let Nom = formData.get("Nom");
   let TypeValue = formData.get("TypeValue");
   let HabitatValue = formData.get("HabitatValue");
   let Description = formData.get("Description");
 
-  information.Photo = PhotoUrl;
+  // information.Photo = PhotoUrl;
   information.Nom = Nom;
   information.Type = TypeValue;
   information.Habitat = HabitatValue;
   information.Description = Description;
 
-  resultJsonForm(information);
+  DataToJson(information);
 
   this.reset();
 }
