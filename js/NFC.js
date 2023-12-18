@@ -163,7 +163,7 @@ function phoneMode() {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
                     mediaType: "application/json",
-                    data: encoder.encode(JSON.stringify(jsonObject))
+                    data: encoder.encode(jsonObject)
                 }]
         }).then(() => {
             NFCMessage(successMessage);
