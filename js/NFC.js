@@ -110,10 +110,10 @@ function phoneMode() {
     
                     if (scanAction === "read") {
                         if (isValidRecord(record)) {
-                            let json = JSON.parse(record.data);
+                            let json = record.data;
     
                             if (json) {
-                                updateView(json);
+                                updateView(json[0]);
                             } else {
                                 NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
                             }
