@@ -83,23 +83,23 @@ textarea.addEventListener("input", function () {
 
 function resultJsonForm(objectJson) {
   const resultArray = Object.entries(objectJson);
-  resultArray.shift();
-  const resultAffichage = document.querySelector(".resultAffichageForm");
+  return resultArray.shift();
+  // const resultAffichage = document.querySelector(".resultAffichageForm");
 
-  // let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
-  //   return index === 1 ? elementPhoto.name : "";
-  // });
+  // // let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
+  // //   return index === 1 ? elementPhoto.name : "";
+  // // });
 
-  // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
-  resultAffichage.innerHTML = resultArray
-    .map(([key, element], index) => {
-      if (index !== 0) {
-        return `
-            <p>${key} : ${element}</p>
-            `;
-      }
-    })
-    .join("");
+  // // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
+  // resultAffichage.innerHTML = resultArray
+  //   .map(([key, element], index) => {
+  //     if (index !== 0) {
+  //       return `
+  //           <p>${key} : ${element}</p>
+  //           `;
+  //     }
+  //   })
+  //   .join("");
 }
 
 
@@ -143,8 +143,18 @@ function informationSubmit(e) {
   DataToJson(information);
   resultJsonForm(information)
   
-  this.reset();
 }
+
+//prend en parametre l'id du formulaire dans le html donc form 
+export function resetForm(formId) {
+  let form = document.getElementById(formId);
+  form ? form.reset() : console.error("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
+}
+
+
+
+// Exemple d'utilisation : resetForm("monFormulaire");
+
 
 
 formulaire.addEventListener("submit", informationSubmit);
