@@ -1,7 +1,4 @@
-import { information, DataToJson } from "/js/formValidate.js";
-
-const resultJson = DataToJson(information)
-console.log(resultJson)
+import { information } from "/js/formValidate.js";
 
 let scanAction = "read";
 
@@ -146,6 +143,7 @@ function phoneMode() {
         });
     }
 
+
     function isValidRecord(record) {
         if (record.id === "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
             return true;
@@ -156,6 +154,7 @@ function phoneMode() {
         }
     }
 
+
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
 
@@ -165,7 +164,7 @@ function phoneMode() {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
                     mediaType: "application/json",
-                    data: encoder.encode(jsonObject)
+                    data: encoder.encode(JSON.stringify(jsonObject))
                 }]
         }).then(() => {
             NFCMessage(successMessage);
@@ -175,6 +174,7 @@ function phoneMode() {
         });
 
     }
+
     scanTag()
 }
 
@@ -194,6 +194,7 @@ function updateView(jsonObject) {
         return paragraph;
     }
 
+
     function getValueString(value) {
         if (typeof value === 'object' && value !== null) {
             return Object.entries(value)
@@ -204,6 +205,7 @@ function updateView(jsonObject) {
         }
     }
 
+
     for (const key in jsonObject) {
         if (Object.hasOwnProperty.call(jsonObject, key)) {
             const value = jsonObject[key];
@@ -212,6 +214,7 @@ function updateView(jsonObject) {
             resultAffichage.appendChild(paragraph);
         }
     }
+
 }
 
 
@@ -221,9 +224,11 @@ function NFCMessage(message, color = "#FF0000") {
     messageContainer.style.color = color;
 }
 
+
 export const setAction = (action) => {
     scanAction = action
 }
+
 
 //utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
 //quand le formulaire est envoyé mettre setAction en parametre right

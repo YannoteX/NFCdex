@@ -19,13 +19,16 @@ function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
 }
 
+
 function apparaitElement() {
   document.querySelector(".form-section").style.display = "block";
 }
 
+
 function isMobile() {
   return window.innerWidth <= 768;
 }
+
 
 input.addEventListener("click", () => {
   formulaire.classList.add("display");
@@ -35,12 +38,14 @@ input.addEventListener("click", () => {
 
 });
 
+
 inputClose.addEventListener("click", () => {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
   isMobile() ? setAction("read") : ""
 });
+
 
 let parentElementSection = document.querySelector(".form-section");
 let enfantElementForm = formulaire;
@@ -52,9 +57,11 @@ parentElementSection.addEventListener("click", function () {
   isMobile() ? setAction("read") : ""
 });
 
+
 enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
 });
+
 
 let limiteCaracteres = 100;
 
@@ -72,6 +79,7 @@ textarea.addEventListener("input", function () {
     error.textContent = "";
   }
 });
+
 
 function resultJsonForm(objectJson) {
   const resultArray = Object.entries(objectJson);
@@ -94,6 +102,7 @@ function resultJsonForm(objectJson) {
     .join("");
 }
 
+
 export function DataToJson (Data){
   return JSON.stringify(Data);
 }
@@ -111,6 +120,7 @@ export function DataToJson (Data){
 //     reader.readAsDataURL(file);
 //   }
 // });
+
 
 function informationSubmit(e) {
   e.preventDefault();
@@ -138,6 +148,7 @@ function informationSubmit(e) {
 
 
 formulaire.addEventListener("submit", informationSubmit);
+
 
 document.querySelector(".ML").addEventListener("click", (e) => {
   e.preventDefault();
