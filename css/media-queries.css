@@ -1,11 +1,10 @@
 @media screen and (max-width: 800px) {
-
     h1, p{
         text-align: center;
     }
 
     #btnform{
-        display: block;
+        display: block !important;
     }
 
     .pied-de-page{
