@@ -1,4 +1,4 @@
-import { information } from "/js/formValidate.js";
+import { information, DataToJson } from "/js/formValidate.js";
 
 let scanAction = "read";
 
@@ -124,7 +124,6 @@ function phoneMode() {
 
                 else if (scanAction === "write") {
                     if (isValidRecord(record)) {
-                        console.log(information);
                         writeTag(information,
                             information.Nom + " a été enregsitré dans ton tag NFCmon",
                             "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau");
@@ -164,11 +163,11 @@ function phoneMode() {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
                     mediaType: "application/json",
-                    data: encoder.encode(JSON.stringify(jsonObject))
+                    data: encoder.encode(DataToJson(jsonObject))
                 }]
         }).then(() => {
             NFCMessage(successMessage);
-            console.log(information);
+            console.log(DataToJson(jsonObject));
         }).catch(() => {
             NFCMessage(failureMessage);
         });
