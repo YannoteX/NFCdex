@@ -1,9 +1,9 @@
-import { information, DataToJson } from "/js/formValidate.js";
+import { information } from "/js/formValidate.js";
+
+console.log(information)
 
 let scanAction = "read";
 
-
-console.log(information)
 ('NDEFReader' in window) ? phoneMode() : desktopMode()
 
 // Appeler desktopMode lorsque le mode de bureau est détecté
