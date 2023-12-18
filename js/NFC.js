@@ -97,100 +97,54 @@ function phoneMode() {
     //
 
     async function scanTag() {
-        try {
-            await new Promise((resolve) => {
-                ndef.scan().then(() => {
-                    ndef.onreadingerror = (e) => {
-                        NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton téléphone");
-                    };
-            
-                    ndef.onreading = (e) => {
-                        const record = e.message.records[0];
-        
-                        if (scanAction === "read") {
-                            if (isValidRecord(record)) {
-                                const decoder = new TextDecoder();
-                                let json = JSON.parse(decoder.decode(record.data));
-        
-                                if (json) {
-                                    updateView(json);
-                                } else {
-                                    NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
-                                }
-                            }
-                        } else if (scanAction === "write") {
-                            if (isValidRecord(record)) {
-                                console.log(information);
-                                writeTag(
-                                    information,
-                                    information.Nom + " a été enregistré dans ton tag NFCmon",
-                                    "Oops... On n'a pas pu écrire ton NFCmon, réessaie à nouveau"
-                                );
-                                setAction("none");
-                            }
-                        } else if (scanAction === "setNFCmon") {
-                            writeTag({}, "Tag NFCmon initialisé");
-                        } else {
-                            
+        ndef.scan().then(() => {
+            ndef.onreadingerror = (e) => {
+                NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
+            };
+
+            ndef.onreading = (e) => {
+                const record = e.message.records[0];
+
+                if (scanAction === "read") {
+
+                    if (isValidRecord(record)) {
+
+                        console.log(record)
+                        console.log(record.data)
+                        const decoder = new TextDecoder();
+                        console.log(decoder.decode(record.data))
+
+                        let json = JSON.parse(decoder.decode(record.data));
+
+                        if (json) {
+                            updateView(json[0]);
                         }
-        
-                        resolve(); 
-                    };
-                });
-            });
-        } catch (error) {
-            console.error("Erreur lors de la numérisation NFC:", error);
-        }
+                        else {
+                            NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
+                        }
+                    }
+                }
+
+                else if (scanAction === "write") {
+                    if (isValidRecord(record)) {
+                        console.log(information);
+                        writeTag(information,
+                            information.Nom + " a été enregsitré dans ton tag NFCmon",
+                            "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau");
+
+                        setAction("none");
+                    }
+                }
+
+                else if (scanAction === "setNFCmon") {
+                    writeTag({}, "Tag NFCmon initialisé");
+                }
+                else {
+
+                }
+            }
+        });
     }
-    
-
-    // async function scanTag() {
-    //     ndef.scan().then(() => {
-    //         ndef.onreadingerror = (e) => {
-    //             NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton téléphone");
-    //         };
-    
-    //         ndef.onreading = (e) => {
-    //             const record = e.message.records[0];
-
-    //             if (scanAction === "read") {
-
-    //                 if (isValidRecord(record)) {
-
-    //                     const decoder = new TextDecoder();
-
-    //                     let json = JSON.parse(decoder.decode(record.data));
-
-    //                     if (json) {
-    //                         updateView(json);
-    //                     }
-    //                     else {
-    //                         NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
-    //                     }
-    //                 }
-    //             }
-
-    //             else if (scanAction === "write") {
-    //                 if (isValidRecord(record)) {
-    //                     console.log(information);
-    //                     writeTag(information,
-    //                         information.Nom + " a été enregsitré dans ton tag NFCmon",
-    //                         "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau");
-
-    //                     setAction("none");
-    //                 }
-    //             }
-
-    //             else if (scanAction === "setNFCmon") {
-    //                 writeTag({}, "Tag NFCmon initialisé");
-    //             }
-    //             else {
-
-    //             }
-    //         };
-    //     });
-    // }
-    
 
     function isValidRecord(record) {
         if (record.id === "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
@@ -211,7 +165,7 @@ function phoneMode() {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
                     mediaType: "application/json",
-                    data: encoder.encode(JSON.stringify(jsonObject))
+                    data: encoder.encode(jsonObject)
                 }]
         }).then(() => {
             NFCMessage(successMessage);
