@@ -83,7 +83,7 @@ function resultJsonForm(objectJson) {
   // });
 
   // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
-  resultAffichage.innerHTML += resultArray
+  resultAffichage.innerHTML = resultArray
     .map(([key, element], index) => {
       if (index !== 0) {
         return `
