@@ -125,6 +125,7 @@ function phoneMode() {
 
                 else if (scanAction === "write") {
                     if (isValidRecord(record)) {
+                        console.log(information);
                         writeTag(information,
                             information.Nom + " a été enregsitré dans ton tag NFCmon",
                             "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau");
@@ -144,7 +145,7 @@ function phoneMode() {
     }
 
     function isValidRecord(record) {
-        if (record.id = "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
+        if (record.id === "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
             return true;
         }
         else {
