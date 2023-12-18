@@ -111,6 +111,7 @@ function phoneMode() {
 
                         console.log(record)
                         console.log(record.data)
+                        const decoder = new TextDecoder();
                         console.log(decoder.decode(record.data))
 
                         let json = JSON.parse(decoder.decode(record.data));
