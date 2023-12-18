@@ -99,9 +99,9 @@ function phoneMode() {
     async function scanTag() {
         ndef.scan().then(() => {
             ndef.onreadingerror = (e) => {
-                NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone");
+                NFCMessage("Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton téléphone");
             };
-
+    
             ndef.onreading = (e) => {
                 const record = e.message.records[0];
 
@@ -141,9 +141,10 @@ function phoneMode() {
                 else {
 
                 }
-            }
+            };
         });
     }
+    
 
     function isValidRecord(record) {
         if (record.id === "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
