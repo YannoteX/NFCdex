@@ -114,7 +114,7 @@ function phoneMode() {
                         let json = JSON.parse(decoder.decode(record.data));
 
                         if (json) {
-                            updateView(json);
+                            updateView(json[0]);
                         }
                         else {
                             NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
