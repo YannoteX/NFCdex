@@ -1,6 +1,8 @@
 import { information, DataToJson } from "/js/formValidate.js";
 
-DataToJson(information)
+const resultJson = DataToJson(information)
+
+console.log(resultJson)
 
 let scanAction = "read";
 
