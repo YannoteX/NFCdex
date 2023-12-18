@@ -111,7 +111,6 @@ function phoneMode() {
 
                         console.log(record)
                         console.log(record.data)
-                        const decoder = new TextDecoder();
                         console.log(decoder.decode(record.data))
 
                         let json = JSON.parse(decoder.decode(record.data));
@@ -165,7 +164,7 @@ function phoneMode() {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
                     mediaType: "application/json",
-                    data: encoder.encode(JSON.stringify(jsonObject))
+                    data: encoder.encode(jsonObject)
                 }]
         }).then(() => {
             NFCMessage(successMessage);
