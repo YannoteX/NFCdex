@@ -6,6 +6,15 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
+export let information = [
+  {
+    Nom: "",
+    Type: "",
+    Habitat: "",
+    Description: "",
+  },
+];
+
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
 }
@@ -49,14 +58,7 @@ enfantElementForm.addEventListener("click", function (event) {
 
 let limiteCaracteres = 100;
 
-export let information = [
-  {
-    Nom: "",
-    Type: "",
-    Habitat: "",
-    Description: "",
-  },
-];
+
 
 textarea.addEventListener("input", function () {
   let longueurTexte = textarea.value.length;

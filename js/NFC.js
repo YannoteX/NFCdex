@@ -1,5 +1,4 @@
-import { information } from "/js/formValidate";
-import { DataToJson } from "/js/formValidate";
+import { information, DataToJson } from "/js/formValidate.js";
 
 let scanAction = "read";
 DataToJson(information)
