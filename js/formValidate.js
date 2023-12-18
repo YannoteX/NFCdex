@@ -6,14 +6,14 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
-export let information = [
+export let information = 
   {
     Nom: "",
     Type: "",
     Habitat: "",
     Description: "",
-  },
-];
+  }
+
 
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
