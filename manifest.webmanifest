@@ -3,7 +3,7 @@
     "background_color": "cf4307",
     "display": "browser",
     "scope": "/",
-    "start_url": "https://nfcdex.netlify.app",
+    "start_url": "/",
     "name": "NFCdex",
     "short_name": "NFCdex",
     "description": "Tout les NFCmon de la terre en un contact",
