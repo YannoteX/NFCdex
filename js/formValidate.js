@@ -114,7 +114,7 @@ export function DataToJson (Data){
 
 function informationSubmit(e) {
   e.preventDefault();
-  isMobile() ? setAction("right") : ""
+  isMobile() ? setAction("write") : ""
   const formData = new FormData(document.querySelector("form"));
 
 
