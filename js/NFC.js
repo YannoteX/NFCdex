@@ -182,19 +182,35 @@ function phoneMode() {
 
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
-  
+
     resultAffichage.innerHTML = "";
-  
-    for (const key in jsonObject) {
-      if (Object.hasOwnProperty.call(jsonObject, key)) {
-        const value = jsonObject[key];
+
+    function createParagraph(key, value) {
         const paragraph = document.createElement("p");
-        paragraph.textContent = `${key}: ${value}`;
-  
-        resultAffichage.appendChild(paragraph);
-      }
+        paragraph.textContent = `${key}: ${getValueString(value)}`;
+        return paragraph;
     }
-  }
+
+    function getValueString(value) {
+        if (typeof value === 'object' && value !== null) {
+            return Object.entries(value)
+                .map(([nestedKey, nestedValue]) => `${nestedKey}: ${getValueString(nestedValue)}`)
+                .join(', ');
+        } else {
+            return String(value);
+        }
+    }
+
+    for (const key in jsonObject) {
+        if (Object.hasOwnProperty.call(jsonObject, key)) {
+            const value = jsonObject[key];
+            const paragraph = createParagraph(key, value);
+
+            resultAffichage.appendChild(paragraph);
+        }
+    }
+}
+
 
 function NFCMessage(message, color = "#FF0000") {
     const messageContainer = document.getElementById("nfc-mode-message");
