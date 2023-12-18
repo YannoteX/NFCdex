@@ -4,6 +4,10 @@
         text-align: center;
     }
 
+    #btnform{
+        display: block;
+    }
+
     .pied-de-page{
         flex-direction: column;
         grid-gap: 50px;

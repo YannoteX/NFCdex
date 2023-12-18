@@ -115,6 +115,7 @@ input::placeholder {
 }
 
 #btnform {
+  display: none;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
