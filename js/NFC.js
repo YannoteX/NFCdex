@@ -106,15 +106,12 @@ function phoneMode() {
 
                     if (isValidRecord(record)) {
 
-                        console.log(record)
-                        console.log(record.data)
                         const decoder = new TextDecoder();
-                        console.log(decoder.decode(record.data))
 
                         let json = JSON.parse(decoder.decode(record.data));
 
                         if (json) {
-                            updateView(json[0]);
+                            updateView(json);
                         }
                         else {
                             NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
@@ -167,7 +164,6 @@ function phoneMode() {
                 }]
         }).then(() => {
             NFCMessage(successMessage);
-            console.log(DataToJson(jsonObject));
         }).catch(() => {
             NFCMessage(failureMessage);
         });
