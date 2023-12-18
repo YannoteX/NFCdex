@@ -110,8 +110,7 @@ function phoneMode() {
     
                     if (scanAction === "read") {
                         if (isValidRecord(record)) {
-                            const decoder = new TextDecoder();
-                            let json = JSON.parse(decoder.decode(record.data));
+                            let json = JSON.parse(record.data);
     
                             if (json) {
                                 updateView(json);
@@ -151,7 +150,6 @@ function phoneMode() {
     }
 
     function writeTag(jsonObject, successMessage, failureMessage) {
-        let encoder = new TextEncoder();
 
         ndef.write({
             records: [
@@ -159,7 +157,7 @@ function phoneMode() {
                     id: "A7G5UI924G66EP4",
                     recordType: "mime",
                     mediaType: "application/json",
-                    data: encoder.encode(jsonObject)
+                    data: jsonObject
                 }]
         }).then(() => {
             NFCMessage(successMessage);
