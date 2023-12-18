@@ -112,7 +112,7 @@ function phoneMode() {
 
                         const decoder = new TextDecoder();
 
-                        json = JSON.parse(decoder.decode(record.data));
+                        let json = JSON.parse(decoder.decode(record.data));
 
                         if (json) {
                             updateView(json);
