@@ -169,6 +169,7 @@ function phoneMode() {
                 }]
         }).then(() => {
             NFCMessage(successMessage);
+            console.log(information);
         }).catch(() => {
             NFCMessage(failureMessage);
         });
