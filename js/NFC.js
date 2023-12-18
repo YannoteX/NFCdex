@@ -109,6 +109,8 @@ function phoneMode() {
 
                     if (isValidRecord(record)) {
 
+                        console.log(record)
+                        console.log(record.data)
                         const decoder = new TextDecoder();
 
                         let json = JSON.parse(decoder.decode(record.data));
