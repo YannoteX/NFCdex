@@ -1,8 +1,8 @@
 import { information, DataToJson } from "/js/formValidate.js";
 
-const resultJson = DataToJson(information)
+// const resultJson = DataToJson(information)
 
-console.log(resultJson)
+// console.log(resultJson)
 
 let scanAction = "read";
 
@@ -126,6 +126,7 @@ function phoneMode() {
                 else if (scanAction === "write") {
                     if (isValidRecord(record)) {
                         console.log(information);
+                        updateView(information);
                         writeTag(information,
                             information.Nom + " a été enregsitré dans ton tag NFCmon",
                             "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau");
