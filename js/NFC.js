@@ -164,6 +164,7 @@ function phoneMode() {
                 }]
         }).then(() => {
             NFCMessage(successMessage);
+            resetForm(form)
         }).catch(() => {
             NFCMessage(failureMessage);
         });
