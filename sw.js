@@ -1,10 +1,25 @@
-const CACHE_NAME = 'cool-cache';
+const CACHE_NAME = 'NFCdex-offline';
 
 // Add whichever assets you want to pre-cache here:
 const PRECACHE_ASSETS = [
-    '/assets/',
-    '/js/',
-    '/css/'
+    '/',
+    '/index.html',
+    '/js/NFC.js',
+    '/js/formValidate.js',
+    '/css/font.css',
+    '/css/media-queries.css',
+    '/css/style.css',
+    '/css/variables.css',
+    '/assets/fonts/NotoSans_Condensed-Bold.ttf',
+    '/assets/fonts/NotoSansSoraSompeng-Regular.ttf',
+    '/assets/icons/PhoneScreen2.png',
+    '/assets/icons/Pwa.svg',
+    '/assets/logo/anim1.svg',
+    '/assets/logo/Logo2.png',
+    '/assets/logo/NFCdex_logo.png',
+    '/assets/logo/Vector.png',
+    '/assets/logo/Vector-1.png',
+    '/assets/logo/Vector-2.png'
 ]
 
 // Listener for the install event - pre-caches our assets list on service worker install.
@@ -23,19 +38,4 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(async () => {
-        const cache = await caches.open(CACHE_NAME);
-  
-        // match the request to our cache
-        const cachedResponse = await cache.match(event.request);
-  
-        // check if we got a valid response
-        if (cachedResponse !== undefined) {
-            // Cache hit, return the resource
-            return cachedResponse;
-        } else {
-          // Otherwise, go to the network
-            return fetch(event.request)
-        };
-    });
 });
