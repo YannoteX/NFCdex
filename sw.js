@@ -26,9 +26,7 @@ const PRECACHE_ASSETS = [
 self.addEventListener('install', event => {
     event.waitUntil((async () => {
         caches.open(CACHE_NAME).then(cache => {
-            for (let i in PRECACHE_ASSETS){
-                return cache.addAll(PRECACHE_ASSETS);
-            }
+            cache.addAll(PRECACHE_ASSETS);
         });
     }));
 });
