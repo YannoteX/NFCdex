@@ -58,7 +58,6 @@ enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
 });
 
-
 let limiteCaracteres = 100;
 
 
@@ -137,6 +136,10 @@ function informationSubmit(e) {
 
   DataToJson(information);
   resultJsonForm(information)
+
+  const messageElement = document.createElement("p");
+  messageElement.textContent = "Formulaire soumis avec succès!";
+  document.body.appendChild(messageElement);
 
   
 }

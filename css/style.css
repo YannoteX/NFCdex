@@ -247,23 +247,26 @@ nav img {
 }
 
 .resultAffichageDeux{
-  opacity: 0;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 30px;
+  padding: 10px 20px;
   border-radius: 10px;
-  background-color: rgba(255, 245, 214, 0.7);
+  background-color: rgba(255, 132, 0, 0.7);
    backdrop-filter: blur(4px);
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
   z-index: 100;
   transition: opacity 0.3s ease-in-out; 
+  width: 70%;
+  min-width: 300px;
 }
 
-
-.resultAffichageForm p {
-  font-size: 19px;
+.resultAffichageDeux p{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: var(--paragraphe);
+  text-align: end;
 }
 
 #imagePreview{
@@ -377,13 +380,15 @@ footer{
   color: var(--colortxt);
 }
 
-.input[type="submit"]{
+#envoie{
   background-color: var(--accent);
-  padding: 5px 10px;
+  padding: 10px 30px;
   border: none;
   transition: .6s all;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.input[type="submit"]:hover{
+#envoie:hover{
   transform: scale(1.1);
 }

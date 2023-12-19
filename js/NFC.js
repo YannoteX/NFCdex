@@ -190,13 +190,8 @@ function phoneMode() {
         });
 
     }
-
     scanTag()
 }
-
-// function updateView(jsonObject) {
-//     console.log(jsonObject)
-// }
 
 
 function updateView(jsonObject) {
@@ -226,21 +221,22 @@ function updateView(jsonObject) {
         if (Object.hasOwnProperty.call(jsonObject, key)) {
             const value = jsonObject[key];
             const paragraph = createParagraph(key, value);
-
             resultAffichage.appendChild(paragraph);
         }
     }
 
     removeH1H2FromDiv('.content');
     document.querySelector(".resultAffichageDeux").style.opacity = 1
-
 }
 
 
-function NFCMessage(message, color = "#FF0000") {
+function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
     messageContainer.innerHTML = message;
     messageContainer.style.color = color;
+    messageContainer.style.textAlign = "center";
+    messageContainer.style.whiteSpace = "nowrap";
+    messageContainer.style.fontSize = "12px";
 }
 
 
