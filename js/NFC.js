@@ -2,6 +2,7 @@ import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
+console.log(document.querySelector(".content"))
 
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
@@ -11,12 +12,12 @@ function removeH1H2FromDiv(divSelector) {
       const h2Element = divToModify.querySelector('h2');
   
       if (h1Element) {
-        h1Element.remove();
+        h1Element.style.display = "none"
       }
-  
       if (h2Element) {
-        h2Element.remove();
+        h1Element.style.display = "none"
       }
+
     } else {
       console.log("La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée.");
     }
