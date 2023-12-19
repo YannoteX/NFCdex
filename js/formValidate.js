@@ -148,7 +148,17 @@ function informationSubmit(e) {
 //prend en parametre l'id du formulaire dans le html donc form 
 export function resetForm(formId) {
   let form = document.getElementById(formId);
-  form ? form.reset() : console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
+
+  if (form) {
+    const formData = new FormData(form);
+
+    formData.set("Nom", "");
+    formData.set("Description", "");
+
+    form.reset();
+  } else {
+    console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
+  }
 }
 
 
