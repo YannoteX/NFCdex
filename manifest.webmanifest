@@ -28,5 +28,22 @@
             "sizes": "512x512",
             "type": "image/png"
         }
+    ],
+    "screenshots": [
+        {
+         "src": "assets/icons/PhoneScreen2.png",
+          "sizes": "418x828",
+          "type": "image/png",
+          "form_factor": "wide",
+          "label": "download NFCdex"
+        },
+        {
+            "src": "assets/icons/PhoneScreen2.png",
+             "sizes": "418x828",
+             "type": "image/png",
+             "form_factor": "narrow",
+             "label": "download NFCdex"
+           }
+
     ]
 }
