@@ -139,17 +139,15 @@ function informationSubmit(e) {
   DataToJson(information);
   resultJsonForm(information)
 
-  resetForm(form)
+  resetForm("form")
   
 }
 
 //prend en parametre l'id du formulaire dans le html donc form 
 export function resetForm(formId) {
   let form = document.getElementById(formId);
-
   if (form) {
     const formData = new FormData(form);
-
     formData.set("Nom", "");
     formData.set("Description", "");
 
