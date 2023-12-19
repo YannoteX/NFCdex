@@ -150,7 +150,7 @@ export function resetForm(formId) {
     const formData = new FormData(form);
     formData.set("Nom", "");
     formData.set("Description", "");
-
+    console.log("reussi")
     form.reset();
   } else {
     console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
