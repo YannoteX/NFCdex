@@ -6,6 +6,8 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
+console.log(document.getElementById("form"))
+
 export let information = 
   {
     Nom: "",
@@ -150,6 +152,7 @@ export function resetForm(formId) {
   let form = document.getElementById(formId);
   form ? form.reset() : console.error("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
 }
+
 
 
 
