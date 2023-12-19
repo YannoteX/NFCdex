@@ -220,6 +220,7 @@ function NFCMessage(message, color = "#FF0000") {
     messageContainer.style.color = color;
 }
 
+console.log(document.getElementById)
 
 export const setAction = (action) => {
     scanAction = action
