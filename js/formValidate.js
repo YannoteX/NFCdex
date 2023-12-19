@@ -139,7 +139,6 @@ function informationSubmit(e) {
   DataToJson(information);
   resultJsonForm(information)
 
-  resetForm("form")
   
 }
 
@@ -151,7 +150,6 @@ export function resetForm(formId) {
     form.querySelectorAll('input:note([type="submit"]), textarea').forEach((element) => {
       element.value = "";
     });
-    form.reset();
   } else {
     console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
   }

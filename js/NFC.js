@@ -87,6 +87,7 @@ if (window.innerWidth >= 1024) {
 //     // Le reste du code pour desktopMode...
 // }
 
+console.log(document.getElementById("form"))
 
 function phoneMode() {
     // Pour la lecture NFC
