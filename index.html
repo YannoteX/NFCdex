@@ -17,12 +17,6 @@
 
 <body>
 
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-          navigator.serviceWorker.register('sw.js')
-        }
-    </script>
-
     <main>
 
         <header>
@@ -201,6 +195,12 @@
             once: true
         });
 
+    </script>
+
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('sw.js')
+        }
     </script>
 
 
