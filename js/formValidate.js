@@ -146,8 +146,9 @@ function informationSubmit(e) {
 //prend en parametre l'id du formulaire dans le html donc form 
 export function resetForm(formId) {
   let form = document.getElementById(formId);
+  const formData = new FormData(form);
+
   if (form) {
-    const formData = new FormData(form);
     formData.set("Nom", "");
     formData.set("Description", "");
     console.log("reussi")
