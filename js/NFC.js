@@ -186,7 +186,6 @@ function phoneMode() {
             NFCMessage(successMessage);
             resetForm("form")
             removeH1H2FromDiv('.content');
-            document.querySelector(".resultAffichageDeux").style.display = "block !important"
         }).catch(() => {
             NFCMessage(failureMessage);
         });
