@@ -153,6 +153,7 @@ function phoneMode() {
 
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
+        const contentPresentation = document.querySelector(".content")
 
         ndef.write({
             records: [
@@ -165,6 +166,7 @@ function phoneMode() {
         }).then(() => {
             NFCMessage(successMessage);
             resetForm("form")
+            contentPresentation.classList.add('invisible');
         }).catch(() => {
             NFCMessage(failureMessage);
         });

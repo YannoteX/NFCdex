@@ -14,21 +14,17 @@ export let information =
     Description: "",
   }
 
-
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
 }
-
 
 function apparaitElement() {
   document.querySelector(".form-section").style.display = "block";
 }
 
-
 function isMobile() {
   return window.innerWidth <= 768;
 }
-
 
 input.addEventListener("click", () => {
   formulaire.classList.add("display");
@@ -142,6 +138,8 @@ function informationSubmit(e) {
 
   DataToJson(information);
   resultJsonForm(information)
+
+  resetForm(form)
   
 }
 
