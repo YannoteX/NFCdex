@@ -2,7 +2,6 @@ import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-console.log(document.querySelector(".content"))
 
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
@@ -187,6 +186,7 @@ function phoneMode() {
             NFCMessage(successMessage);
             resetForm("form")
             removeH1H2FromDiv('.content');
+            document.querySelector(".resultAffichageDeux").style.opacity = 1
         }).catch(() => {
             NFCMessage(failureMessage);
         });
