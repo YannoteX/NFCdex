@@ -147,7 +147,7 @@ export function resetForm(formId) {
   let form = document.getElementById(formId);
 
   if (form) {
-    form.querySelectorAll('input:note([type="submit"]), textarea').forEach((element) => {
+    form.querySelectorAll('input:not([type="submit"]), textarea').forEach((element) => {
       element.value = "";
     });
   } else {
