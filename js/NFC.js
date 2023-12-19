@@ -185,8 +185,6 @@ function phoneMode() {
         }).then(() => {
             NFCMessage(successMessage);
             resetForm("form")
-            removeH1H2FromDiv('.content');
-            document.querySelector(".resultAffichageDeux").style.opacity = 1
         }).catch(() => {
             NFCMessage(failureMessage);
         });
@@ -232,6 +230,9 @@ function updateView(jsonObject) {
             resultAffichage.appendChild(paragraph);
         }
     }
+
+    removeH1H2FromDiv('.content');
+    document.querySelector(".resultAffichageDeux").style.opacity = 1
 
 }
 
