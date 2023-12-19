@@ -14,7 +14,7 @@ function removeH1H2FromDiv(divSelector) {
         h1Element.style.display = "none"
       }
       if (h2Element) {
-        h1Element.style.display = "none"
+        h2Element.style.display = "none"
       }
 
     } else {
