@@ -34,7 +34,7 @@
          "src": "assets/icons/PhoneScreen2.png",
           "sizes": "418x828",
           "type": "image/png",
-          "form_factor": "wide",
+          "form_factor": "narrow",
           "label": "download NFCdex"
         }
     ]
