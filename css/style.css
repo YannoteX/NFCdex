@@ -376,3 +376,14 @@ footer{
 .invisible{
   display: none;
 }
+
+.input[type="submit"]{
+  background-color: var(--accent);
+  padding: 5px 10px;
+  border: none;
+  transition: .6s all;
+}
+
+.input[type="submit"]:hover{
+  transform: scale(1.1);
+}
