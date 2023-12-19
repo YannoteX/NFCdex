@@ -2,7 +2,6 @@
     "theme_color": "#cf4307",
     "background_color": "#cf4307",
     "display": "browser",
-    "scope": "/",
     "start_url": "/index.html",
     "name": "NFCdex",
     "short_name": "NFCdex",
