@@ -247,6 +247,7 @@ nav img {
 }
 
 .resultAffichageDeux{
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -371,10 +372,6 @@ footer{
 
 .information-footer > a {
   color: var(--colortxt);
-}
-
-.invisible{
-  display: none;
 }
 
 .input[type="submit"]{

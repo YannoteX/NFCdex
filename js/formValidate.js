@@ -98,7 +98,6 @@ function resultJsonForm(objectJson) {
   //   .join("");
 }
 
-
 export function DataToJson (Data){
   return JSON.stringify(Data);
 }

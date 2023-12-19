@@ -2,8 +2,28 @@ import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-('NDEFReader' in window) ? phoneMode() : desktopMode()
 
+function removeH1H2FromDiv(divSelector) {
+    const divToModify = document.querySelector(divSelector);
+  
+    if (divToModify) {
+      const h1Element = divToModify.querySelector('h1');
+      const h2Element = divToModify.querySelector('h2');
+  
+      if (h1Element) {
+        h1Element.remove();
+      }
+  
+      if (h2Element) {
+        h2Element.remove();
+      }
+    } else {
+      console.log("La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée.");
+    }
+  }
+  
+
+('NDEFReader' in window) ? phoneMode() : desktopMode()
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if (window.innerWidth >= 1024) {
     desktopMode();
@@ -87,7 +107,6 @@ if (window.innerWidth >= 1024) {
 //     // Le reste du code pour desktopMode...
 // }
 
-console.log(document.getElementById("form"))
 
 function phoneMode() {
     // Pour la lecture NFC
@@ -154,7 +173,6 @@ function phoneMode() {
 
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
-        const contentPresentation = document.querySelector(".content")
 
         ndef.write({
             records: [
@@ -167,7 +185,8 @@ function phoneMode() {
         }).then(() => {
             NFCMessage(successMessage);
             resetForm("form")
-            contentPresentation.classList.add('invisible');
+            removeH1H2FromDiv('.content');
+            document.querySelector(".resultAffichageDeux").style.display = "block !important"
         }).catch(() => {
             NFCMessage(failureMessage);
         });
