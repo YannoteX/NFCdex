@@ -1,12 +1,13 @@
 {
-    "theme_color": "cf4307",
-    "background_color": "cf4307",
+    "theme_color": "#cf4307",
+    "background_color": "#cf4307",
     "display": "browser",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/index.html",
     "name": "NFCdex",
     "short_name": "NFCdex",
     "description": "Tout les NFCmon de la terre en un contact",
+    "orientation": "portrait-primary",
     "icons": [
         {
             "src": "/assets/PWA icons/icon-192x192.png",
