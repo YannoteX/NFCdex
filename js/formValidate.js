@@ -6,7 +6,6 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
-console.log(document.getElementById("form"))
 
 export let information = 
   {
