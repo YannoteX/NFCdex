@@ -21,10 +21,7 @@ input.onchange = function(event) {
     }
 
     img.src = blobURL;
-    while (imgWidth === 0){
-        console.log(imgWidth);
-        console.log(imgHeight)
-    }
+    
 
     const canvas = document.createElement('canvas');
 
