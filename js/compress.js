@@ -15,7 +15,7 @@ input.onchange = function(event) {
     console.log(blobURL);
 
     const img = new Image();
-    img.src = blobURL;
+    img.src = file;
   
     console.log(img.width);
     console.log(img.height);
@@ -26,7 +26,7 @@ input.onchange = function(event) {
 
     const canvas = document.createElement('canvas');
 
-    canvas.setAttribute('type', 'hidden');
+    canvas.style.display = "none";
 
     //canvas.width = shrinkWidth()
 };
