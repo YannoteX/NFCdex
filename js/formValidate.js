@@ -102,18 +102,20 @@ export function DataToJson (Data){
 }
 
 document.getElementById("imageInput").addEventListener("change", (e) => {
+  const fileInput = document.getElementById("imageInput");
   const imagePreview = document.getElementById("imagePreview");
   const file = e.target.files[0];
 
   if (file) {
-    const reader = new FileReader();
+    const fileURL = URL.createObjectURL(file);
+    const fileURLVariable = fileURL;
 
-    reader.onload = function (e) {
-      imagePreview.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
+    imagePreview.src = fileURL;
+    console.log("URL du fichier :", fileURLVariable);
+
   }
 });
+
 
 
 function informationSubmit(e) {
