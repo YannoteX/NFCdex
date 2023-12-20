@@ -2,7 +2,7 @@ const input = document.getElementById("image");
 
 input.onclick = function() { this.value = null; };
 
-input.onchange = function() {
+input.onchange = function(event) {
 
     console.log(this.value)
     
