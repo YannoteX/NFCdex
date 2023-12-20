@@ -111,7 +111,7 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
     const fileURLVariable = fileURL;
 
     imagePreview.src = fileURL;
-    console.log("URL du fichier :", fileURLVariable);
+    console.log(fileURLVariable);
 
   }
 });
