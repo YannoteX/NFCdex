@@ -18,6 +18,7 @@ input.onchange = function(event) {
         window.URL.revokeObjectURL(blobURL);
         console.log(img.width);
         console.log(img.height)
+        console.log(img)
     }
 
     const canvas = document.createElement('canvas');
