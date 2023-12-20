@@ -12,12 +12,13 @@ input.onchange = function(event) {
 
     img.onload = function(event){
         window.URL.revokeObjectURL(blobURL);
-        console.log(img.width);
-        console.log(img.height)
         console.log(img)
     }
 
     img.src = blobURL;
+
+    console.log(img.width);
+    console.log(img.height)
 
     const canvas = document.createElement('canvas');
 
