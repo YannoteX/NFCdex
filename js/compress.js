@@ -17,7 +17,7 @@ input.onchange = function(event) {
         console.log(img)
     }
 
-    img.src = file;
+    img.src = blobURL;
 
     const canvas = document.createElement('canvas');
 
