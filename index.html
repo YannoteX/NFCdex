@@ -8,19 +8,15 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/logo/NFCdex_logo.png">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script defer type="module" src="js/formValidate.js"></script>
+    <link rel="manifest" href="/manifest.webmanifest">
     <script defer type="module" src="js/NFC.js"></script>
+    <script defer type="module" src="js/formValidate.js"></script>
+    <script defer type="module" src="js/installPWA.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 </head>
 
 <body>
-
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-          navigator.serviceWorker.register('sw.js')
-        }
-    </script>
 
     <main>
 
@@ -28,6 +24,7 @@
             <nav>
                 <div class="navigation">
                     <img src="./assets/logo/NFCdex_logo.png" alt="Logo">
+                    <button id="installApp">Install</button>
                     <div id="nfc-mode-message"></div>
                 </div>
                 <!-- logo à gauche -->
@@ -200,6 +197,12 @@
             once: true
         });
 
+    </script>
+
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('sw.js')
+        }
     </script>
 
 
