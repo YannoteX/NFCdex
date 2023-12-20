@@ -385,6 +385,7 @@ footer{
   transition: .6s all;
   border-radius: 10px;
   cursor: pointer;
+  color: var(--secondary);
 }
 
 #envoie:hover{
