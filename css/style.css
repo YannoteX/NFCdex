@@ -254,19 +254,17 @@ nav img {
   padding: 10px 20px;
   border-radius: 10px;
   background-color: rgba(255, 132, 0, 0.7);
-   backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
   z-index: 100;
   transition: opacity 0.3s ease-in-out; 
-  width: 70%;
-  min-width: 300px;
 }
 
 .resultAffichageDeux p{
+  margin: 10px 0;
   font-weight: bold;
   font-size: 20px;
   font-family: var(--paragraphe);
-  text-align: end;
 }
 
 #imagePreview{
@@ -382,7 +380,7 @@ footer{
 
 #envoie{
   background-color: var(--accent);
-  padding: 10px 30px;
+  padding: 8px 25px;
   border: none;
   transition: .6s all;
   border-radius: 10px;
