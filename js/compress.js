@@ -1,6 +1,8 @@
 const input = document.getElementById("image");
 
-input.onChange = function(event) {
+input.onChange = (event) => {
+
+    console.log(this.value)
     
     const file = event.target.files[0];
 
