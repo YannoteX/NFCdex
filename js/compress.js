@@ -1,10 +1,10 @@
 const input = document.getElementById("image");
 
-console.log(input)
-
 input.onChange = function(event) {
-
+    
     const file = event.target.files[0];
+
+    console.log(file)
   
     const blobURL = window.URL.createObjectURL(file);
 
