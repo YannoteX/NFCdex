@@ -9,10 +9,6 @@ input.onchange = function(event) {
     const blobURL = window.URL.createObjectURL(file);
 
     const img = new Image();
-    img.src = file;
-  
-    console.log(img.width);
-    console.log(img.height);
 
     img.onload = function(event){
         window.URL.revokeObjectURL(blobURL);
@@ -20,6 +16,8 @@ input.onchange = function(event) {
         console.log(img.height)
         console.log(img)
     }
+
+    img.src = file;
 
     const canvas = document.createElement('canvas');
 
