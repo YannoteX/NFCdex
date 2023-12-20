@@ -113,7 +113,7 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
 
       imagePreview.src = imageDataURL;
 
-      console.log("URL base64 du fichier :", imageDataURL);
+      console.log(imageDataURL);
     };
 
     reader.readAsDataURL(file);
