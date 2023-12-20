@@ -4,8 +4,8 @@ input.onclick = function() { this.value = null; };
 
 input.onchange = function(event) {
     
-    const imgWidth = 0;
-    const imgHeight = 0;
+    let imgWidth = 0;
+    let imgHeight = 0;
 
     const file = event.target.files[0];
   
@@ -21,9 +21,10 @@ input.onchange = function(event) {
     }
 
     img.src = blobURL;
-
-    console.log(imgWidth);
-    console.log(imgHeight)
+    while (imgWidth === 0){
+        console.log(imgWidth);
+        console.log(imgHeight)
+    }
 
     const canvas = document.createElement('canvas');
 
