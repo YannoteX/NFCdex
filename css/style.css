@@ -61,7 +61,7 @@ span {
 form {
   display: flex;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 60px auto 0px auto;
   padding: 20px;
   border-radius: 20px;
   flex-direction: column;
@@ -115,6 +115,7 @@ input::placeholder {
 }
 
 #btnform {
+  display: none;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
@@ -200,9 +201,10 @@ nav img {
 .display {
   display: flex;
   transform: translateY(10%);
-  top: 10%;
   opacity: 1;
   visibility: visible;
+  top: 10%;
+  position: relative;
 }
 
 .presentation-section{
@@ -244,20 +246,27 @@ nav img {
   padding: 30px 0;
 }
 
-.resultAffichageForm{
+.resultAffichageDeux{
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 30px;
+  padding: 10px 20px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
+  background-color: rgba(255, 132, 0, 0.7);
+   backdrop-filter: blur(4px);
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
   z-index: 100;
+  transition: opacity 0.3s ease-in-out; 
+  width: 70%;
+  min-width: 300px;
 }
-.resultAffichageForm p {
-  font-size: 19px;
+
+.resultAffichageDeux p{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: var(--paragraphe);
+  text-align: end;
 }
 
 #imagePreview{
@@ -369,4 +378,17 @@ footer{
 
 .information-footer > a {
   color: var(--colortxt);
+}
+
+#envoie{
+  background-color: var(--accent);
+  padding: 10px 30px;
+  border: none;
+  transition: .6s all;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#envoie:hover{
+  transform: scale(1.1);
 }

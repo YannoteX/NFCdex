@@ -1,7 +1,10 @@
-@media screen and (max-width: 800px) {
-
+@media screen and (max-width: 500px) {
     h1, p{
         text-align: center;
+    }
+
+    #btnform{
+        display: block !important;
     }
 
     .pied-de-page{
@@ -36,9 +39,12 @@
         padding: 100px 0px 0px 0px;
     }
 
-
     form {
         display: flex;
         flex-direction: column;
+    }
+
+    .fond-background-presentation{
+        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%) !important;
     }
 }

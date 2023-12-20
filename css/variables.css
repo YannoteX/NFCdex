@@ -1,6 +1,5 @@
 @import url("./font.css");
 
-
 :root{
     --background : #FFFAEB;
     --primaryColor : #FF8400;
@@ -10,8 +9,3 @@
     --titre : 'NotoSansCondensed-Bold';
     --paragraphe : 'NotoSansSoraSompeng-Regular';
 }
-
-
-
-
-

@@ -1,9 +1,29 @@
-import { information, DataToJson } from "/js/formValidate.js";
+import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-('NDEFReader' in window) ? phoneMode() : desktopMode()
 
+function removeH1H2FromDiv(divSelector) {
+    const divToModify = document.querySelector(divSelector);
+  
+    if (divToModify) {
+      const h1Element = divToModify.querySelector('h1');
+      const h2Element = divToModify.querySelector('h2');
+  
+      if (h1Element) {
+        h1Element.style.display = "none"
+      }
+      if (h2Element) {
+        h2Element.style.display = "none"
+      }
+
+    } else {
+      console.log("La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée.");
+    }
+  }
+  
+
+('NDEFReader' in window) ? phoneMode() : desktopMode()
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if (window.innerWidth >= 1024) {
     desktopMode();
@@ -164,18 +184,14 @@ function phoneMode() {
                 }]
         }).then(() => {
             NFCMessage(successMessage);
+            resetForm("form")
         }).catch(() => {
             NFCMessage(failureMessage);
         });
 
     }
-
     scanTag()
 }
-
-// function updateView(jsonObject) {
-//     console.log(jsonObject)
-// }
 
 
 function updateView(jsonObject) {
@@ -205,18 +221,22 @@ function updateView(jsonObject) {
         if (Object.hasOwnProperty.call(jsonObject, key)) {
             const value = jsonObject[key];
             const paragraph = createParagraph(key, value);
-
             resultAffichage.appendChild(paragraph);
         }
     }
 
+    removeH1H2FromDiv('.content');
+    document.querySelector(".resultAffichageDeux").style.opacity = 1
 }
 
 
-function NFCMessage(message, color = "#FF0000") {
+function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
     messageContainer.innerHTML = message;
     messageContainer.style.color = color;
+    messageContainer.style.textAlign = "center";
+    messageContainer.style.whiteSpace = "nowrap";
+    messageContainer.style.fontSize = "12px";
 }
 
 
