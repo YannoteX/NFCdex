@@ -386,6 +386,7 @@ footer{
   border-radius: 10px;
   cursor: pointer;
   color: var(--secondary);
+  font-weight: bold;
 }
 
 #envoie:hover{
