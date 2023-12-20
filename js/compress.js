@@ -1,6 +1,6 @@
 const input = document.getElementById("image");
 
-input.onclick((event) => { this.value = null; });
+input.onClick((event) => { this.value = null; });
 
 input.onChange((event) => {
 
