@@ -101,6 +101,8 @@ export function DataToJson (Data){
   return JSON.stringify(Data);
 }
 
+let imageUrlBase64;
+
 document.getElementById("imageInput").addEventListener("change", (e) => {
   const imagePreview = document.getElementById("imagePreview");
   const file = e.target.files[0];
@@ -109,19 +111,23 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
     const reader = new FileReader();
 
     reader.onload = function (e) {
-      const imageDataURL = e.target.result;
-      // Utilisez imageDataURL comme source d'image ou faites autre chose avec les données du fichier
-      imagePreview.src = imageDataURL;
+      imageUrl = e.target.result;
 
-      // Exemple : Affichez l'URL base64 dans la console
-      console.log("URL base64 du fichier :", imageDataURL);
+      imagePreview.src = imageUrlBase64;
     };
 
     reader.readAsDataURL(file);
   }
 });
 
+// Exemple d'utilisation de imageUrl dans une autre fonction
+function utiliserImageUrl() {
+  return imageUrlBase64
+}
 
+
+
+console.log(reader.readAsDataURL(file))
 
 
 function informationSubmit(e) {
