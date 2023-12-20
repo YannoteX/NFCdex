@@ -101,19 +101,19 @@ export function DataToJson (Data){
   return JSON.stringify(Data);
 }
 
-// document.getElementById("imageInput").addEventListener("change", (e) => {
-//   const imagePreview = document.getElementById("imagePreview");
-//   const file = e.target.files[0];
+document.getElementById("imageInput").addEventListener("change", (e) => {
+  const imagePreview = document.getElementById("imagePreview");
+  const file = e.target.files[0];
 
-//   if (file) {
-//     const reader = new FileReader();
+  if (file) {
+    const reader = new FileReader();
 
-//     reader.onload = function (e) {
-//       imagePreview.src = e.target.result;
-//     };
-//     reader.readAsDataURL(file);
-//   }
-// });
+    reader.onload = function (e) {
+      imagePreview.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
 
 function informationSubmit(e) {
