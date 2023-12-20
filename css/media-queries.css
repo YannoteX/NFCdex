@@ -1,6 +1,50 @@
 @media screen and (max-width: 500px) {
+    h1, p{
+        text-align: center;
+    }
+
+    #btnform{
+        display: block !important;
+    }
+
+    .pied-de-page{
+        flex-direction: column;
+        grid-gap: 50px;
+    }
+
+    .application{
+        flex-direction: column;
+        grid-gap: 5px;
+    }
+
+    .application h2{
+        margin-bottom: 20px;
+    }
+
+    .presentation-section{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item{
+        border: solid 2Px red;
+        height: 100%;
+    }
+  
+    .fond-background-presentation{
+        height: 50% !important;
+    }
+
+    .presentation-section{
+        padding: 100px 0px 0px 0px;
+    }
+
     form {
         display: flex;
         flex-direction: column;
+    }
+
+    .fond-background-presentation{
+        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%) !important;
     }
 }
