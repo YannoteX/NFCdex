@@ -1,8 +1,8 @@
 const input = document.getElementById("image");
 
-input.onClick((event) => { this.value = null; });
+input.onclick = function() { this.value = null; };
 
-input.onChange((event) => {
+input.onchange = function() {
 
     console.log(this.value)
     
@@ -29,7 +29,7 @@ input.onChange((event) => {
     canvas.setAttribute('type', 'hidden');
 
     //canvas.width = shrinkWidth()
-});
+};
 
 function shrinkWidth(){
 
