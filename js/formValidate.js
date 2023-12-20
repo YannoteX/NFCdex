@@ -110,10 +110,11 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
 
     reader.onload = function (e) {
       const imageDataURL = e.target.result;
-
+      // Utilisez imageDataURL comme source d'image ou faites autre chose avec les données du fichier
       imagePreview.src = imageDataURL;
 
-      console.log(imageDataURL);
+      // Exemple : Affichez l'URL base64 dans la console
+      console.log("URL base64 du fichier :", imageDataURL);
     };
 
     reader.readAsDataURL(file);
