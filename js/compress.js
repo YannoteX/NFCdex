@@ -18,9 +18,9 @@ input.onchange = function(event) {
         canvas.width = img.width;
         canvas.height = img.height;
 
-        const newBlobURL = getShrinkImageBlob(canvas, img)
-
-        console.log("new size " + newBlobURL.size);
+        getShrinkImageBlob(canvas, img).then(blob => {
+            console.log("new size " + newBlobURL.size);
+        });
     });
 };
 
