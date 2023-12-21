@@ -398,7 +398,7 @@ footer{
 
 #installApp{
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 16px;
   margin: 20px 0px 0px 0px;
   transition: 1s all;
   font-family: var(--titre);
