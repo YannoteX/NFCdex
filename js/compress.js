@@ -1,8 +1,8 @@
-const input = document.getElementById("image");
+const inputFile = document.getElementById("imageInput");
 
-input.onclick = function() { this.value = null; };
+inputFile.onclick = function() { this.value = null; };
 
-input.onchange = function(event) {
+inputFile.onchange = function(event) {
 
     const file = event.target.files[0];
   
@@ -52,10 +52,9 @@ function getShrinkImageBlob(canvas, image){
             newBlobURL = getShrinkImageBlob(canvas, image);
         }
         else {
-            newBlobURL = blob;
-            console.log("new size " + newBlobURL.size);
-            console.log(canvas.width);
-            console.log(canvas.height);
+            console.log(blob.size)
+            str = blob.text()
+            blob2 = new Blob([str])
         }
 
     });
