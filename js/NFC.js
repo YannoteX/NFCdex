@@ -161,7 +161,7 @@ function phoneMode() {
 
 
     function isValidRecord(record) {
-        if (record.id === "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "eren/json") {
+        if (record.id === "A7G5UI924G66EP4" && record.recordType === "mime" && record.mediaType === "application/json") {
             return true;
         }
         else {
