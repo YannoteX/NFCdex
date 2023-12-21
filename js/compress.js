@@ -14,7 +14,7 @@ input.onchange = function(event) {
 
     console.log("original size : " + blobURL.size)
 
-    loadImage(blobURL).then(img => {
+    loadImage(URL).then(img => {
 
         const canvas = document.createElement('canvas');
         canvas.style.display = "none";
