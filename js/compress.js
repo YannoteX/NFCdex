@@ -1,4 +1,4 @@
-const inputFile = document.getElementById("imageInput");
+const inputFile = document.getElementById("image");
 
 inputFile.onclick = function() { this.value = null; };
 
