@@ -55,9 +55,11 @@ function getShrinkImageBlob(canvas, image){
             return getShrinkImageBlob(canvas, image);
         }
         else {
-            return blob
+            return blob;
         }
     });
+
+    return newBlobURL;
 }
 
 
