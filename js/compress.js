@@ -52,9 +52,10 @@ function getShrinkImageBlob(canvas, image){
             newBlobURL = getShrinkImageBlob(canvas, image);
         }
         else {
-            console.log(blob.size)
-            str = blob.text()
-            blob2 = new Blob([str])
+            console.log(blob.size);
+            let str = blob.text();
+            let blob2 = new Blob([str]);
+            console.log(blob2.size);
         }
 
     });
