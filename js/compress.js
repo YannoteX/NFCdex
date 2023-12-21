@@ -35,13 +35,7 @@ async function getShrinkImageBlob(canvas, image){
 
     let newBlobURL = getCanvasBlob(canvas);
     let stop = false;
-
-
-    while (!stop){
-        let res = await getCanvasBlob(canvas);
-        if (res.something) stopped = true;
-    }
-
+    
 
     if (newBlobURL.size > 7100){
 
