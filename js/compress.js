@@ -18,9 +18,7 @@ input.onchange = function(event) {
         canvas.width = img.width;
         canvas.height = img.height;
 
-        const newBlobURL = getShrinkImageBlob(canvas, img)
-
-        console.log("new size " + newBlobURL.size);
+        getShrinkImageBlob(canvas, img)
     });
 };
 
@@ -53,6 +51,7 @@ function getShrinkImageBlob(canvas, image){
         }
         else {
             newBlobURL = blob;
+            console.log("new size " + newBlobURL.size);
         }
 
     });
