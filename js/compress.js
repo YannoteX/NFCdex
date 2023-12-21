@@ -41,7 +41,7 @@ async function getShrinkImageBlob(canvas, image){
         if (newBlobURL.something) stop = true;
     }
 
-    console.log(newBlobURL);
+    console.log("blob" = newBlobURL);
 
     if (newBlobURL.size > 7100){
 
