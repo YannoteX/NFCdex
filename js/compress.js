@@ -11,17 +11,10 @@ input.onchange = function(event) {
   
     const blobURL = window.URL.createObjectURL(file);
 
-    const img = new Image();
-
-    img.onload = function(event){
-        window.URL.revokeObjectURL(blobURL);
-        
-        imgWidth = img.width;
-        imgHeight = img.height;
-    }
-
-    img.src = blobURL;
-    
+    loadImage(blobURL).then(img => {
+        console.log(img.width);
+        console.log(img.heght);
+    });
 
     const canvas = document.createElement('canvas');
 
@@ -37,3 +30,12 @@ function shrinkWidth(){
 function shrinkHeigth(){
 
 }
+
+const loadImage = src =>
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  })  
+;
