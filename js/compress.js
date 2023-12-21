@@ -4,8 +4,13 @@ let information;
 
 inputFile.onclick = function() { 
     this.value = null;
-    print()
-};
+    information.text().then(value => {
+        let str = value;
+        console.log(str);
+        let blob2 = new Blob([str]);
+        console.log(blob2.size)
+    });
+}
 
 inputFile.onchange = function(event) {
 
@@ -79,14 +84,3 @@ const getCanvasBlob = canvas =>
             resolve(blob);
         }, "image/webp", 0.5);
 });
-
-async function print(){
-    while (!stop){
-        let str = await information.text();
-        if (str.something) stop = true;
-    }
-
-    let blob2 = new Blob([str]);
-    console.log(blob2.size);
-
-}
