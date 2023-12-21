@@ -70,5 +70,5 @@ const getCanvasBlob = canvas =>
     new Promise((resolve, reject) => {
         canvas.toBlob((blob) => {
             resolve(blob);
-        });
+        }, "image/webp", 0.5);
 });
