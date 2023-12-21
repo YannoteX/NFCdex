@@ -90,5 +90,7 @@ async function getCanvasBlob(canvas){
         let res = await promise;
     }
 
+    console.log(newBlob.size)
+
     return newBlob;
 }
