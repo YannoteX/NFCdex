@@ -101,7 +101,7 @@ export function DataToJson (Data){
   return JSON.stringify(Data);
 }
 
-export let imageUrlBase64;
+let imageUrlBase64;
 
 document.getElementById("imageInput").addEventListener("change", (e) => {
   const imagePreview = document.getElementById("imagePreview");
