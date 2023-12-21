@@ -35,7 +35,7 @@ function getShrinkImageBlob(canvas, image){
 
     let getBlob = getCanvasBlob(canvas);
 
-    getBlob.then(blob => {
+    getBlob.then(newBlobURL => {
         if (newBlobURL.size > 7100){
 
           canvas.width /= 2;
