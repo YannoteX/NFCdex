@@ -247,6 +247,7 @@ nav img {
 }
 
 .resultAffichageDeux{
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -260,6 +261,8 @@ nav img {
   transition: opacity 0.3s ease-in-out; 
   border: solid 1px var(--colortxt); 
   color: var(#FFFAEB);
+  width: 60%;
+  min-width: 200px;
 }
 
 .resultAffichageDeux p{
@@ -267,6 +270,8 @@ nav img {
   font-weight: bold;
   font-size: 20px;
   font-family: var(--paragraphe);
+  overflow-wrap: break-word;
+  word-wrap: break-word; 
 }
 
 #imagePreview{
@@ -396,6 +401,7 @@ footer{
   font-size: 18px;
   margin: 20px 0px 0px 0px;
   transition: 1s all;
+  font-family: var(--titre);
 }
 
 #installApp:hover{
