@@ -5,6 +5,7 @@ const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
+const inputFile = document.getElementById("imageInput");
 
 export let information = 
   {
@@ -12,6 +13,7 @@ export let information =
     Type: "",
     Habitat: "",
     Description: "",
+    Image: ""
   }
 
 function cacherElement() {
@@ -166,3 +168,80 @@ document.querySelector(".ML").addEventListener("click", (e) => {
   e.preventDefault();
   isMobile() ? setAction("setNFCmon") : ""
 })
+
+
+
+inputFile.onclick = function() { this.value = null; };
+
+inputFile.onchange = function(event) {
+
+    const file = event.target.files[0];
+  
+    const URL = window.URL.createObjectURL(file);
+    let blobURL = new Blob([URL]);
+
+    console.log("original size : " + blobURL.size)
+
+    loadImage(URL).then(img => {
+
+        const canvas = document.createElement('canvas');
+        canvas.style.display = "none";
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        getShrinkImageBlob(canvas, img)
+
+        canvas.remove();
+    });
+};
+
+
+function getShrinkImageBlob(canvas, image){
+
+    const context = canvas.getContext("2d");
+    let newBlobURL;
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+
+    getCanvasBlob(canvas).then(blob => {
+
+
+        if (blob.size > 7100){
+
+            canvas.width /= 2;
+            canvas.height /= 2;
+
+            newBlobURL = getShrinkImageBlob(canvas, image);
+        }
+        else if (blob.size < 6500){
+
+            canvas.width *= 1.5;
+            canvas.height *= 1.5;
+
+            newBlobURL = getShrinkImageBlob(canvas, image);
+        }
+        else {
+            console.log(blob.size)
+            str = blob.text()
+            blob2 = new Blob([str])
+        }
+
+    });
+}
+
+const loadImage = src =>
+    new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+    });
+
+const getCanvasBlob = canvas =>
+    new Promise((resolve, reject) => {
+        canvas.toBlob((blob) => {
+            resolve(blob);
+        }, "image/webp", 0.5);
+});

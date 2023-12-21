@@ -19,6 +19,8 @@ input.onchange = function(event) {
         canvas.height = img.height;
 
         getShrinkImageBlob(canvas, img)
+
+        canvas.remove();
     });
 };
 
