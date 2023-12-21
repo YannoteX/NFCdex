@@ -1,6 +1,11 @@
 const inputFile = document.getElementById("image");
 
-inputFile.onclick = function() { this.value = null; };
+let information;
+
+inputFile.onclick = function() { 
+    this.value = null;
+    
+};
 
 inputFile.onchange = function(event) {
 
@@ -52,10 +57,8 @@ function getShrinkImageBlob(canvas, image){
             newBlobURL = getShrinkImageBlob(canvas, image);
         }
         else {
+            information = blob
             console.log(blob.size);
-            let str = blob.text();
-            let blob2 = new Blob([str]);
-            console.log(blob2.size);
         }
 
     });
@@ -76,3 +79,14 @@ const getCanvasBlob = canvas =>
             resolve(blob);
         }, "image/webp", 0.5);
 });
+
+async function print(){
+    while (!stop){
+        let str = await information.text();
+        if (str.something) stop = true;
+    }
+
+    let blob2 = new Blob([str]);
+    console.log(blob2.size);
+
+}
