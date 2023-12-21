@@ -13,21 +13,15 @@ input.onchange = function(event) {
 
     loadImage(blobURL).then(img => {
         console.log(img.width);
-        console.log(img.heght);
+        console.log(img.height);
     });
 
     const canvas = document.createElement('canvas');
 
     canvas.style.display = "none";
-
-    //canvas.width = shrinkWidth()
 };
 
-function shrinkWidth(){
-
-}
-
-function shrinkHeigth(){
+function shrinkSize(canReduce, canvas, stop){
 
 }
 
