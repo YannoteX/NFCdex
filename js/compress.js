@@ -11,6 +11,8 @@ input.onchange = function(event) {
   
     const blobURL = window.URL.createObjectURL(file);
 
+    console.log("original size : " + blobURL.size)
+
     loadImage(blobURL).then(img => {
 
         const canvas = document.createElement('canvas');
@@ -20,7 +22,7 @@ input.onchange = function(event) {
 
         const newBlobURL = getShrinkImageBlob(canvas, img)
 
-        console.log(newBlobURL.length);
+        console.log("new size " + newBlobURL.size);
     });
 };
 
@@ -37,14 +39,14 @@ function getShrinkImageBlob(canvas, image){
         newBlobURL = blob;
     }, "image/webp", 0.4);
 
-    if (newBlobURL.length > 7100){
+    if (newBlobURL.size > 7100){
 
         canvas.width /= 2;
         canvas.height /= 2;
 
         return getShrinkImage(canvas, image);
     }
-    else if (newBlobURL.length < 6500){
+    else if (newBlobURL.size < 6500){
 
         canvas.width *= 1.5;
         canvas.height *= 1.5;
