@@ -4,7 +4,7 @@ let information;
 
 inputFile.onclick = function() { 
     this.value = null;
-    
+    print()
 };
 
 inputFile.onchange = function(event) {
