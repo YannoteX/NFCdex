@@ -52,6 +52,8 @@ function getShrinkImageBlob(canvas, image){
         else {
             newBlobURL = blob;
             console.log("new size " + newBlobURL.size);
+            console.log(canvas.width);
+            console.log(canvas.height);
         }
 
     });
