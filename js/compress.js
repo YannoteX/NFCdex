@@ -33,7 +33,7 @@ function getShrinkImageBlob(canvas, image){
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    let canvasBlob = getCanvasBlob(canvas);
+    let getBlob = getCanvasBlob(canvas);
 
     getBlob.then(blob => {
         if (newBlobURL.size > 7100){
