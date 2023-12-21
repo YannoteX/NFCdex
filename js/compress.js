@@ -83,6 +83,7 @@ async function getCanvasBlob(canvas){
     });
 
     promise.then(blob => {
+        console.log("end")
         newBlob = blob; 
         stop = true;});
 
