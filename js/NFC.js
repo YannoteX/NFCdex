@@ -9,7 +9,7 @@ function removeH1H2FromDiv(divSelector) {
     if (divToModify) {
       const h1Element = divToModify.querySelector('h1');
       const h2Element = divToModify.querySelector('h2');
-      const installApp = divToModify.installApp("button")
+      const BtninstallApp = divToModify.installApp("button")
   
       if (h1Element) {
         h1Element.style.display = "none"
@@ -17,6 +17,9 @@ function removeH1H2FromDiv(divSelector) {
       if (h2Element) {
         h2Element.style.display = "none"
       }
+      if (BtninstallApp)(
+        BtninstallApp.style.display = "none"
+      )
 
     } else {
       console.log("La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée.");

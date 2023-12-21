@@ -254,13 +254,13 @@ nav img {
   transform: translate(-50%, -50%);
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: rgba(255, 132, 0, 0.7);
+  background-color: var(--secondary);
   backdrop-filter: blur(4px);
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
   z-index: 100;
   transition: opacity 0.3s ease-in-out; 
   border: solid 1px var(--colortxt); 
-  color: var(#FFFAEB);
+  color: var(--colortxt);
   width: 60%;
   min-width: 200px;
 }
