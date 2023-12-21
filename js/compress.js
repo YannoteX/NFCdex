@@ -25,7 +25,7 @@ input.onchange = function(event) {
 };
 
 
-function getShrinkImageBlob(canvas, image){
+async function getShrinkImageBlob(canvas, image){
 
     const context = canvas.getContext("2d");
 
@@ -33,28 +33,33 @@ function getShrinkImageBlob(canvas, image){
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
 
-    getCanvasBlob(canvas).then(blob => {
+    let newBlobURL = getCanvasBlob(canvas);
+    let stop = false;
 
 
-        if (blob.size > 7100){
+    while (!stop){
+        let res = await getCanvasBlob(canvas);
+        if (res.something) stopped = true;
+    }
 
-            canvas.width /= 2;
-            canvas.height /= 2;
 
-            return getShrinkImageBlob(canvas, image);
-        }
-        else if (blob.size < 6500){
+    if (newBlobURL.size > 7100){
 
-            canvas.width *= 1.5;
-            canvas.height *= 1.5;
+        canvas.width /= 2;
+        canvas.height /= 2;
 
-            return getShrinkImageBlob(canvas, image);
-        }
-        else {
-            return blob;
-        }
+        return getShrinkImageBlob(canvas, image);
+    }
+    else if (newBlobURL.size < 6500){
 
-    });
+        canvas.width *= 1.5;
+        canvas.height *= 1.5;
+
+        return getShrinkImageBlob(canvas, image);
+    }
+    else {
+        return newBlobURL;
+    }
 }
 
 
@@ -66,9 +71,24 @@ const loadImage = src =>
         img.src = src;
     });
 
-const getCanvasBlob = canvas =>
-    new Promise((resolve, reject) => {
+async function getCanvasBlob(canvas){
+
+    let newBlob = new Blob([""]);
+    let stop = false;
+
+    let promise = new Promise((resolve, reject) => {
         canvas.toBlob((blob) => {
             resolve(blob);
         }, "image/webp", 0.5);
-});
+    });
+
+    promise.then(blob => {
+        newBlob = blob; 
+        stop = true;});
+
+    while (!stop){
+        let res = await promise;
+    }
+
+    return newBlob;
+}
