@@ -36,7 +36,7 @@ function getShrinkImageBlob(canvas, image){
     console.log(canvas.width);
     console.log(canvas.height);
 
-    newBlobURL = getCanvasBlob(canvas).then(blob => {
+    getCanvasBlob(canvas).then(blob => {
 
         console.log(blob.size);
 
@@ -45,17 +45,17 @@ function getShrinkImageBlob(canvas, image){
           canvas.width /= 2;
           canvas.height /= 2;
 
-          return getShrinkImageBlob(canvas, image);
+          getShrinkImageBlob(canvas, image);
         }
         else if (blob.size < 6500){
 
             canvas.width *= 1.5;
             canvas.height *= 1.5;
 
-            return getShrinkImageBlob(canvas, image);
+            getShrinkImageBlob(canvas, image);
         }
         else {
-            return blob;
+            newBlobURL = blob;
         }
     });
 
