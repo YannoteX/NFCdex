@@ -1,4 +1,4 @@
-import { information, DataToJson, resetForm, ImgBase64Form } from "/js/formValidate.js";
+import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
