@@ -33,9 +33,15 @@ async function getShrinkImageBlob(canvas, image){
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
 
-    let newBlobURL = getCanvasBlob(canvas);
+    let newBlobURL;
     let stop = false;
-    
+
+    while (!stop){
+        newBlobURL = await getCanvasBlob(canvas);
+        if (newBlobURL.something) stop = true;
+    }
+
+    console.log(newBlobURL);
 
     if (newBlobURL.size > 7100){
 
@@ -77,15 +83,12 @@ async function getCanvasBlob(canvas){
     });
 
     promise.then(blob => {
-        console.log("end")
         newBlob = blob; 
         stop = true;});
 
     while (!stop){
         let res = await promise;
     }
-
-    console.log(newBlob.size)
 
     return newBlob;
 }
