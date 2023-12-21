@@ -33,9 +33,12 @@ function getShrinkImageBlob(canvas, image){
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
+    console.log(canvas.width);
+    console.log(canvas.height);
+
     getCanvasBlob(canvas).then(blob => {
 
-        console.log(typeof blob)
+        console.log(blob.size);
 
         if (blob.size > 7100){
 
