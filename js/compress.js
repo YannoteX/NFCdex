@@ -33,9 +33,7 @@ function getShrinkImageBlob(canvas, image){
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    let getBlob = getCanvasBlob(canvas);
-
-    getBlob.then(blob => {
+    getCanvasBlob(canvas).then(blob => {
 
         console.log(typeof blob)
 
@@ -66,12 +64,11 @@ const loadImage = src =>
         img.onload = () => resolve(img);
         img.onerror = reject;
         img.src = src;
-  });
+    });
 
-function getCanvasBlob(canvas) {
-  return new Promise(function(resolve, reject) {
-    canvas.toBlob(function(blob) {
-      resolve(blob)
-    }, "image/webp", 0.4);
-  })
-}
+const getCanvasBlob = canvas =>
+    new Promise((resolve, reject) => {
+        canvas.toBlob((blob) => {
+            resolve(blob);
+        });
+});
