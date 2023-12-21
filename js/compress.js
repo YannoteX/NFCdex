@@ -25,6 +25,10 @@ function shrinkSize(canReduce, canvas, stop){
 
 }
 
+function reduceQuality(canvas){
+    
+}
+
 const loadImage = src =>
   new Promise((resolve, reject) => {
     const img = new Image();
