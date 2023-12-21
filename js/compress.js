@@ -18,9 +18,7 @@ input.onchange = function(event) {
         canvas.width = img.width;
         canvas.height = img.height;
 
-        getShrinkImageBlob(canvas, img).then(blob => {
-            console.log("new size " + newBlobURL.size);
-        });
+        getShrinkImageBlob(canvas, img)
     });
 };
 
@@ -48,17 +46,17 @@ async function getShrinkImageBlob(canvas, image){
         canvas.width /= 2;
         canvas.height /= 2;
 
-        return getShrinkImageBlob(canvas, image);
+        getShrinkImageBlob(canvas, image);
     }
     else if (newBlobURL.size < 6500){
 
         canvas.width *= 1.5;
         canvas.height *= 1.5;
 
-        return getShrinkImageBlob(canvas, image);
+        getShrinkImageBlob(canvas, image);
     }
     else {
-        return newBlobURL;
+        console.log("new size " + newBlobURL.size);
     }
 }
 
