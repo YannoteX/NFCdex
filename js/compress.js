@@ -9,7 +9,8 @@ input.onchange = function(event) {
 
     const file = event.target.files[0];
   
-    const blobURL = window.URL.createObjectURL(file);
+    const URL = window.URL.createObjectURL(file);
+    let blobURL = new Blob([URL]);
 
     console.log("original size : " + blobURL.size)
 
