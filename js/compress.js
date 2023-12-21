@@ -35,15 +35,18 @@ function getShrinkImageBlob(canvas, image){
 
     let getBlob = getCanvasBlob(canvas);
 
-    getBlob.then(newBlobURL => {
-        if (newBlobURL.size > 7100){
+    getBlob.then(blob => {
+
+        console.log(typeof blob)
+
+        if (blob.size > 7100){
 
           canvas.width /= 2;
           canvas.height /= 2;
 
           return getShrinkImageBlob(canvas, image);
         }
-        else if (newBlobURL.size < 6500){
+        else if (blob.size < 6500){
 
             canvas.width *= 1.5;
             canvas.height *= 1.5;
@@ -51,7 +54,7 @@ function getShrinkImageBlob(canvas, image){
             return getShrinkImageBlob(canvas, image);
         }
         else {
-            return newBlobURL
+            return blob
         }
     });
 }
