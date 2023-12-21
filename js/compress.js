@@ -41,14 +41,14 @@ function getShrinkImageBlob(canvas, image){
           canvas.width /= 2;
           canvas.height /= 2;
 
-          return getShrinkImage(canvas, image);
+          return getShrinkImageBlob(canvas, image);
         }
         else if (newBlobURL.size < 6500){
 
             canvas.width *= 1.5;
             canvas.height *= 1.5;
 
-            return getShrinkImage(canvas, image);
+            return getShrinkImageBlob(canvas, image);
         }
         else {
             return newBlobURL
