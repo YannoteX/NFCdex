@@ -2,7 +2,6 @@ import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
   
@@ -240,7 +239,7 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.style.color = color;
     messageContainer.style.textAlign = "center";
     messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "12px";
+    messageContainer.style.fontSize = "8px";
 }
 
 
