@@ -45,6 +45,10 @@ function shrinkImageBase64(canvas, image){
     const base64 = canvas.toDataURL("image/webp", 0.5);
     const blob = new Blob([base64])
 
+    console.log("canvas width : " + canvas.width);
+    console.log("canvas height : " + canvas.height);
+    console.log("base64 size : " + blob.size);
+
 
     if (blob.size > 7100){
 
@@ -74,10 +78,3 @@ const loadImage = src =>
         img.onerror = reject;
         img.src = src;
     });
-
-const getImageBase64Blob = canvas =>
-    new Promise((resolve, reject) => {
-        const imageURL = canvas.toDataURL("image/webp", 0.5);
-        const blobURL = new Blob([imageURL]);
-        resolve(blobURL);
-});
