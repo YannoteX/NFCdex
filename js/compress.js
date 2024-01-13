@@ -68,6 +68,7 @@ function shrinkImageBase64(canvas, image){
         information = canvas
         console.log(blob.size);
         canvas.style.display = "block";
+        document.body.appendChild(canvas);
     }
 }
 
