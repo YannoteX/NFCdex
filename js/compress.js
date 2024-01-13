@@ -28,45 +28,42 @@ inputFile.onchange = function(event) {
         canvas.width = img.width;
         canvas.height = img.height;
 
-        getShrinkImageBlob(canvas, img)
+        srinkImageBase64(canvas, img)
 
         canvas.remove();
     });
 };
 
 
-function getShrinkImageBlob(canvas, image){
+function shrinkImageBase64(canvas, image){
 
     const context = canvas.getContext("2d");
-    let newBlobURL;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
+    const base64 = canvas.toDataURL("image/webp", 0.5);
+    const blob = new Blob([base64])
 
-    getCanvasBlob(canvas).then(blob => {
 
+    if (blob.size > 7100){
 
-        if (blob.size > 7100){
+        canvas.width /= 2;
+        canvas.height /= 2;
 
-            canvas.width /= 2;
-            canvas.height /= 2;
+        getShrinkImageBase64(canvas, image);
+    }
+    else if (blob.size < 6500){
 
-            newBlobURL = getShrinkImageBlob(canvas, image);
-        }
-        else if (blob.size < 6500){
+        canvas.width *= 1.5;
+        canvas.height *= 1.5;
 
-            canvas.width *= 1.5;
-            canvas.height *= 1.5;
-
-            newBlobURL = getShrinkImageBlob(canvas, image);
-        }
-        else {
-            information = blob
-            console.log(blob.size);
-        }
-
-    });
+        getShrinkImageBase64(canvas, image);
+    }
+    else {
+        information = canvas
+        console.log(blob.size);
+    }
 }
 
 
@@ -78,9 +75,9 @@ const loadImage = src =>
         img.src = src;
     });
 
-const getCanvasBlob = canvas =>
+const getImageBase64Blob = canvas =>
     new Promise((resolve, reject) => {
-        canvas.toBlob((blob) => {
-            resolve(blob);
-        }, "image/webp", 0.5);
+        const imageURL = canvas.toDataURL("image/webp", 0.5);
+        const blobURL = new Blob([imageURL]);
+        resolve(blobURL);
 });
