@@ -2,7 +2,7 @@ const inputFile = document.getElementById("image");
 
 let information;
 
-inputFile.onclick = function() { 
+inputFile.onclick = function () {
     this.value = null;
     information.text().then(value => {
         let str = value;
@@ -12,10 +12,10 @@ inputFile.onclick = function() {
     });
 }
 
-inputFile.onchange = function(event) {
+inputFile.onchange = function (event) {
 
     const file = event.target.files[0];
-  
+
     const URL = window.URL.createObjectURL(file);
     let blobURL = new Blob([URL]);
 
