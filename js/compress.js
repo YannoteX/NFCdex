@@ -1,4 +1,5 @@
 const inputFile = document.getElementById("image");
+const end = document.getElementById("end");
 
 let information;
 
@@ -65,10 +66,8 @@ function shrinkImageBase64(canvas, image){
         shrinkImageBase64(canvas, image);
     }
     else {
-        information = canvas
         console.log(blob.size);
-        canvas.style.display = "block";
-        document.body.appendChild(canvas);
+        end.src = base64;
     }
 }
 
