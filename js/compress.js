@@ -28,7 +28,7 @@ inputFile.onchange = function (event) {
         canvas.width = img.width;
         canvas.height = img.height;
 
-        srinkImageBase64(canvas, img)
+        shrinkImageBase64(canvas, img)
 
         canvas.remove();
     });
@@ -55,14 +55,14 @@ function shrinkImageBase64(canvas, image){
         canvas.width /= 2;
         canvas.height /= 2;
 
-        getShrinkImageBase64(canvas, image);
+        shrinkImageBase64(canvas, image);
     }
     else if (blob.size < 6500){
 
         canvas.width *= 1.5;
         canvas.height *= 1.5;
 
-        getShrinkImageBase64(canvas, image);
+        shrinkImageBase64(canvas, image);
     }
     else {
         information = canvas
