@@ -2,13 +2,13 @@ import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
   
     if (divToModify) {
       const h1Element = divToModify.querySelector('h1');
       const h2Element = divToModify.querySelector('h2');
+      const BtninstallApp = divToModify.installApp("button")
   
       if (h1Element) {
         h1Element.style.display = "none"
@@ -16,6 +16,9 @@ function removeH1H2FromDiv(divSelector) {
       if (h2Element) {
         h2Element.style.display = "none"
       }
+      if (BtninstallApp)(
+        BtninstallApp.style.display = "none"
+      )
 
     } else {
       console.log("La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée.");
@@ -210,7 +213,7 @@ function updateView(jsonObject) {
         if (typeof value === 'object' && value !== null) {
             return Object.entries(value)
                 .map(([nestedKey, nestedValue]) => `${nestedKey}: ${getValueString(nestedValue)}`)
-                .join(', ');
+                .join(',');
         } else {
             return String(value);
         }
@@ -236,7 +239,8 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.style.color = color;
     messageContainer.style.textAlign = "center";
     messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "12px";
+    messageContainer.style.fontSize = "11px";
+
 }
 
 

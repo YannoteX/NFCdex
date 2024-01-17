@@ -247,26 +247,31 @@ nav img {
 }
 
 .resultAffichageDeux{
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: rgba(255, 132, 0, 0.7);
-   backdrop-filter: blur(4px);
+  background-color: var(--secondary);
+  backdrop-filter: blur(4px);
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
   z-index: 100;
   transition: opacity 0.3s ease-in-out; 
-  width: 70%;
-  min-width: 300px;
+  border: solid 1px var(--colortxt); 
+  color: var(--colortxt);
+  width: 60%;
+  min-width: 200px;
 }
 
 .resultAffichageDeux p{
+  margin: 10px 0;
   font-weight: bold;
   font-size: 20px;
   font-family: var(--paragraphe);
-  text-align: end;
+  overflow-wrap: break-word;
+  word-wrap: break-word; 
 }
 
 #imagePreview{
@@ -380,15 +385,35 @@ footer{
   color: var(--colortxt);
 }
 
-#envoie{
+#envoie, #installApp{
   background-color: var(--accent);
-  padding: 10px 30px;
+  padding: 8px 25px;
   border: none;
   transition: .6s all;
   border-radius: 10px;
   cursor: pointer;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+#installApp{
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 20px 0px 0px 0px;
+  transition: 1s all;
+  font-family: var(--titre);
+}
+
+#installApp:hover{
+  transform: scale(1.1);
 }
 
 #envoie:hover{
   transform: scale(1.1);
 }
+
+.nfc-mode-message{
+  overflow-wrap: break-word;
+  word-wrap: break-word; 
+}
+
