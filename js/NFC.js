@@ -213,7 +213,7 @@ function updateView(jsonObject) {
         if (typeof value === 'object' && value !== null) {
             return Object.entries(value)
                 .map(([nestedKey, nestedValue]) => `${nestedKey}: ${getValueString(nestedValue)}`)
-                .join(', ');
+                .join(',');
         } else {
             return String(value);
         }
@@ -239,7 +239,8 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.style.color = color;
     messageContainer.style.textAlign = "center";
     messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "8px";
+    messageContainer.style.fontSize = "11px";
+
 }
 
 

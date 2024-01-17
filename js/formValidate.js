@@ -101,30 +101,42 @@ export function DataToJson (Data){
   return JSON.stringify(Data);
 }
 
-let imageUrlBase64;
+let URLBase64; 
 
-document.getElementById("imageInput").addEventListener("change", (e) => {
-  const imagePreview = document.getElementById("imagePreview");
-  const file = e.target.files[0];
-
-  if (file) {
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-      imageUrl = e.target.result;
-
-      imagePreview.src = imageUrlBase64;
-    };
-
-    reader.readAsDataURL(file);
-  }
-});
-
-// Exemple d'utilisation de imageUrl dans une autre fonction
-function utiliserImageUrl() {
-  return imageUrlBase64
+function getBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
 }
 
+document.getElementById('imageUpload').addEventListener('change', async function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        try {
+            const base64String = await getBase64(file); 
+            URLBase64 = base64String; 
+            console.log(URLBase64); 
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = URLBase64;
+        } catch (error) {
+            console.error(error); 
+        }
+    }
+    return URLBase64
+});
+
+//voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
+//une fois que l'image à charger dans le formulaire
+export function ImgBase64Form() {
+  return URLBase64
+}
+
+
+
+console.log(reader.readAsDataURL(file))
 
 
 function informationSubmit(e) {
