@@ -117,23 +117,13 @@ document.getElementById('imageUpload').addEventListener('change', async function
     const file = event.target.files[0];
     if (file) {
         try {
+
             const base64String = await getBase64(file); 
             URLBase64 = base64String; 
             console.log(URLBase64); 
             const imagePreview = document.getElementById('imagePreview');
             imagePreview.src = URLBase64;
 
-            loadImage(URLBase64).then(img => {
-              
-              const canvas = document.createElement('canvas');
-              canvas.style.display = "none";
-              canvas.width = img.width;
-              canvas.height = img.height;
-
-              shrinkImageBase64(canvas, img)
-
-              canvas.remove();
-            });
         } catch (error) {
             console.error(error); 
         }
@@ -169,6 +159,18 @@ function informationSubmit(e) {
   information.Type = TypeValue;
   information.Habitat = HabitatValue;
   information.Description = Description;
+
+  loadImage(GetImageBase64).then(img => {
+
+    const canvas = document.createElement('canvas');
+    canvas.style.display = "none";
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    information.Image = shrinkImageBase64(canvas, img)
+
+    canvas.remove();
+  });
 
   DataToJson(information);
   resultJsonForm(information)
@@ -209,31 +211,36 @@ document.querySelector(".ML").addEventListener("click", (e) => {
 
 function shrinkImageBase64(canvas, image){
 
-  const context = canvas.getContext("2d");
-
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-  const base64 = canvas.toDataURL("image/webp", 0.5);
-  const blob = new Blob([base64])
+  const base64 = refreshCanvas(canvas, image);
+  const blob = new Blob([base64]);
 
   if (blob.size > 7100){
 
       canvas.width /= 2;
       canvas.height /= 2;
 
-      shrinkImageBase64(canvas, image);
+      return shrinkImageBase64(canvas, image);
   }
   else if (blob.size < 6500){
 
       canvas.width *= 1.5;
       canvas.height *= 1.5;
 
-      shrinkImageBase64(canvas, image);
+      return shrinkImageBase64(canvas, image);
   }
   else {
-      information.Image = base64;
+      return base64;
   }
+}
+
+function refreshCanvas(canvas, image){
+
+  const context = canvas.getContext("2d");
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+  return canvas.toDataURL("image/webp", 0.5);
 }
 
 
