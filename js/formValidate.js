@@ -5,7 +5,6 @@ const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
-const inputFile = document.getElementById("imageInput");
 
 export let information = 
   {
@@ -123,6 +122,18 @@ document.getElementById('imageUpload').addEventListener('change', async function
             console.log(URLBase64); 
             const imagePreview = document.getElementById('imagePreview');
             imagePreview.src = URLBase64;
+
+            loadImage(URLBase64).then(img => {
+              
+              const canvas = document.createElement('canvas');
+              canvas.style.display = "none";
+              canvas.width = img.width;
+              canvas.height = img.height;
+
+              shrinkImageBase64(canvas, img)
+
+              canvas.remove();
+            });
         } catch (error) {
             console.error(error); 
         }
@@ -132,7 +143,7 @@ document.getElementById('imageUpload').addEventListener('change', async function
 
 //voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
 //une fois que l'image à charger dans le formulaire
-export function ImgBase64Form() {
+export function GetImageBase64() {
   return URLBase64
 }
 
@@ -193,66 +204,38 @@ document.querySelector(".ML").addEventListener("click", (e) => {
 })
 
 
-
-inputFile.onclick = function() { this.value = null; };
-
-inputFile.onchange = function(event) {
-
-    const file = event.target.files[0];
-  
-    const URL = window.URL.createObjectURL(file);
-    let blobURL = new Blob([URL]);
-
-    console.log("original size : " + blobURL.size)
-
-    loadImage(URL).then(img => {
-
-        const canvas = document.createElement('canvas');
-        canvas.style.display = "none";
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        getShrinkImageBlob(canvas, img)
-
-        canvas.remove();
-    });
-};
+// Image compression
 
 
-function getShrinkImageBlob(canvas, image){
+function shrinkImageBase64(canvas, image){
 
-    const context = canvas.getContext("2d");
-    let newBlobURL;
+  const context = canvas.getContext("2d");
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
+  const base64 = canvas.toDataURL("image/webp", 0.5);
+  const blob = new Blob([base64])
 
-    getCanvasBlob(canvas).then(blob => {
+  if (blob.size > 7100){
 
+      canvas.width /= 2;
+      canvas.height /= 2;
 
-        if (blob.size > 7100){
+      shrinkImageBase64(canvas, image);
+  }
+  else if (blob.size < 6500){
 
-            canvas.width /= 2;
-            canvas.height /= 2;
+      canvas.width *= 1.5;
+      canvas.height *= 1.5;
 
-            newBlobURL = getShrinkImageBlob(canvas, image);
-        }
-        else if (blob.size < 6500){
-
-            canvas.width *= 1.5;
-            canvas.height *= 1.5;
-
-            newBlobURL = getShrinkImageBlob(canvas, image);
-        }
-        else {
-            console.log(blob.size)
-            str = blob.text()
-            blob2 = new Blob([str])
-        }
-
-    });
+      shrinkImageBase64(canvas, image);
+  }
+  else {
+      information.Image = base64;
+  }
 }
+
 
 const loadImage = src =>
     new Promise((resolve, reject) => {
@@ -261,10 +244,3 @@ const loadImage = src =>
         img.onerror = reject;
         img.src = src;
     });
-
-const getCanvasBlob = canvas =>
-    new Promise((resolve, reject) => {
-        canvas.toBlob((blob) => {
-            resolve(blob);
-        }, "image/webp", 0.5);
-});
