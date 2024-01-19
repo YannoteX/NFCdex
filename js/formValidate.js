@@ -5,7 +5,6 @@ const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
-const fileInput = document.getElementById('imagePreview');
 
 export let information = 
   {
@@ -114,16 +113,9 @@ function getBase64(file) {
     });
 }
 
-fileInput.onclick = function () {
-  this.value = null;
-  console.log("click");
-}
-
-fileInput.onchange = function (event) {
-
+document.getElementById('imagePreview').addEventListener('change', async function(event) {
     const file = event.target.files[0];
     console.log("change");
-
     if (file) {
         try {
 
@@ -138,7 +130,7 @@ fileInput.onchange = function (event) {
         }
     }
     return URLBase64
-}
+});
 
 //voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
 //une fois que l'image à charger dans le formulaire
