@@ -147,8 +147,6 @@ function informationSubmit(e) {
   information.Habitat = HabitatValue;
   information.Description = Description;
 
-  console.log(URLBase64);
-
   loadImage(GetImageBase64()).then(img => {
 
     const canvas = document.createElement('canvas');
@@ -161,8 +159,7 @@ function informationSubmit(e) {
     canvas.remove();
   });
 
-  DataToJson(information);
-  resultJsonForm(information)
+  console.log(information);
 
 }
 
