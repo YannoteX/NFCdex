@@ -113,9 +113,12 @@ function getBase64(file) {
     });
 }
 
-document.getElementById('imagePreview').addEventListener('change', async function(event) {
+document.getElementById('imagePreview').onclick = function () {
+  this.value = null;
+}
+
+document.getElementById('imagePreview').onchange = function(event) {
     const file = event.target.files[0];
-    console.log("change");
     if (file) {
         try {
 
@@ -130,7 +133,7 @@ document.getElementById('imagePreview').addEventListener('change', async functio
         }
     }
     return URLBase64
-});
+}
 
 //voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
 //une fois que l'image à charger dans le formulaire
