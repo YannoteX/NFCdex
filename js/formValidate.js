@@ -116,6 +116,7 @@ function getBase64(file) {
 
 fileInput.onclick = function () {
   this.value = null;
+  console.log("click");
 }
 
 fileInput.onchange = function (event) {
