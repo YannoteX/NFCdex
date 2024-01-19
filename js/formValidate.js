@@ -156,7 +156,7 @@ function informationSubmit(e) {
   information.Habitat = HabitatValue;
   information.Description = Description;
 
-  debug.log(GetImageBase64());
+  console.log(GetImageBase64());
 
   loadImage(GetImageBase64()).then(img => {
 
