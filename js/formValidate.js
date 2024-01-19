@@ -118,7 +118,7 @@ document.getElementById('imagePreview').addEventListener('change', async functio
     if (file) {
         try {
 
-            const base64String = await getBase64(file); 
+            const base64String = window.URL.createObjectURL(file);
             URLBase64 = base64String; 
             console.log(URLBase64); 
             const imagePreview = document.getElementById('imagePreview');
