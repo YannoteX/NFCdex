@@ -156,7 +156,7 @@ function informationSubmit(e) {
   information.Habitat = HabitatValue;
   information.Description = Description;
 
-  loadImage(GetImageBase64).then(img => {
+  loadImage(GetImageBase64()).then(img => {
 
     const canvas = document.createElement('canvas');
     canvas.style.display = "none";
