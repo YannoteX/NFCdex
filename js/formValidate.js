@@ -113,7 +113,7 @@ function getBase64(file) {
     });
 }
 
-document.getElementById('imageUpload').addEventListener('change', async function(event) {
+document.getElementById('imagePreview').addEventListener('change', async function(event) {
     const file = event.target.files[0];
     if (file) {
         try {
