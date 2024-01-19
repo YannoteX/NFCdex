@@ -109,6 +109,7 @@ function phoneMode() {
         const data = encoder.encode(DataToJson(jsonObject))
         let blob = new Blob([data]);
         console.log(blob.size);
+        console.log(data);
 
         ndef.write({
             records: [
