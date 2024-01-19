@@ -154,13 +154,10 @@ function informationSubmit(e) {
     canvas.width = img.width;
     canvas.height = img.height;
 
-    information.Image = shrinkImageBase64(canvas, img)
+    //information.Image = shrinkImageBase64(canvas, img)
 
     canvas.remove();
   });
-
-  console.log(information);
-
 }
 
 //prend en parametre l'id du formulaire dans le html donc form 
