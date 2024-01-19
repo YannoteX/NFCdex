@@ -121,6 +121,7 @@ fileInput.onclick = function () {
 fileInput.onchange = function (event) {
 
     const file = event.target.files[0];
+    console.log("change");
 
     if (file) {
         try {
