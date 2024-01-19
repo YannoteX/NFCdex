@@ -138,10 +138,6 @@ export function GetImageBase64() {
 }
 
 
-
-console.log(reader.readAsDataURL(file))
-
-
 function informationSubmit(e) {
   e.preventDefault();
   isMobile() ? setAction("write") : ""
