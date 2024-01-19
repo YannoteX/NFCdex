@@ -104,17 +104,6 @@ export function DataToJson (Data){
 
 let URLBase64; 
 
-function getBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-}
-
-
-
 document.getElementById('imageInput').addEventListener('change', async function(event) {
     const file = event.target.files[0];
     console.log("change");
@@ -123,7 +112,6 @@ document.getElementById('imageInput').addEventListener('change', async function(
 
             const base64String = window.URL.createObjectURL(file);
             URLBase64 = base64String; 
-            console.log(URLBase64); 
             const imagePreview = document.getElementById('imagePreview');
             imagePreview.src = URLBase64;
 
