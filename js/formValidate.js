@@ -5,6 +5,7 @@ const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
+const fileInput = document.getElementById('imagePreview');
 
 export let information = 
   {
@@ -113,12 +114,14 @@ function getBase64(file) {
     });
 }
 
-document.getElementById('imagePreview').onclick = function () {
+fileInput.onclick = function () {
   this.value = null;
 }
 
-document.getElementById('imagePreview').onchange = function(event) {
+fileInput.onchange = function (event) {
+
     const file = event.target.files[0];
+
     if (file) {
         try {
 
