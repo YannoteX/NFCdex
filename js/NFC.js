@@ -105,11 +105,10 @@ function phoneMode() {
 
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
-        let blob = new Blob([encoder]);
-        console.log(blob.size);
 
         const data = encoder.encode(DataToJson(jsonObject))
-
+        let blob = new Blob([data]);
+        console.log(blob.size);
 
         ndef.write({
             records: [
