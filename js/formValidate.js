@@ -113,7 +113,9 @@ function getBase64(file) {
     });
 }
 
-document.getElementById('imagePreview').addEventListener('change', async function(event) {
+
+
+document.getElementById('imageInput').addEventListener('change', async function(event) {
     const file = event.target.files[0];
     console.log("change");
     if (file) {
