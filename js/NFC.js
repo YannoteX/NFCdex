@@ -137,6 +137,7 @@ function updateView(jsonObject) {
   }
 
   function getValueString(value) {
+    console.log(value);
     if (typeof value === "object" && value !== null) {
       // Capture the results of the .map function in an array
       const mappedResults = Object.entries(value).map(
