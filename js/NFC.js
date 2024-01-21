@@ -134,9 +134,7 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  let objetDeDonnees = JSON.parse(jsonObject);
-  let tableauDePersonnes = Object.values(objetDeDonnees);
-
+  let tableauDePersonnes = Object.values(jsonObject);
   console.log(tableauDePersonnes);
 
   resultAffichage.innerHTML += `<img src="${ImageResult}"></img>`;
