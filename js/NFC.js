@@ -3,7 +3,7 @@ import { DataToJson, information, resetForm } from "/js/formValidate.js";
 let scanAction = "read";
 
 function RemoveBloc(divSelector) {
-  const divToModify = document.getElementById(divSelector);
+  const divToModify = document.querySelector(divSelector);
 
   if (divToModify) {
     // const h1Element = divToModify.querySelector("h1");
@@ -152,7 +152,7 @@ function updateView(jsonObject) {
     }
   }
 
-  RemoveBloc("presentation");
+  RemoveBloc(".az");
   document.querySelector(".resultAffichageDeux").style.opacity = 1;
 }
 
