@@ -134,7 +134,7 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  var tableauDObjets = JSON.parse(jsonString);
+  var tableauDObjets = JSON.parse(jsonObject);
 
   console.log(tableauDObjets);
 
