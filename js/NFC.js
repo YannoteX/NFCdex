@@ -136,8 +136,8 @@ function updateView(jsonObject) {
 
   let tableauDePersonnes = Object.values(jsonObject);
 
-  tableauDePersonnes.map((element) => {
-    console.log(element.Image);
+  tableauDePersonnes.map((element, index) => {
+    console.log(index);
   });
 
   resultAffichage.innerHTML += `<img src="${ImageResult}"></img>`;
