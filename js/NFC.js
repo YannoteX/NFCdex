@@ -143,7 +143,7 @@ function updateView(jsonObject) {
   `;
 
 
-    document.querySelector(".SectionOrange").innerHTML = `
+    document.getElementById("SectionOrange").innerHTML = `
     <p> Description : ${Description}</p>
     `
 
