@@ -56,6 +56,8 @@ function phoneMode() {
 
                 if (scanAction === "read") {
 
+                    console.log(record);
+
                     if (isValidRecord(record)) {
 
                         const decoder = new TextDecoder();
