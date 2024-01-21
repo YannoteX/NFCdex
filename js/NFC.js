@@ -139,29 +139,29 @@ function updateView(jsonObject) {
 
   function getValueString(value) {
     if (typeof value === "object" && value !== null) {
-      // Create an array of the results of the .map function
-      const mappedResults = Object.entries(value).map(
-        ([nestedKey, nestedValue]) => {
+      return Object.entries(value)
+        .map(([nestedKey, nestedValue]) => {
+          `${nestedKey}: ${getValueString(nestedValue)}`;
+
           if (isImageUrl(nestedValue)) {
             const image = document.createElement("img");
             image.src = nestedValue;
             image.alt = nestedKey;
-            return image.outerHTML;
-          } else {
-            return `${nestedKey}: ${getValueString(nestedValue)}`;
+            return image.outerHTML; // Returns the HTML string for the image
           }
-        }
-      );
-
-      // Access the last element
-      const lastElement = mappedResults[mappedResults.length - 1];
-
-      // Do something with the last element if needed
-      console.log("Last element:", lastElement);
-
-      return mappedResults.join("");
+        })
+        .join("");
     } else {
-      return console.log(value.image); // This line seems to be trying to log something specific. Be sure it matches your data structure.
+      return String(value);
+    }
+
+    function isImageUrl(value) {
+      return (
+        typeof value === "string" &&
+        (value.endsWith(".jpg") ||
+          value.endsWith(".png") ||
+          value.endsWith(".gif"))
+      );
     }
   }
 
