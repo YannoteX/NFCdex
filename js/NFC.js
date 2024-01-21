@@ -134,10 +134,7 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  var tableauDObjets = Object.entries(monObjet).map(([cle, valeur]) => ({
-    cle,
-    valeur,
-  }));
+  var tableauDObjets = Object.entries(jsonObject).map((cle, valeur) => ({}));
 
   console.log(tableauDObjets);
 
