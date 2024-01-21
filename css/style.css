@@ -263,18 +263,15 @@ nav img {
   z-index: 100;
 }
 
-.resultGlobale {
-  display: flex;
-}
-
-.imgResult {
+description .imgResult {
   height: 70px;
   width: 70px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.resultAffichageDeux p {
+.resultAffichageDeux p,
+.description {
   margin: 10px 0;
   font-weight: bold;
   font-size: 20px;

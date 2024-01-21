@@ -142,7 +142,7 @@ function updateView(jsonObject) {
     <div class="info-poke">
     <p>Nom : ${Nom}</p>
     <p> Type : ${Type}</p>
-    <p> Habitait : ${Habitat}
+    <p> Habitat : ${Habitat}
     </div>
     </div>
     
@@ -152,7 +152,7 @@ function updateView(jsonObject) {
 
 
     document.getElementById("SectionOrange").innerHTML = `
-    <p> Description : ${Description}</p>
+    <p class="description"> Description : ${Description}</p>
     `
 
     //   function getValueString(value) {
