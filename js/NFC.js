@@ -142,7 +142,7 @@ function updateView(jsonObject) {
       const mappedResults = Object.entries(value).map(
         ([nestedValue, nestedIndex]) => {
           console.log(nestedValue);
-          if (nestedKey === 4) {
+          if (nestedIndex === 4) {
             return `<img src="${String(nestedValue)} alt=""></img>`;
           }
           //   if (isImageUrl(nestedValue)) {
