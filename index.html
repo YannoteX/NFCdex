@@ -46,8 +46,8 @@
 
                     <span class="name">
                         <span class="PhotoNom">
-                            <img style="height: 300px; width : 300px; object-fit : cover; border-radius: 50%" id="imagePreview" alt="">
-                            <input type="file" id="imageInput" name="Photo" required> 
+                            <img class="imgResult" id="imagePreview" alt="">
+                            <input type="file" id="imageInput" name="Photo" required>
                             <label for="">Nom</label>
                             <input type="text" name="Nom" placeholder="nom" minlength="5" maxlength="20">
                         </span>
@@ -87,7 +87,7 @@
 
             <section class="presentation-section">
                 <!-- <span class="resultAffichageForm"></span> -->
-                <div data-aos="fade-right" class="content items">
+                <div data-aos="fade-right" class="content items" id="presentation">
                     <h1><strong>NFCmon</strong></h2>
                         <h2>
                             Explore le NFCdex : tout les NFCmon de la terre en un <strong>contact !</strong>
