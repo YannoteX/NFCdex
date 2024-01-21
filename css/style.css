@@ -82,6 +82,11 @@ select {
   padding: 5px 5px;
 }
 
+form input::placeholder,
+form input {
+  font-family: var(--paragraphe);
+}
+
 input[type="file"] {
   font-family: var(--paragraphe);
 }
