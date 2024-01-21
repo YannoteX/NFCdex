@@ -12,9 +12,9 @@ function removeH1H2FromDiv(divSelector) {
 
         if (h1Element) {
             h1Element.style.display = "none";
-        } else if (h2Element) {
+        } if (h2Element) {
             h2Element.style.display = "none";
-        } else if (BtninstallApp) BtninstallApp.style.display = "none";
+        } if (BtninstallApp) BtninstallApp.style.display = "none";
     } else {
         console.log(
             "La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée."
