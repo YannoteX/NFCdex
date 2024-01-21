@@ -127,6 +127,8 @@ input::placeholder {
   font-weight: bold;
   transition: 1s all;
   color: var(--secondary);
+  border: none;
+  outline: none;
 }
 
 #btnform:hover {
