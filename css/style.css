@@ -424,32 +424,30 @@ footer {
 }
 
 .pixel-corners {
-  border: none;
-  outline: none;
-  clip-path: polygon(0px calc(100% - 6px),
-      2px calc(100% - 6px),
-      2px calc(100% - 4px),
-      4px calc(100% - 2px),
-      6px calc(100% - 2px),
-      6px 100%,
-      calc(100% - 6px) 100%,
-      calc(100% - 6px) calc(100% - 2px),
-      calc(100% - 4px) calc(100% - 2px),
-      calc(100% - 2px) calc(100% - 4px),
-      calc(100% - 2px) calc(100% - 6px),
-      100% calc(100% - 6px),
-      100% 6px,
-      calc(100% - 2px) 6px,
-      calc(100% - 2px) 4px,
-      calc(100% - 4px) 2px,
-      calc(100% - 6px) 2px,
-      calc(100% - 6px) 0px,
-      6px 0px,
-      6px 2px,
-      4px 2px,
-      2px 4px,
-      2px 6px,
-      0px 6px);
+  clip-path: polygon(0px calc(100% - 3px),
+      1px calc(100% - 3px),
+      1px calc(100% - 2px),
+      2px calc(100% - 1px),
+      3px calc(100% - 1px),
+      3px 100%,
+      calc(100% - 3px) 100%,
+      calc(100% - 3px) calc(100% - 1px),
+      calc(100% - 2px) calc(100% - 1px),
+      calc(100% - 1px) calc(100% - 2px),
+      calc(100% - 1px) calc(100% - 3px),
+      100% calc(100% - 3px),
+      100% 3px,
+      calc(100% - 1px) 3px,
+      calc(100% - 1px) 2px,
+      calc(100% - 2px) 1px,
+      calc(100% - 3px) 1px,
+      calc(100% - 3px) 0px,
+      3px 0px,
+      3px 1px,
+      2px 1px,
+      1px 2px,
+      1px 3px,
+      0px 3px);
 }
 
 
