@@ -7,3 +7,8 @@
     font-family: 'NotoSansSoraSompeng-Regular';
     src: url("../assets/fonts/NotoSansSoraSompeng-Regular.ttf") format('truetype');
 }
+
+@font-face {
+    font-family: 'PokemonFont';
+    src: url("../assets/fonts/pokemon-ds/pokemon-ds-font.otf") format('opentype');
+}
