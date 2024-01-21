@@ -134,8 +134,8 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  document.querySelector(".Nom") = Nom;
-  document.querySelector(".Description").innerHTML = Description;
+  document.querySelector(".Nom").textContent = Nom;
+  document.querySelector(".Description").textContent = Description;
   document.querySelector(
     ".imgSection"
   ).innerHTML = `<img src="${ImageResult}"></img>`;
