@@ -135,10 +135,14 @@ function updateView(jsonObject) {
 
     document.querySelector(
         ".resultAffichageDeux"
-    ).innerHTML = `<img style="width : 100%; height : 100px; object-fit : cover" src="${ImageResult}"></img>
-                <p>Nom : ${Nom}</p>
-                <p> Type : ${Type}</p>
-                <p> Habitait : ${Habitat}
+    ).innerHTML = `
+    
+    <img style="width : 100%; height : 100px; object-fit : cover" src="${ImageResult}"></img>
+    <div class="info-poke">
+    <p>Nom : ${Nom}</p>
+    <p> Type : ${Type}</p>
+    <p> Habitait : ${Habitat}
+    </div>
 
   `;
 
