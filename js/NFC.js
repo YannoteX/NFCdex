@@ -142,29 +142,23 @@ function updateView(jsonObject) {
       // Capture the results of the .map function in an array
       const mappedResults = Object.entries(value).map(
         ([nestedKey, nestedValue]) => {
+          // Check if the nestedValue is an image URL
           if (isImageUrl(nestedValue)) {
             const image = document.createElement("img");
             image.src = nestedValue;
             image.alt = nestedKey;
-            return { key: nestedKey, value: image.outerHTML }; // Return as an object for consistency
+            return image.outerHTML; // Returns the HTML string for the image
           } else {
-            return {
-              key: nestedKey,
-              value: `${nestedKey}: ${getValueString(nestedValue)}`,
-            };
+            // Return the nested key and value as a string for non-image values
+            return `${nestedKey}: ${getValueString(nestedValue)}`;
           }
         }
       );
 
-      // Access the last element (the last key-value pair)
-      const lastElement = mappedResults[mappedResults.length - 1];
-
-      // Do something with the last element if needed
-      console.log("Last element:", lastElement);
-
-      // Join only the values for display
-      return mappedResults.map((result) => result.value).join("");
+      // Join the results for display
+      return mappedResults.join("");
     } else {
+      // For non-object values, just return the string representation of the value
       return String(value);
     }
   }
