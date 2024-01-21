@@ -123,7 +123,7 @@ input::placeholder {
   background-color: var(--accent);
   padding: 5px 10px;
   cursor: pointer;
-  font-size: var(--paragraphe);
+  font-family: var(--paragraphe);
   font-weight: bold;
   transition: 1s all;
   color: var(--secondary);
