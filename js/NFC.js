@@ -51,8 +51,6 @@ function phoneMode() {
         const record = e.message.records[0];
 
         if (scanAction === "read") {
-          console.log(record);
-
           if (isValidRecord(record)) {
             const decoder = new TextDecoder();
 
@@ -137,7 +135,10 @@ function updateView(jsonObject) {
   document.querySelector(
     ".resultAffichageDeux"
   ).innerHTML = `<img src="${ImageResult}"></img>
-                <p>${Nom}</p>
+                <p>Nom : ${Nom}</p>
+                <p> Prenom : ${Habitat}</p>
+                <p> Description : ${Description}</p>
+
   `;
   //   function getValueString(value) {
   //     console.log(value);
