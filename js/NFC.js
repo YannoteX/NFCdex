@@ -136,7 +136,7 @@ function updateView(jsonObject) {
 
   let tableauDePersonnes = Object.values(jsonObject);
 
-  jsonObject.map((element) => {
+  tableauDePersonnes.map((element) => {
     console.log(element);
   });
 
