@@ -128,7 +128,6 @@ function phoneMode() {
 function updateView(jsonObject) {
   const resultAffichage = document.querySelector(".resultAffichageDeux");
 
-  console.log(jsonObject.Image);
   resultAffichage.innerHTML = "";
 
   function createParagraph(key, value) {
@@ -137,32 +136,33 @@ function updateView(jsonObject) {
     return paragraph;
   }
 
-  function getValueString(value) {
-    console.log(value);
-    if (typeof value === "object" && value !== null) {
-      // Capture the results of the .map function in an array
-      const mappedResults = Object.entries(value).map(
-        (nestedValue, nestedIndex) => {
-          console.log(nestedIndex);
-          return `<img src="${nestedValue} alt=""></img>`;
-        }
-      );
+  resultAffichage.innerHTML = `<img src="${jsonObject.Image}"></img>`;
 
-      // Join the results for display
-      return mappedResults.join("");
-    } else {
-      // For non-object values, just return the string representation of the value
-    }
-  }
+  //   function getValueString(value) {
+  //     console.log(value);
+  //     if (typeof value === "object" && value !== null) {
+  //       // Capture the results of the .map function in an array
+  //       const mappedResults = Object.entries(value).map(
+  //         (nestedValue, nestedIndex) => {
+  //         }
+  //       );
 
-  function isImageUrl(value) {
-    return (
-      typeof value === "string" &&
-      (value.endsWith(".jpg") ||
-        value.endsWith(".png") ||
-        value.endsWith(".gif"))
-    );
-  }
+  //       // Join the results for display
+  //       return mappedResults.join("");
+  //     } else {
+  //       return `<img src="${jsonObject.Image} alt=""></img>`;
+  //       // For non-object values, just return the string representation of the value
+  //     }
+  //   }
+
+  //   function isImageUrl(value) {
+  //     return (
+  //       typeof value === "string" &&
+  //       (value.endsWith(".jpg") ||
+  //         value.endsWith(".png") ||
+  //         value.endsWith(".gif"))
+  //     );
+  //   }
 
   for (const key in jsonObject) {
     if (Object.hasOwnProperty.call(jsonObject, key)) {
