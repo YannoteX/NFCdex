@@ -261,6 +261,12 @@ nav img {
   min-width: 250px;
 }
 
+.resultGlobale {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 description .imgResult {
   height: 70px;
   width: 70px;
