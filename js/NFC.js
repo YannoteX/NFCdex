@@ -152,7 +152,7 @@ function updateView(jsonObject) {
     }
   }
 
-  RemoveBloc(".az");
+  RemoveBloc("#presentation");
   document.querySelector(".resultAffichageDeux").style.opacity = 1;
 }
 
