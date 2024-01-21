@@ -137,17 +137,13 @@ function updateView(jsonObject) {
   }
 
   function getValueString(value) {
-    console.log(value);
-    if (typeof value === "object" && value !== null) {
-      const mappedResults = Object.entries(value).map(
-        (nestedValue, nestedIndex) => {
-          console.log(nestedValue, nestedIndex);
-          return `<img src="${nestedValue} alt=""></img>`;
-        }
-      );
-
-      // Join the results for display
-      return mappedResults.join("");
+    if (true) {
+      Object.entries(value).map((nestedValue, nestedIndex) => {
+        console.log(nestedValue, nestedIndex);
+        return `
+        <img src="${nestedValue} alt=""></img>
+        `;
+      });
     } else {
       // For non-object values, just return the string representation of the value
     }
