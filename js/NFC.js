@@ -140,7 +140,7 @@ function updateView(jsonObject) {
     if (typeof value === "object" && value !== null) {
       // Capture the results of the .map function in an array
       const mappedResults = Object.entries(value).map(
-        ([nestedValue, nestedIndex]) => {
+        (nestedValue, nestedIndex) => {
           console.log(nestedValue);
           if (nestedIndex === 4) {
           }
