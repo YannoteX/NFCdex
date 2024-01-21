@@ -132,6 +132,7 @@ function updateView(jsonObject) {
   resultAffichage.innerHTML = "";
 
   function createParagraph(key, value) {
+    console.log(key, value);
     const paragraph = document.createElement("p");
     paragraph.textContent = `${key}: ${getValueString(value)}`;
     return paragraph;
