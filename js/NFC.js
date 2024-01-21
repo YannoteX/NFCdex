@@ -2,14 +2,20 @@ import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-function RemoveBloc(divSelector) {
+function removeH1H2FromDiv(divSelector) {
   const divToModify = document.querySelector(divSelector);
 
   if (divToModify) {
-    // const h1Element = divToModify.querySelector("h1");
-    // const h2Element = divToModify.querySelector("h2");
-    // const BtninstallApp = divToModify.querySelector("button");
-    divSelector.style.display = "none";
+    const h1Element = divToModify.querySelector("h1");
+    const h2Element = divToModify.querySelector("h2");
+    const BtninstallApp = divToModify.querySelector("button");
+    if (h1Element) {
+      h1Element.style.display = "none";
+    }
+    if (h2Element) {
+      h2Element.style.display = "none";
+    }
+    if (BtninstallApp) BtninstallApp.style.display = "none";
   } else {
     console.log(
       "La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée."
@@ -152,7 +158,7 @@ function updateView(jsonObject) {
     }
   }
 
-  RemoveBloc("#presentation");
+  removeH1H2FromDiv(".content");
   document.querySelector(".resultAffichageDeux").style.opacity = 1;
 }
 
