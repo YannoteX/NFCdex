@@ -82,6 +82,10 @@ select {
   padding: 5px 5px;
 }
 
+select {
+  font-family: var(--paragraphe);
+}
+
 form input::placeholder,
 form input {
   font-family: var(--paragraphe);
@@ -198,6 +202,10 @@ nav img {
   flex-direction: column;
   grid-area: textarea;
   width: 100%;
+}
+
+textarea {
+  font-family: var(--paragraphe);
 }
 
 .list {
