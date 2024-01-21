@@ -128,7 +128,7 @@ function phoneMode() {
 function updateView(jsonObject) {
   const resultAffichage = document.querySelector(".resultAffichageDeux");
 
-  console.log(jsonObject);
+  console.log(jsonObject.Image);
   resultAffichage.innerHTML = "";
 
   function createParagraph(key, value) {
