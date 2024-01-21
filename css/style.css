@@ -253,14 +253,12 @@ nav img {
   display: none;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 20%;
   transform: translateX(-50%);
-  z-index: 100;
   transition: opacity 0.3s ease-in-out;
   color: var(--colortxt);
   width: 80%;
   min-width: 250px;
-  z-index: 100;
 }
 
 description .imgResult {
