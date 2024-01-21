@@ -154,7 +154,7 @@ function informationSubmit(e) {
     canvas.width = img.width;
     canvas.height = img.height;
 
-    //information.Image = shrinkImageBase64(canvas, img)
+    information.Image = shrinkImageBase64(canvas, img)
 
     canvas.remove();
   });
