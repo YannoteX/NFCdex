@@ -127,16 +127,18 @@ function phoneMode() {
 
 function updateView(jsonObject) {
   const resultAffichage = document.querySelector(".resultAffichageDeux");
-
   resultAffichage.innerHTML = "";
 
-  function createParagraph(key, value) {
-    const paragraph = document.createElement("p");
-    paragraph.textContent = `${key}: ${getValueString(value)}`;
-    return paragraph;
-  }
+  let ImageResult = jsonObject.Image;
+  let Nom = jsonObject.Nom;
+  let Habitat = jsonObject.Habitat;
+  let Description = jsonObject.Description;
 
-  resultAffichage.innerHTML = `<img src="${jsonObject.Image}"></img>`;
+  console.log(ImageResult, Nom, Habitat, Description);
+
+  resultAffichage.innerHTML = `<img src="${ImageResult}"></img>`;
+
+  resultAffichage.innerHTML = `<p>${Nom}</p>`;
 
   //   function getValueString(value) {
   //     console.log(value);
@@ -149,6 +151,7 @@ function updateView(jsonObject) {
 
   //       // Join the results for display
   //       return mappedResults.join("");
+
   //     } else {
   //       return `<img src="${jsonObject.Image} alt=""></img>`;
   //       // For non-object values, just return the string representation of the value
