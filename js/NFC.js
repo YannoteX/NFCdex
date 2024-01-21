@@ -152,7 +152,7 @@ function updateView(jsonObject) {
         })
         .join("");
     } else {
-      return String(value);
+      return `${nestedKey}: ${getValueString(nestedValue)}`;
     }
 
     function isImageUrl(value) {
