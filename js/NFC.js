@@ -139,35 +139,43 @@ function updateView(jsonObject) {
 
   function getValueString(value) {
     if (typeof value === "object" && value !== null) {
-      const entries = Object.entries(value);
-      const mappedResults = entries.map(([nestedKey, nestedValue]) => {
-        if (isImageUrl(nestedValue)) {
-          const image = document.createElement("img");
-          image.src = nestedValue;
-          image.alt = nestedKey;
-          return image.outerHTML; // Returns the HTML string for the image
-        } else {
-          return `${nestedKey}: ${getValueString(nestedValue)}`;
+      // Capture the results of the .map function in an array
+      const mappedResults = Object.entries(value).map(
+        ([nestedKey, nestedValue]) => {
+          if (isImageUrl(nestedValue)) {
+            const image = document.createElement("img");
+            image.src = nestedValue;
+            image.alt = nestedKey;
+            return { key: nestedKey, value: image.outerHTML }; // Return as an object for consistency
+          } else {
+            return {
+              key: nestedKey,
+              value: `${nestedKey}: ${getValueString(nestedValue)}`,
+            };
+          }
         }
-      });
+      );
 
-      // Access the last key-value pair
-      const lastEntry = entries[entries.length - 1];
-      console.log("Last Key:", lastEntry[0], "Last Value:", lastEntry[1]);
+      // Access the last element (the last key-value pair)
+      const lastElement = mappedResults[mappedResults.length - 1];
 
-      return mappedResults.join("");
+      // Do something with the last element if needed
+      console.log("Last element:", lastElement);
+
+      // Join only the values for display
+      return mappedResults.map((result) => result.value).join("");
     } else {
       return String(value);
     }
+  }
 
-    function isImageUrl(value) {
-      return (
-        typeof value === "string" &&
-        (value.endsWith(".jpg") ||
-          value.endsWith(".png") ||
-          value.endsWith(".gif"))
-      );
-    }
+  function isImageUrl(value) {
+    return (
+      typeof value === "string" &&
+      (value.endsWith(".jpg") ||
+        value.endsWith(".png") ||
+        value.endsWith(".gif"))
+    );
   }
 
   for (const key in jsonObject) {
