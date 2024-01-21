@@ -134,11 +134,11 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  console.log(ImageResult, Nom, Habitat, Description);
+  const app = JSON.stringify(jsonObject);
 
-  resultAffichage.innerHTML = `<img src="${ImageResult}"></img>`;
+  console.log(app);
 
-  resultAffichage.innerHTML = `<p>${Nom}</p>`;
+  resultAffichage.innerHTML += `<img src="${ImageResult}"></img>`;
 
   //   function getValueString(value) {
   //     console.log(value);
