@@ -10,5 +10,5 @@
 
 @font-face {
     font-family: 'PokemonFont';
-    src: url("../assets/fonts/pokemon-ds/pokemon-ds-font.otf") format('opentype');
+    src: url("../assets/fonts/pokemon-ds/pokemon-ds-font.ttf") format('truetype');
 }
