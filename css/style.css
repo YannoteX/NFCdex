@@ -87,7 +87,7 @@ form input {
   font-family: var(--paragraphe);
 }
 
-input[type="file"] {
+b input[type="file"] {
   font-family: var(--paragraphe);
 }
 
@@ -132,8 +132,6 @@ input::placeholder {
   font-weight: bold;
   transition: 1s all;
   color: var(--secondary);
-  border: none;
-  outline: none;
 }
 
 #btnform:hover {
@@ -426,6 +424,8 @@ footer {
 }
 
 .pixel-corners {
+  border: none;
+  outline: none;
   clip-path: polygon(0px calc(100% - 6px),
       2px calc(100% - 6px),
       2px calc(100% - 4px),
