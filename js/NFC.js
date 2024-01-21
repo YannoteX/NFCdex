@@ -2,8 +2,8 @@ import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-function removeH1H2FromDiv(divSelector) {
-  const divToModify = document.querySelector(divSelector);
+function RemoveBloc(divSelector) {
+  const divToModify = document.getElementById(divSelector);
 
   if (divToModify) {
     // const h1Element = divToModify.querySelector("h1");
@@ -152,7 +152,7 @@ function updateView(jsonObject) {
     }
   }
 
-  removeH1H2FromDiv(".content");
+  RemoveBloc("presentation");
   document.querySelector(".resultAffichageDeux").style.opacity = 1;
 }
 
