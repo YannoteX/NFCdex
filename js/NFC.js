@@ -142,18 +142,8 @@ function updateView(jsonObject) {
       // Capture the results of the .map function in an array
       const mappedResults = Object.entries(value).map(
         (nestedValue, nestedIndex) => {
-          console.log(nestedValue);
-          if (nestedIndex === 4) {
-          }
-          //   if (isImageUrl(nestedValue)) {
-          //     const image = document.createElement("img");
-          //     image.src = nestedValue;
-          //     image.alt = nestedKey;
-          //     return image.outerHTML; // Returns the HTML string for the image
-          //   } else {
-          //     // Return the nested key and value as a string for non-image values
-          //     return `${nestedKey}: ${getValueString(nestedValue)}`;
-          //   }
+          console.log(nestedIndex);
+          return `<img src="${String(nestedValue)} alt=""></img>`;
         }
       );
 
@@ -161,7 +151,6 @@ function updateView(jsonObject) {
       return mappedResults.join("");
     } else {
       // For non-object values, just return the string representation of the value
-      return `<img src="${String(nestedValue)} alt=""></img>`;
     }
   }
 
