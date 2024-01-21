@@ -134,15 +134,9 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  let tableauDePersonnes = Object.values(jsonObject);
+  var tableauDObjets = JSON.parse(jsonString);
 
-  resultAffichage.innerHTML += tableauDePersonnes.map((element, index) => {
-    if (index == 4) {
-      `<img src="${element}"></img>`;
-    }
-  });
-
-  resultAffichage.innerHTML += `<img src="${ImageResult}"></img>`;
+  console.log(tableauDObjets);
 
   //   function getValueString(value) {
   //     console.log(value);
