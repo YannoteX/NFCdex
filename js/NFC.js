@@ -138,7 +138,7 @@ function updateView(jsonObject) {
     ).innerHTML = `
     
     <div class="resultGlobale">
-    <img style="width : 100%; height : 100px; object-fit : cover" src="${ImageResult}"></img>
+    <img style="width : 50%; height : 100px; object-fit : cover" src="${ImageResult}"></img>
     <div class="info-poke">
     <p>Nom : ${Nom}</p>
     <p> Type : ${Type}</p>
