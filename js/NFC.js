@@ -134,11 +134,11 @@ function updateView(jsonObject) {
   let Habitat = jsonObject.Habitat;
   let Description = jsonObject.Description;
 
-  document.querySelector(".Nom") = jsonObject.Nom;
+  document.querySelector(".Nom") = Nom;
   document.querySelector(".Description").innerHTML = Description;
   document.querySelector(
     ".imgSection"
-  ).innerHTML = `<img src="${jsonObject.Image}"></img>`;
+  ).innerHTML = `<img src="${ImageResult}"></img>`;
   //   function getValueString(value) {
   //     console.log(value);
   //     if (typeof value === "object" && value !== null) {
