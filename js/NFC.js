@@ -137,7 +137,7 @@ function updateView(jsonObject) {
   let tableauDePersonnes = Object.values(jsonObject);
 
   tableauDePersonnes.map((element) => {
-    console.log(element);
+    console.log(element.Image);
   });
 
   resultAffichage.innerHTML += `<img src="${ImageResult}"></img>`;
@@ -168,14 +168,6 @@ function updateView(jsonObject) {
   //         value.endsWith(".gif"))
   //     );
   //   }
-
-  for (const key in jsonObject) {
-    if (Object.hasOwnProperty.call(jsonObject, key)) {
-      const value = jsonObject[key];
-      const paragraph = createParagraph(key, value);
-      resultAffichage.appendChild(paragraph);
-    }
-  }
 
   removeH1H2FromDiv(".content");
   document.querySelector(".resultAffichageDeux").style.opacity = 1;
