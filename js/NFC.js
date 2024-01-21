@@ -143,7 +143,6 @@ function updateView(jsonObject) {
         ([nestedValue, nestedIndex]) => {
           console.log(nestedValue);
           if (nestedIndex === 4) {
-            return `<img src="${String(nestedValue)} alt=""></img>`;
           }
           //   if (isImageUrl(nestedValue)) {
           //     const image = document.createElement("img");
@@ -161,7 +160,7 @@ function updateView(jsonObject) {
       return mappedResults.join("");
     } else {
       // For non-object values, just return the string representation of the value
-      return String(value);
+      return `<img src="${String(nestedValue)} alt=""></img>`;
     }
   }
 
