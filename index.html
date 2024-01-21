@@ -47,7 +47,7 @@
                     <span class="name">
                         <span class="PhotoNom">
                             <img style="height: 300px; width : 300px; object-fit : cover; border-radius: 50%" id="imagePreview" alt="">
-                            <input type="file" id="imageInput" name="Photo" accept=".webp" required> 
+                            <input type="file" id="imageInput" name="Photo" required> 
                             <label for="">Nom</label>
                             <input type="text" name="Nom" placeholder="nom" minlength="5" maxlength="20">
                         </span>
@@ -108,7 +108,8 @@
             <section class="download">
                 <div class="application">
                     <div data-aos="fade-right" class="left-application">
-                        <h2>Utiliser le <strong>NFCmon</strong> Uniquement sur téléphone avec un <strong>NFC</strong></h2>
+                        <h2>Utiliser le <strong>NFCmon</strong> Uniquement sur téléphone avec un <strong>NFC</strong>
+                        </h2>
                         <svg viewBox="0 0 512 193" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M376.818 158.244L391.609 120.841H434.316L414.049 64.102L439.397 0L512 192.769H458.458L446.051 158.244H376.818Z"
@@ -202,10 +203,11 @@
 
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {
-        navigator.serviceWorker.register('sw.js')
+            navigator.serviceWorker.register('sw.js')
         }
     </script>
 
 
 </body>
+
 </html>

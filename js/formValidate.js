@@ -12,6 +12,7 @@ export let information =
     Type: "",
     Habitat: "",
     Description: "",
+    Image: ""
   }
 
 function cacherElement() {
@@ -103,24 +104,17 @@ export function DataToJson (Data){
 
 let URLBase64; 
 
-function getBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-}
-
-document.getElementById('imageUpload').addEventListener('change', async function(event) {
+document.getElementById('imageInput').addEventListener('change', async function(event) {
     const file = event.target.files[0];
+    console.log("change");
     if (file) {
         try {
-            const base64String = await getBase64(file); 
+
+            const base64String = window.URL.createObjectURL(file);
             URLBase64 = base64String; 
-            console.log(URLBase64); 
             const imagePreview = document.getElementById('imagePreview');
             imagePreview.src = URLBase64;
+
         } catch (error) {
             console.error(error); 
         }
@@ -130,13 +124,9 @@ document.getElementById('imageUpload').addEventListener('change', async function
 
 //voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
 //une fois que l'image à charger dans le formulaire
-export function ImgBase64Form() {
+export function GetImageBase64() {
   return URLBase64
 }
-
-
-
-console.log(reader.readAsDataURL(file))
 
 
 function informationSubmit(e) {
@@ -157,9 +147,17 @@ function informationSubmit(e) {
   information.Habitat = HabitatValue;
   information.Description = Description;
 
-  DataToJson(information);
-  resultJsonForm(information)
+  loadImage(GetImageBase64()).then(img => {
 
+    const canvas = document.createElement('canvas');
+    canvas.style.display = "none";
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    information.Image = shrinkImageBase64(canvas, img)
+
+    canvas.remove();
+  });
 }
 
 //prend en parametre l'id du formulaire dans le html donc form 
@@ -189,3 +187,50 @@ document.querySelector(".ML").addEventListener("click", (e) => {
   e.preventDefault();
   isMobile() ? setAction("setNFCmon") : ""
 })
+
+
+// Image compression
+
+
+function shrinkImageBase64(canvas, image){
+
+  const base64 = refreshCanvas(canvas, image);
+  const blob = new Blob([base64]);
+
+  if (blob.size > 7100){
+
+      canvas.width /= 2;
+      canvas.height /= 2;
+
+      return shrinkImageBase64(canvas, image);
+  }
+  else if (blob.size < 6500){
+
+      canvas.width *= 1.5;
+      canvas.height *= 1.5;
+
+      return shrinkImageBase64(canvas, image);
+  }
+  else {
+      return base64;
+  }
+}
+
+function refreshCanvas(canvas, image){
+
+  const context = canvas.getContext("2d");
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+  return canvas.toDataURL("image/webp", 0.5);
+}
+
+
+const loadImage = src =>
+    new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+    });
