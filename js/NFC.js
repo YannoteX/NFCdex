@@ -139,18 +139,23 @@ function updateView(jsonObject) {
 
   function getValueString(value) {
     if (typeof value === "object" && value !== null) {
-      return Object.entries(value)
-        .map(([nestedKey, nestedValue]) => {
-          `${nestedKey}: ${getValueString(nestedValue)}`;
+      const entries = Object.entries(value);
+      const mappedResults = entries.map(([nestedKey, nestedValue]) => {
+        if (isImageUrl(nestedValue)) {
+          const image = document.createElement("img");
+          image.src = nestedValue;
+          image.alt = nestedKey;
+          return image.outerHTML; // Returns the HTML string for the image
+        } else {
+          return `${nestedKey}: ${getValueString(nestedValue)}`;
+        }
+      });
 
-          if (isImageUrl(nestedValue)) {
-            const image = document.createElement("img");
-            image.src = nestedValue;
-            image.alt = nestedKey;
-            return image.outerHTML; // Returns the HTML string for the image
-          }
-        })
-        .join("");
+      // Access the last key-value pair
+      const lastEntry = entries[entries.length - 1];
+      console.log("Last Key:", lastEntry[0], "Last Value:", lastEntry[1]);
+
+      return mappedResults.join("");
     } else {
       return String(value);
     }
