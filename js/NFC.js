@@ -139,11 +139,11 @@ function updateView(jsonObject) {
   function getValueString(value) {
     console.log(value);
     if (typeof value === "object" && value !== null) {
-      // Capture the results of the .map function in an array
       const mappedResults = Object.entries(value).map(
         (nestedValue, nestedIndex) => {
-          console.log(nestedIndex);
-          return `<img src="${String(nestedValue)} alt=""></img>`;
+          console.log(nestedValue, nestedIndex);
+          if()
+          return `<img src="${nestedValue} alt=""></img>`;
         }
       );
 
