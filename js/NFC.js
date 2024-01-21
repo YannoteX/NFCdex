@@ -138,12 +138,14 @@ function updateView(jsonObject) {
 
   function getValueString(value) {
     if (true) {
-      Object.entries(value).map((nestedValue, nestedIndex) => {
-        console.log(nestedValue, nestedIndex);
-        return `
-        <img src="${nestedValue} alt=""></img>
-        `;
-      });
+      const mappedResults = Object.entries(value).map(
+        (nestedValue, nestedIndex) => {
+          console.log(nestedValue, nestedIndex);
+          return `<img src="${nestedValue} alt=""></img>`;
+        }
+      );
+      // Join the results for display
+      return mappedResults.join("");
     } else {
       // For non-object values, just return the string representation of the value
     }
