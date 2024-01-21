@@ -128,6 +128,7 @@ function phoneMode() {
 function updateView(jsonObject) {
   const resultAffichage = document.querySelector(".resultAffichageDeux");
 
+  console.log(jsonObject);
   resultAffichage.innerHTML = "";
 
   function createParagraph(key, value) {
@@ -137,13 +138,16 @@ function updateView(jsonObject) {
   }
 
   function getValueString(value) {
-    if (true) {
+    console.log(value);
+    if (typeof value === "object" && value !== null) {
+      // Capture the results of the .map function in an array
       const mappedResults = Object.entries(value).map(
         (nestedValue, nestedIndex) => {
-          console.log(nestedValue, nestedIndex);
+          console.log(nestedIndex);
           return `<img src="${nestedValue} alt=""></img>`;
         }
       );
+
       // Join the results for display
       return mappedResults.join("");
     } else {
