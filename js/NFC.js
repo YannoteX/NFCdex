@@ -135,13 +135,18 @@ function updateView(jsonObject) {
 
     document.querySelector(
         ".resultAffichageDeux"
-    ).innerHTML = `<img src="${ImageResult}"></img>
+    ).innerHTML = `<img style="width : 100%; height : 100px; object-fit : cover" src="${ImageResult}"></img>
                 <p>Nom : ${Nom}</p>
                 <p> Type : ${Type}</p>
                 <p> Habitait : ${Habitat}
-                <p> Description : ${Description}</p>
 
   `;
+
+
+    document.querySelector(".SectionOrange").innerHTML = `
+    <p> Description : ${Description}</p>
+    `
+
     //   function getValueString(value) {
     //     console.log(value);
     //     if (typeof value === "object" && value !== null) {
