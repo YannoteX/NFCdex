@@ -3,6 +3,10 @@
         text-align: center;
     }
 
+    .resultAffichageDeux{
+        display: block !important;
+    }
+
     #btnform{
         display: block !important;
     }

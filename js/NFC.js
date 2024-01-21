@@ -2,13 +2,13 @@ import { information, DataToJson, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
 
-
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
   
     if (divToModify) {
       const h1Element = divToModify.querySelector('h1');
       const h2Element = divToModify.querySelector('h2');
+      const BtninstallApp = divToModify.querySelector("button");
   
       if (h1Element) {
         h1Element.style.display = "none"
@@ -16,6 +16,9 @@ function removeH1H2FromDiv(divSelector) {
       if (h2Element) {
         h2Element.style.display = "none"
       }
+      if (BtninstallApp)(
+        BtninstallApp.style.display = "none"
+      )
 
     } else {
       console.log("La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée.");
@@ -33,80 +36,9 @@ if (window.innerWidth >= 1024) {
     } 
 }
     
-// function desktopMode() {
-//     const ndef = new NDEFReader();
-
-//     async function scanTag() {
-//         try {
-//             await ndef.scan();
-
-//             ndef.onreadingerror = (e) => {
-//                 NFCMessage("Oops... Une erreur s'est produite, assurez-vous que votre tag NFC est à proximité.");
-//             };
-
-//             ndef.onreading = (e) => {
-//                 const record = e.message.records[0];
-
-//                 if (scanAction === "read") {
-//                     if (isValidRecord(record)) {
-//                         const decoder = new TextDecoder();
-//                         const json = JSON.parse(decoder.decode(record.data));
-
-//                         if (json) {
-//                             updateView(json);
-//                         } else {
-//                             NFCMessage("Vous n'avez pas enregistré de NFCmon dans votre tag.");
-//                         }
-//                     }
-//                 } else if (scanAction === "write") {
-//                     if (isValidRecord(record)) {
-//                         writeTag(
-//                             information,
-//                             information.Nom + " a été enregistré dans votre tag NFCmon.",
-//                             "Oops... Impossible d'écrire votre NFCmon. Veuillez réessayer."
-//                         );
-//                         setAction("none");
-//                     }
-//                 } else if (scanAction === "setNFCmon") {
-//                     writeTag({}, "Tag NFCmon initialisé.");
-//                 } else {
-//                     // Autres actions si nécessaire
-//                 }
-//             };
-//         } catch (error) {
-//             // Gérer les erreurs liées à la prise en charge de l'API Web NFC sur le bureau
-//             console.error("L'API Web NFC n'est pas prise en charge sur ce navigateur ou cet appareil de bureau.");
-//             // Afficher un message à l'utilisateur pour l'informer que l'API Web NFC n'est pas prise en charge sur le bureau
-//             NFCMessage("La fonction NFC n'est pas prise en charge sur votre ordinateur de bureau.");
-//         }
-//     }
-
-
-//     function writeTag(jsonObject, successMessage, failureMessage) {
-//         let encoder = new TextEncoder();
-
-//         ndef.write({
-
-//             records: [
-//                 {
-//                     id: "A7G5UI924G66EP4",
-//                     recordType: "mime",
-//                     mediaType: "application/json",
-//                     data: encoder.encode(JSON.stringify(jsonObject))
-//                 }]
-//         }).then(() => {
-//             NFCMessage(successMessage);
-//         }).catch(() => {
-//             NFCMessage(failureMessage);
-//         });
-
-//     }
-
-//     scanTag()
-
-//     // Le reste du code pour desktopMode...
-// }
-
+function desktopMode(){
+    
+}
 
 function phoneMode() {
     // Pour la lecture NFC
@@ -123,6 +55,8 @@ function phoneMode() {
                 const record = e.message.records[0];
 
                 if (scanAction === "read") {
+
+                    console.log(record);
 
                     if (isValidRecord(record)) {
 
@@ -174,6 +108,11 @@ function phoneMode() {
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
 
+        const data = encoder.encode(DataToJson(jsonObject))
+        let blob = new Blob([data]);
+        console.log(blob.size);
+        console.log(data);
+
         ndef.write({
             records: [
                 {
@@ -210,7 +149,7 @@ function updateView(jsonObject) {
         if (typeof value === 'object' && value !== null) {
             return Object.entries(value)
                 .map(([nestedKey, nestedValue]) => `${nestedKey}: ${getValueString(nestedValue)}`)
-                .join(', ');
+                .join(',');
         } else {
             return String(value);
         }
@@ -236,7 +175,8 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.style.color = color;
     messageContainer.style.textAlign = "center";
     messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "12px";
+    messageContainer.style.fontSize = "11px";
+
 }
 
 
