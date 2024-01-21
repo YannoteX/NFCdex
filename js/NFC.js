@@ -140,13 +140,28 @@ function updateView(jsonObject) {
   function getValueString(value) {
     if (typeof value === "object" && value !== null) {
       return Object.entries(value)
-        .map(
-          ([nestedKey, nestedValue]) =>
-            `${nestedKey}: ${getValueString(nestedValue)}`
-        )
-        .join(",");
+        .map(([nestedKey, nestedValue]) => {
+          `${nestedKey}: ${getValueString(nestedValue)}`;
+
+          if (isImageUrl(nestedValue)) {
+            const image = document.createElement("img");
+            image.src = nestedValue;
+            image.alt = nestedKey;
+            return image.outerHTML;
+          }
+        })
+        .join("");
     } else {
       return String(value);
+    }
+
+    function isImageUrl(value) {
+      return (
+        typeof value === "string" &&
+        (value.endsWith(".jpg") ||
+          value.endsWith(".png") ||
+          value.endsWith(".gif"))
+      );
     }
   }
 
