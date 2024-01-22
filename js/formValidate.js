@@ -52,6 +52,9 @@ parentElementSection.addEventListener("click", function () {
 
 enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
+
+
+
 });
 
 let limiteCaracteres = 100;
@@ -158,6 +161,9 @@ export function resetForm(formId) {
       .forEach((element) => {
         element.value = "";
       });
+
+    this.reset();
+
   } else {
     console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
   }
