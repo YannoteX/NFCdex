@@ -253,11 +253,11 @@ nav img {
   display: none;
   position: absolute;
   left: 50%;
-  top: 20%;
+  top: 18%;
   transform: translateX(-50%);
   transition: opacity 0.3s ease-in-out;
   color: var(--colortxt);
-  width: 80%;
+  width: 90%;
   min-width: 250px;
 }
 
@@ -268,7 +268,7 @@ nav img {
   align-items: center;
 }
 
-description .imgResult {
+.imgResult {
   height: 70px;
   width: 70px;
   object-fit: cover;
