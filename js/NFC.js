@@ -39,6 +39,8 @@ function phoneMode() {
     const ndef = new NDEFReader();
     //
 
+    NFCMessage("Bienvenue sur le NFCdex, charge un NFCmon en scannant ta carte NFC dédiée");
+
     async function scanTag() {
         ndef.scan().then(() => {
             ndef.onreadingerror = (e) => {
