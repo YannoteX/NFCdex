@@ -138,7 +138,7 @@ function updateView(jsonObject) {
     ).innerHTML = `
     
     <div class="resultGlobale">
-    <img style="width : auto; display : flex; height : 160px; object-fit : cover" src="${ImageResult}"></img>
+    <img style="width : 100%; display : flex; height : 170px; object-fit : cover" src="${ImageResult}"></img>
     <div class="info-poke">
     <p>Nom : ${Nom}</p>
     <p> Type : ${Type}</p>
@@ -192,7 +192,7 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.style.color = color;
     messageContainer.style.textAlign = "center";
     messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "11px";
+    messageContainer.style.fontSize = "13px";
 }
 
 export const setAction = (action) => {
