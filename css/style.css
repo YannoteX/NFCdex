@@ -268,11 +268,15 @@ nav img {
   align-items: center;
 }
 
-description .imgResult {
+.imgResult {
   height: 70px;
   width: 70px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.description {
+  width: 300px;
 }
 
 .resultAffichageDeux p,
