@@ -152,7 +152,7 @@ function updateView(jsonObject) {
 
 
     document.getElementById("SectionOrange").innerHTML = `
-    <p class="description"> ${Description}</p>
+    <p class="description" style="width: 300px;"> ${Description}</p>
     `
 
     //   function getValueString(value) {
