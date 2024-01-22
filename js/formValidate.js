@@ -1,4 +1,4 @@
-import {setAction} from "/js/NFC.js"
+import { setAction } from "/js/NFC.js";
 
 const formulaire = document.querySelector("form");
 const textarea = document.querySelector("textarea");
@@ -6,14 +6,13 @@ const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
 
-export let information = 
-  {
-    Nom: "",
-    Type: "",
-    Habitat: "",
-    Description: "",
-    Image: ""
-  }
+export let information = {
+  Nom: "",
+  Type: "",
+  Habitat: "",
+  Description: "",
+  Image: "",
+};
 
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
@@ -30,19 +29,16 @@ function isMobile() {
 input.addEventListener("click", () => {
   formulaire.classList.add("display");
   document.querySelector(".form-section").classList.add("dark");
-  isMobile() ? setAction("none") : ""
+  isMobile() ? setAction("none") : "";
   setTimeout(apparaitElement);
-
 });
-
 
 inputClose.addEventListener("click", () => {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
-  isMobile() ? setAction("read") : ""
+  isMobile() ? setAction("read") : "";
 });
-
 
 let parentElementSection = document.querySelector(".form-section");
 let enfantElementForm = formulaire;
@@ -51,17 +47,17 @@ parentElementSection.addEventListener("click", function () {
   formulaire.classList.remove("display");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
-  isMobile() ? setAction("read") : ""
+  isMobile() ? setAction("read") : "";
 });
-
 
 enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
+
+
+
 });
 
 let limiteCaracteres = 100;
-
-
 
 textarea.addEventListener("input", function () {
   let longueurTexte = textarea.value.length;
@@ -75,7 +71,6 @@ textarea.addEventListener("input", function () {
     error.textContent = "";
   }
 });
-
 
 function resultJsonForm(objectJson) {
   const resultArray = Object.entries(objectJson);
@@ -98,42 +93,40 @@ function resultJsonForm(objectJson) {
   //   .join("");
 }
 
-export function DataToJson (Data){
+export function DataToJson(Data) {
   return JSON.stringify(Data);
 }
 
-let URLBase64; 
+let URLBase64;
 
-document.getElementById('imageInput').addEventListener('change', async function(event) {
+document
+  .getElementById("imageInput")
+  .addEventListener("change", async function (event) {
     const file = event.target.files[0];
     console.log("change");
     if (file) {
-        try {
-
-            const base64String = window.URL.createObjectURL(file);
-            URLBase64 = base64String; 
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = URLBase64;
-
-        } catch (error) {
-            console.error(error); 
-        }
+      try {
+        const base64String = window.URL.createObjectURL(file);
+        URLBase64 = base64String;
+        const imagePreview = document.getElementById("imagePreview");
+        imagePreview.src = URLBase64;
+      } catch (error) {
+        console.error(error);
+      }
     }
-    return URLBase64
-});
+    return URLBase64;
+  });
 
 //voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
 //une fois que l'image à charger dans le formulaire
 export function GetImageBase64() {
-  return URLBase64
+  return URLBase64;
 }
-
 
 function informationSubmit(e) {
   e.preventDefault();
-  isMobile() ? setAction("write") : ""
+  isMobile() ? setAction("write") : "";
   const formData = new FormData(document.querySelector("form"));
-
 
   // let PhotoUrl = formData.get("Photo");
   let Nom = formData.get("Nom");
@@ -147,77 +140,66 @@ function informationSubmit(e) {
   information.Habitat = HabitatValue;
   information.Description = Description;
 
-  loadImage(GetImageBase64()).then(img => {
-
-    const canvas = document.createElement('canvas');
+  loadImage(GetImageBase64()).then((img) => {
+    const canvas = document.createElement("canvas");
     canvas.style.display = "none";
     canvas.width = img.width;
     canvas.height = img.height;
 
-    information.Image = shrinkImageBase64(canvas, img)
-
+    information.Image = shrinkImageBase64(canvas, img);
     canvas.remove();
   });
 }
 
-//prend en parametre l'id du formulaire dans le html donc form 
+//prend en parametre l'id du formulaire dans le html donc form
 export function resetForm(formId) {
   let form = document.getElementById(formId);
 
   if (form) {
-    form.querySelectorAll('input:not([type="submit"]), textarea').forEach((element) => {
-      element.value = "";
-    });
+    form
+      .querySelectorAll('input:not([type="submit"]), textarea')
+      .forEach((element) => {
+        element.value = "";
+      });
+
+    document.querySelector(".imgResult").removeAttribute('src')
+
   } else {
     console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
   }
 }
 
-
-
-
 // Exemple d'utilisation : resetForm("monFormulaire");
-
-
 
 formulaire.addEventListener("submit", informationSubmit);
 
-
 document.querySelector(".ML").addEventListener("click", (e) => {
   e.preventDefault();
-  isMobile() ? setAction("setNFCmon") : ""
-})
-
+  isMobile() ? setAction("setNFCmon") : "";
+});
 
 // Image compression
 
-
-function shrinkImageBase64(canvas, image){
-
+function shrinkImageBase64(canvas, image) {
   const base64 = refreshCanvas(canvas, image);
   const blob = new Blob([base64]);
 
-  if (blob.size > 7100){
+  if (blob.size > 7100) {
+    canvas.width /= 2;
+    canvas.height /= 2;
 
-      canvas.width /= 2;
-      canvas.height /= 2;
+    return shrinkImageBase64(canvas, image);
+  } else if (blob.size < 6500) {
+    canvas.width *= 1.5;
+    canvas.height *= 1.5;
 
-      return shrinkImageBase64(canvas, image);
-  }
-  else if (blob.size < 6500){
-
-      canvas.width *= 1.5;
-      canvas.height *= 1.5;
-
-      return shrinkImageBase64(canvas, image);
-  }
-  else {
-      return base64;
+    return shrinkImageBase64(canvas, image);
+  } else {
+    return base64;
   }
 }
 
-function refreshCanvas(canvas, image){
-
+function refreshCanvas(canvas, image) {
   const context = canvas.getContext("2d");
 
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -226,11 +208,10 @@ function refreshCanvas(canvas, image){
   return canvas.toDataURL("image/webp", 0.5);
 }
 
-
-const loadImage = src =>
-    new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = reject;
-        img.src = src;
-    });
+const loadImage = (src) =>
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
