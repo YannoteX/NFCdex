@@ -58,6 +58,7 @@ function phoneMode() {
 
                         if (json) {
                             updateView(json);
+                            NFCMessage("Tu as chargé " + json.nom + "dans le NFCdex");
                         } else {
                             NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
                         }
@@ -67,7 +68,7 @@ function phoneMode() {
                         writeTag(
                             information,
                             information.Nom + " a été enregsitré dans ton tag NFCmon",
-                            "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau"
+                            "Oops... On a pas pu envoyer ton NFCmon, réessaie en gardant plus longtemps la carte sur ton téléphone"
                         );
 
                         setAction("none");
@@ -98,8 +99,6 @@ function phoneMode() {
 
         const data = encoder.encode(DataToJson(jsonObject));
         let blob = new Blob([data]);
-        console.log(blob.size);
-        console.log(data);
 
         ndef
             .write({
@@ -192,7 +191,8 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.style.color = color;
     messageContainer.style.textAlign = "center";
     messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "13px";
+    messageContainer.style.fontSize = "15px";
+    messageContainer.style.fontFamily = "var(--paragraphe)";
 }
 
 export const setAction = (action) => {

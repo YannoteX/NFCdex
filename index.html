@@ -2,9 +2,10 @@
 <html lang="fr">
 
 <head>
+    <title>NFCDex - Tout les NFCmon de la terre en un contact !</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFCDex</title>
+    <meta name="description" content="Enregistre tout tes NFCmon dans une carte NFC dédiée, charge les sur le NFCdex afin de les collectionner tous."
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/logo/NFCdex_logo.png">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -23,7 +24,7 @@
         <header>
             <nav>
                 <div class="navigation">
-                    <img src="./assets/logo/NFCdex_logo.webp" alt="Logo">
+                    <img src="./assets/logo/NFCdex_logo.webp" alt="nfcdex logo">
                     <div id="nfc-mode-message"></div>
                 </div>
                 <!-- logo à gauche -->
@@ -47,11 +48,11 @@
 
                     <span class="name">
                         <span class="PhotoNom">
-                            <img class="imgResult" id="imagePreview" alt="">
+                            <img class="imgResult" id="imagePreview" alt="nfcmon image preview">
                             <input type="file" id="imageInput" name="Photo" required>
                             <label for="">Nom</label>
                             <input class="pixel-corners-outlined" type="text" name="Nom" placeholder="nom" minlength="5"
-                                maxlength="20">
+                                maxlength="24">
                         </span>
                     </span>
 
@@ -75,7 +76,7 @@
                         </select>
                     </span>
 
-                    <span class="textarea" maxlength="100">
+                    <span class="textarea" maxlength="250">
                         <label for="">Description</label>
                         <textarea class="pixel-corners-outlined" name="Description" id="" rows="5"></textarea>
                         <span class="error"></span>
@@ -99,7 +100,7 @@
                 </div>
 
                 <div data-aos="fade-left" id="SectionOrange" class="fond-background-presentation items">
-                    <img src="./assets/logo/anim1.svg" alt="Image de présentation">
+                    <img src="./assets/logo/anim1.svg" alt="use guide animation for loading a nfcmon">
                 </div>
 
             </section>
@@ -128,7 +129,7 @@
 
 
                     <div data-aos="fade-left" class="container-phone">
-                        <img class="phone" src="./assets/icons/PhoneScreen2.png" alt="MobileMockup">
+                        <img class="phone" src="./assets/icons/PhoneScreen2.png" alt="mobile representation of the nfcdex">
                     </div>
                 </div>
             </section>
@@ -137,7 +138,7 @@
                 <div class="pied-de-page" data-aos="zoom-in" data-aos-delay="200">
 
                     <div class="logoFooter">
-                        <img src="./assets/logo/Logo2.webp" alt="logo">
+                        <img src="./assets/logo/Logo2.webp" alt="dark nfcdex logo">
                     </div>
 
                     <div class="information-footer">
