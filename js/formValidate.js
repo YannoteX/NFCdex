@@ -162,7 +162,7 @@ export function resetForm(formId) {
         element.value = "";
       });
 
-    document.querySelector(".imgResult").src = ""
+    document.querySelector(".imgResult").removeAttribute('src')
 
   } else {
     console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
