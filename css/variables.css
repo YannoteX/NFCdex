@@ -1,11 +1,11 @@
 @import url("./font.css");
 
-:root{
-    --background : #FFFAEB;
-    --primaryColor : #FF8400;
-    --secondary : #FFF5D6;
-    --accent : #CF4307;
-    --colortxt : #050D05;
-    --titre : 'NotoSansCondensed-Bold';
-    --paragraphe : 'NotoSansSoraSompeng-Regular';
+:root {
+    --background: #FFFAEB;
+    --primaryColor: #FF8400;
+    --secondary: #FFF5D6;
+    --accent: #CF4307;
+    --colortxt: #050D05;
+    --titre: 'PokemonFont';
+    --paragraphe: 'PokemonFont';
 }

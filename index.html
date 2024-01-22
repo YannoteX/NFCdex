@@ -23,13 +23,14 @@
         <header>
             <nav>
                 <div class="navigation">
-                    <img src="./assets/logo/NFCdex_logo.png" alt="Logo">
+                    <img src="./assets/logo/NFCdex_logo.webp" alt="Logo">
                     <div id="nfc-mode-message"></div>
                 </div>
                 <!-- logo à gauche -->
                 <!-- message au millieu -->
                 <!-- bouton form à gauche -->
-                <input style="position : absolute; z-index: 100000;" type="button" id="btnform" value="Créer">
+                <input class="pixel-corners" style="position : absolute; z-index: 100000;" type="button" id="btnform"
+                    value="Créer">
             </nav>
 
 
@@ -49,13 +50,14 @@
                             <img class="imgResult" id="imagePreview" alt="">
                             <input type="file" id="imageInput" name="Photo" required>
                             <label for="">Nom</label>
-                            <input type="text" name="Nom" placeholder="nom" minlength="5" maxlength="20">
+                            <input class="pixel-corners-outlined" type="text" name="Nom" placeholder="nom" minlength="5"
+                                maxlength="20">
                         </span>
                     </span>
 
                     <span class="Type">
                         <label for="">Type</label>
-                        <select id="Type" name="TypeValue" required>
+                        <select class="pixel-corners-outlined" id="Type" name="TypeValue" required>
                             <option value="Simp">Simp</option>
                             <option value="Chad">Chad</option>
                             <option value="Magneto">Magneto</option>
@@ -66,7 +68,7 @@
                     <span class="Habitatselect">
                         <label for="">Habitat</label>
                         <!-- 50 caracteres -->
-                        <select id="Habitat" name="HabitatValue" required>
+                        <select class="pixel-corners-outlined" id="Habitat" name="HabitatValue" required>
                             <option value="Forêt">Forêt</option>
                             <option value="ENJMIN">ENJMIN</option>
                             <option value="Bled">Bled</option>
@@ -75,11 +77,11 @@
 
                     <span class="textarea" maxlength="100">
                         <label for="">Description</label>
-                        <textarea name="Description" id="" rows="5"></textarea>
+                        <textarea class="pixel-corners-outlined" name="Description" id="" rows="5"></textarea>
                         <span class="error"></span>
                     </span>
 
-                    <input type="submit" id="envoie" value="Envoyer">
+                    <input class="pixel-corners" type="submit" id="envoie" value="Envoyer">
                     <span class="error"></span>
                 </form>
 
@@ -87,12 +89,12 @@
 
             <section class="presentation-section">
                 <!-- <span class="resultAffichageForm"></span> -->
-                <div data-aos="fade-right" class="content az items" id="presentation">
-                    <h1><strong>NFCmon</strong></h2>
+                <div data-aos="fade-right" class="content items">
+                    <h1><strong>NFCdex</strong></h2>
                         <h2>
-                            Explore le NFCdex : tout les NFCmon de la terre en un <strong>contact !</strong>
+                            Tout les NFCmon de la terre en un <strong>contact !</strong>
                         </h2>
-                        <button id="installApp">Télécharger</button>
+                        <button class="pixel-corners" id="installApp">Télécharger</button>
 
                 </div>
 
@@ -135,7 +137,7 @@
                 <div class="pied-de-page" data-aos="zoom-in" data-aos-delay="200">
 
                     <div class="logoFooter">
-                        <img src="./assets/logo/Logo2.png" alt="logo">
+                        <img src="./assets/logo/Logo2.webp" alt="logo">
                     </div>
 
                     <div class="information-footer">

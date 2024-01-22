@@ -67,11 +67,9 @@ form {
   border-radius: 20px;
   flex-direction: column;
   grid-gap: 10px;
-  background: linear-gradient(
-    180deg,
-    var(--primaryColor),
-    var(--secondary) 79.53%
-  );
+  background: linear-gradient(180deg,
+      var(--primaryColor),
+      var(--secondary) 79.53%);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-500px);
@@ -84,7 +82,16 @@ select {
   padding: 5px 5px;
 }
 
-input[type="file"] {
+select {
+  font-family: var(--paragraphe);
+}
+
+form input::placeholder,
+form input {
+  font-family: var(--paragraphe);
+}
+
+b input[type="file"] {
   font-family: var(--paragraphe);
 }
 
@@ -125,7 +132,7 @@ input::placeholder {
   background-color: var(--accent);
   padding: 5px 10px;
   cursor: pointer;
-  font-size: var(--paragraphe);
+  font-family: var(--paragraphe);
   font-weight: bold;
   transition: 1s all;
   color: var(--secondary);
@@ -195,6 +202,10 @@ nav img {
   flex-direction: column;
   grid-area: textarea;
   width: 100%;
+}
+
+textarea {
+  font-family: var(--paragraphe);
 }
 
 .list {
@@ -369,7 +380,7 @@ footer {
   align-items: center;
 }
 
-.logoFooter > img {
+.logoFooter>img {
   height: 100px;
   width: 100px;
 }
@@ -392,7 +403,7 @@ footer {
   grid-gap: 20px;
 }
 
-.information-footer > a {
+.information-footer>a {
   color: var(--colortxt);
 }
 
@@ -401,8 +412,7 @@ footer {
   background-color: var(--accent);
   padding: 8px 25px;
   border: none;
-  transition: 0.6s all;
-  border-radius: 10px;
+  transition: .6s all;
   cursor: pointer;
   color: var(--secondary);
   font-weight: bold;
@@ -427,4 +437,162 @@ footer {
 .nfc-mode-message {
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+.pixel-corners {
+  clip-path: polygon(0px calc(100% - 3px),
+      1px calc(100% - 3px),
+      1px calc(100% - 2px),
+      2px calc(100% - 1px),
+      3px calc(100% - 1px),
+      3px 100%,
+      calc(100% - 3px) 100%,
+      calc(100% - 3px) calc(100% - 1px),
+      calc(100% - 2px) calc(100% - 1px),
+      calc(100% - 1px) calc(100% - 2px),
+      calc(100% - 1px) calc(100% - 3px),
+      100% calc(100% - 3px),
+      100% 3px,
+      calc(100% - 1px) 3px,
+      calc(100% - 1px) 2px,
+      calc(100% - 2px) 1px,
+      calc(100% - 3px) 1px,
+      calc(100% - 3px) 0px,
+      3px 0px,
+      3px 1px,
+      2px 1px,
+      1px 2px,
+      1px 3px,
+      0px 3px);
+  border: none;
+  outline: none;
+}
+
+
+
+.pixel-corners-outlined,
+.pixel-corners-outlined--wrapper {
+  clip-path: polygon(0px calc(100% - 3px),
+      1px calc(100% - 3px),
+      1px calc(100% - 2px),
+      2px calc(100% - 1px),
+      3px calc(100% - 1px),
+      3px 100%,
+      calc(100% - 3px) 100%,
+      calc(100% - 3px) calc(100% - 1px),
+      calc(100% - 2px) calc(100% - 1px),
+      calc(100% - 1px) calc(100% - 2px),
+      calc(100% - 1px) calc(100% - 3px),
+      100% calc(100% - 3px),
+      100% 3px,
+      calc(100% - 1px) 3px,
+      calc(100% - 1px) 2px,
+      calc(100% - 2px) 1px,
+      calc(100% - 3px) 1px,
+      calc(100% - 3px) 0px,
+      3px 0px,
+      3px 1px,
+      2px 1px,
+      1px 2px,
+      1px 3px,
+      0px 3px);
+  position: relative;
+}
+
+.pixel-corners-outlined {
+  border: 1px solid transparent;
+}
+
+.pixel-corners-outlined--wrapper {
+  width: fit-content;
+  height: fit-content;
+}
+
+.pixel-corners-outlined--wrapper .pixel-corners-outlined {
+  display: block;
+  clip-path: polygon(1px 3px,
+      2px 3px,
+      2px 2px,
+      3px 2px,
+      3px 1px,
+      calc(100% - 3px) 1px,
+      calc(100% - 3px) 2px,
+      calc(100% - 2px) 2px,
+      calc(100% - 2px) 3px,
+      calc(100% - 1px) 3px,
+      calc(100% - 1px) calc(100% - 3px),
+      calc(100% - 2px) calc(100% - 3px),
+      calc(100% - 2px) calc(100% - 2px),
+      calc(100% - 3px) calc(100% - 2px),
+      calc(100% - 3px) calc(100% - 1px),
+      3px calc(100% - 1px),
+      3px calc(100% - 2px),
+      2px calc(100% - 2px),
+      2px calc(100% - 3px),
+      1px calc(100% - 3px));
+}
+
+.pixel-corners-outlined::after,
+.pixel-corners-outlined--wrapper::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0px calc(100% - 3px),
+      1px calc(100% - 3px),
+      1px calc(100% - 2px),
+      2px calc(100% - 1px),
+      3px calc(100% - 1px),
+      3px 100%,
+      calc(100% - 3px) 100%,
+      calc(100% - 3px) calc(100% - 1px),
+      calc(100% - 2px) calc(100% - 1px),
+      calc(100% - 1px) calc(100% - 2px),
+      calc(100% - 1px) calc(100% - 3px),
+      100% calc(100% - 3px),
+      100% 3px,
+      calc(100% - 1px) 3px,
+      calc(100% - 1px) 2px,
+      calc(100% - 2px) 1px,
+      calc(100% - 3px) 1px,
+      calc(100% - 3px) 0px,
+      3px 0px,
+      3px 1px,
+      2px 1px,
+      1px 2px,
+      1px 3px,
+      0px 3px,
+      0px 50%,
+      1px 50%,
+      1px 3px,
+      2px 3px,
+      2px 2px,
+      3px 2px,
+      3px 1px,
+      calc(100% - 3px) 1px,
+      calc(100% - 3px) 2px,
+      calc(100% - 2px) 2px,
+      calc(100% - 2px) 3px,
+      calc(100% - 1px) 3px,
+      calc(100% - 1px) calc(100% - 3px),
+      calc(100% - 2px) calc(100% - 3px),
+      calc(100% - 2px) calc(100% - 2px),
+      calc(100% - 3px) calc(100% - 2px),
+      calc(100% - 3px) calc(100% - 1px),
+      3px calc(100% - 1px),
+      3px calc(100% - 2px),
+      2px calc(100% - 2px),
+      2px calc(100% - 3px),
+      1px calc(100% - 3px),
+      1px 50%,
+      0px 50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #545454;
+  display: block;
+  pointer-events: none;
+}
+
+.pixel-corners-outlined::after {
+  margin: -1px;
 }
