@@ -28,28 +28,31 @@ if ("NDEFReader" in window) {
 
     ndef = new NDEFReader();
 
-    setTimeout(() => {
-        document.createEvent('TouchEvent');
-        console.log("click");
-    }, 3000);
+    document.getElementById('text').innerHTML = "Checking NFC permissions...";
 
-    let loop = setInterval(async () => {
-        if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop);}
-        await ndef.scan()
-    }, 800);
+    // Check if NFC permission is granted or prompt if not granted
+    navigator.permissions.query({ name: "nfc" }).then((result) => {
+        if (result.state === "granted") {
+
+            phoneMode();
+
+        } else if (result.state === "prompt") {
+
+            const scanButton = document.querySelector("#scanButton");
+            scanButton.onclick = (event) => {
+                // Prompt user to allow sending and receiving info when they tap NFC devices.
+                scanButton.style.display = "none";
+                startScanning();
+            };
+
+            scanButton.click();
+        }
+    });
 
 } else if (window.innerWidth >= 1024) {
     desktopMode();
 }
 
-
-async function waitForNFCGranting() {
-
-    return navigator.permissions.query({ name: "nfc" }).then((status) => {
-        console.log(status);
-        return status.state;
-    });
-}
 
 function desktopMode() { }
 
