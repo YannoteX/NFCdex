@@ -37,6 +37,7 @@ if (window.innerWidth >= 1024) {
 async function waitForNFCGranting() {
 
     return navigator.permissions.query({ name: "nfc" }).then((status) => {
+        console.log(status);
         return status.state;
     });
 }
