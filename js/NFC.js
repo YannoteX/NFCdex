@@ -26,12 +26,10 @@ function removeH1H2FromDiv(divSelector) {
 if (window.innerWidth >= 1024) {
     desktopMode();
 } else if ("NDEFReader" in window) {
-    /*
-    let NFCStatus = setInterval(() => {
-        if (waitForNFCGranting() === "granted") { phoneMode(); clearInterval(NFCStatus); }
-    }, 800)*/
-    waitForNFCGranting()
-    phoneMode();
+
+    let NFCStatus = setInterval(async () => {
+        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(NFCStatus); }
+    }, 800)
 
 }
 
@@ -47,7 +45,7 @@ async function waitForNFCGranting() {
 function desktopMode() { }
 
 function phoneMode() {
-    waitForNFCGranting();
+
     console.log("ndef in window");
 
     // Pour la lecture NFC
