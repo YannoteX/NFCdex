@@ -34,13 +34,12 @@ if ("NDEFReader" in window) {
         } else if (result.state === "prompt") {
 
             const scanButton = document.querySelector("#scanButton");
-            scanButton.onclick = (event) => {
+
+            scanButton.click((event) => {
 
                 scanButton.style.display = "none";
                 phoneMode();
-            };
-
-            scanButton.click();
+            });
         }
     });
 
@@ -97,21 +96,6 @@ function phoneMode() {
             }
         };
     });
-
-
-    function isValidRecord(record) {
-        if (
-            record.id === "A7G5UI924G66EP4" &&
-            record.recordType === "mime" &&
-            record.mediaType === "application/json"
-        ) {
-            return true;
-        } else {
-            NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
-            return false;
-        }
-    }
-
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
 
