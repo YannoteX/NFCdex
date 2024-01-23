@@ -26,13 +26,18 @@ function removeH1H2FromDiv(divSelector) {
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if ("NDEFReader" in window) {
 
-    const ndef = new NDEFReader();
+    ndef = new NDEFReader();
 
+    let response = navigator.permissions.query({ name: "nfc" }).then(async (status) => {
+        await ndef.scan();
+    });
+
+    /*
     let loop = setInterval(async () => {
         //document.getElementById('click-bait').click();
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop);}
         await ndef.scan()
-    }, 800);
+    }, 800);*/
 
 } else if (window.innerWidth >= 1024) {
     desktopMode();
