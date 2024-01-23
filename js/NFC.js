@@ -33,12 +33,11 @@ if (window.innerWidth >= 1024) {
 async function waitForNFCGranting() {
     let NFCStatus = "";
 
-    while (NFCStatus != "granted") {
-        return navigator.permissions.query({ name: "nfc" }).then((status) => {
-            NFCStatus = status.state
-            console.log(status);
-        });
-    }
+    navigator.permissions.query({ name: "nfc" }).then((status) => {
+        NFCStatus = status.state
+        console.log(status);
+    });
+
 
     phoneMode();
 }
