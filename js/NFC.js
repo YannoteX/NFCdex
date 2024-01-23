@@ -28,9 +28,6 @@ if ("NDEFReader" in window) {
 
     ndef = new NDEFReader();
 
-    document.getElementById('text').innerHTML = "Checking NFC permissions...";
-
-    // Check if NFC permission is granted or prompt if not granted
     navigator.permissions.query({ name: "nfc" }).then((result) => {
         if (result.state === "granted") {
 
@@ -40,9 +37,9 @@ if ("NDEFReader" in window) {
 
             const scanButton = document.querySelector("#scanButton");
             scanButton.onclick = (event) => {
-                // Prompt user to allow sending and receiving info when they tap NFC devices.
+
                 scanButton.style.display = "none";
-                startScanning();
+                phoneMode();
             };
 
             scanButton.click();
