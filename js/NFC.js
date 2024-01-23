@@ -27,7 +27,7 @@ function removeH1H2FromDiv(divSelector) {
 if ("NDEFReader" in window) {
 
     let loop = setInterval(async () => {
-        document.getElementById('click-bait').click();
+        //document.getElementById('click-bait').click();
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
         await ndef.scan();
     }, 800);
