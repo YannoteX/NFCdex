@@ -27,7 +27,7 @@ if ("NDEFReader" in window) {
 
     const ndef = new NDEFReader();
 
-    await ndef.scan().then();
+    await ndef.scan();
 
 } else if (window.innerWidth >= 1024) {
     desktopMode();
