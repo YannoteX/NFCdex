@@ -45,10 +45,6 @@ async function waitForNFCGranting() {
         permissionState = status.state;
     });
 
-    if (permissionState !== "granted") {
-        navigator.permissions.revoke({ name: "nfc" });
-    }
-
     await ndef.scan();
 
     return permissionState;
