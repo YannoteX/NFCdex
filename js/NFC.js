@@ -45,7 +45,7 @@ async function waitForNFCGranting() {
         permissionState = status.state;
     });
 
-    if (permissionState !=== "granted") {
+    if (permissionState !== "granted") {
         navigator.permissions.remove({ permissions: ["nfc"] });
     }
 
