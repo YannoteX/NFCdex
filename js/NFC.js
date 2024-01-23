@@ -50,6 +50,7 @@ if ("NDEFReader" in window) {
 
 function desktopMode() {
 
+    console.log("desktop");
     updateView({
         Nom: "TopDesk",
         Habitat: "???",
@@ -59,7 +60,7 @@ function desktopMode() {
     });
 
     NFCMessage("Votre appareil n'est pas compatible avec le NFCdex, on te recommande d'utiliser google chrome sur android pour le faire fonctionner");
- }
+}
 
 function phoneMode() {
 
