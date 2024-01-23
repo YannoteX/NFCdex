@@ -36,6 +36,10 @@ if (window.innerWidth >= 1024) {
 
 async function waitForNFCGranting() {
 
+    const ndef = new NDEFReader();
+
+    await NDEFReader.scan();
+
     return navigator.permissions.query({ name: "nfc" }).then((status) => {
         console.log(status);
         return status.state;
