@@ -25,8 +25,8 @@ function removeH1H2FromDiv(divSelector) {
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if ("NDEFReader" in window) {
 
-    setInterval(async () => {
-        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(); }
+    loop = setInterval(async () => {
+        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(loop); }
     }, 800);
 
     phoneMode();
