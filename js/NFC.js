@@ -1,6 +1,7 @@
 import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
 let scanAction = "read";
+let ndef;
 
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
@@ -29,8 +30,6 @@ if ("NDEFReader" in window) {
         if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(loop); }
     }, 800);
 
-    phoneMode();
-
 } else if (window.innerWidth >= 1024) {
     desktopMode();
 }
@@ -38,9 +37,9 @@ if ("NDEFReader" in window) {
 
 async function waitForNFCGranting() {
 
-    const ndef = new NDEFReader();
+    ndef = new NDEFReader();
 
-    await ndef.scan().then();
+    await ndef.scan();
 
     return navigator.permissions.query({ name: "nfc" }).then((status) => {
         console.log(status);
@@ -51,12 +50,6 @@ async function waitForNFCGranting() {
 function desktopMode() { }
 
 function phoneMode() {
-
-    console.log("ndef in window");
-
-    // Pour la lecture NFC
-    const ndef = new NDEFReader();
-    //
 
     NFCMessage("Bienvenue sur le NFCdex, charge un NFCmon en scannant ta carte NFC dédiée");
 
