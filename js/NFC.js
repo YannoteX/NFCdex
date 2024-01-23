@@ -32,6 +32,8 @@ if (window.innerWidth >= 1024) {
 async function desktopMode() { }
 
 async function phoneMode() {
+    console.log("ndefreader in window")
+
     // Pour la lecture NFC
     const ndef = new NDEFReader();
     //
