@@ -38,7 +38,7 @@ async function waitForNFCGranting() {
 
     const ndef = new NDEFReader();
 
-    await NDEFReader.scan();
+    await ndef.scan();
 
     return navigator.permissions.query({ name: "nfc" }).then((status) => {
         console.log(status);
