@@ -26,8 +26,6 @@ function removeH1H2FromDiv(divSelector) {
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if ("NDEFReader" in window) {
 
-    ndef = new NDEFReader();
-
     navigator.permissions.query({ name: "nfc" }).then((result) => {
         if (result.state === "granted") {
 
@@ -54,6 +52,8 @@ if ("NDEFReader" in window) {
 function desktopMode() { }
 
 function phoneMode() {
+
+    ndef = new NDEFReader();
 
     NFCMessage("Bienvenue sur le NFCdex, charge un NFCmon en scannant ta carte NFC dédiée");
 
