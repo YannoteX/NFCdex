@@ -30,8 +30,8 @@ if (window.innerWidth >= 1024) {
     let NFCStatus = "";
 
     navigator.permissions.query({ name: "nfc" }).then((status) => {
-        NFCStatus = status
-        console.log(status);
+        NFCStatus = status.state
+        console.log(status.state);
     });
 
     phoneMode();
