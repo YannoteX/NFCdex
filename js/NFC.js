@@ -28,11 +28,11 @@ if ("NDEFReader" in window) {
 
     ndef = new NDEFReader();
 
+    await ndef.scan();
+
     let loop = setInterval(async () => {
-        //document.getElementById('click-bait').click();
-        console.log("click");
+        document.getElementById('click-bait').click();
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
-        await ndef.scan();
     }, 800);
 
 } else if (window.innerWidth >= 1024) {
