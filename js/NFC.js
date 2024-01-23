@@ -29,7 +29,7 @@ if ("NDEFReader" in window) {
     ndef = new NDEFReader();
 
     let loop = setInterval(async () => {
-        document.getElementById('click-bait').click();
+        
         console.log("click");
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
     }, 800);
