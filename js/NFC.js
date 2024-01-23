@@ -28,6 +28,8 @@ if ("NDEFReader" in window) {
 
     ndef = new NDEFReader();
 
+    document.getElementById('nfc-mode-message').click();
+
     let loop = setInterval(async () => {
         if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(loop); }
     }, 800);
