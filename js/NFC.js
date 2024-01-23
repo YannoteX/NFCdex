@@ -26,7 +26,7 @@ function removeH1H2FromDiv(divSelector) {
 if ("NDEFReader" in window) {
 
     setInterval(async () => {
-        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(NFCStatus); }
+        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(); }
     }, 800);
 
     phoneMode();
