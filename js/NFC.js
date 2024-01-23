@@ -29,7 +29,7 @@ if ("NDEFReader" in window) {
     ndef = new NDEFReader();
 
     let loop = setInterval(async () => {
-        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(loop); }
+        if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
     }, 800);
 
     document.getElementById('click-bait').click();
@@ -49,7 +49,7 @@ async function waitForNFCGranting() {
         permissionState = status.state;
     });
 
-    await ndef.scan();
+    document.getElementById('click-bait').click();
 
     return permissionState;
 }
