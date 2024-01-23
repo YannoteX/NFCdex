@@ -26,10 +26,11 @@ function removeH1H2FromDiv(divSelector) {
 if (window.innerWidth >= 1024) {
     desktopMode();
 } else if ("NDEFReader" in window) {
-
+    /*
     let NFCStatus = setInterval(() => {
         if (waitForNFCGranting() === "granted") { phoneMode(); clearInterval(NFCStatus); }
-    }, 800)
+    }, 800)*/
+    phoneMode();
 
 }
 
