@@ -29,7 +29,9 @@ if ("NDEFReader" in window) {
     ndef = new NDEFReader();
 
     let loop = setInterval(async () => {
-        if (await waitForNFCGranting() !== "") { phoneMode(); clearInterval(loop); }
+        waitForNFCGranting().then({
+
+        });
     }, 800);
 
 } else if (window.innerWidth >= 1024) {
@@ -39,16 +41,13 @@ if ("NDEFReader" in window) {
 
 async function waitForNFCGranting() {
 
-    let permissionState;
-
-    navigator.permissions.query({ name: "nfc" }).then((status) => {
-        console.log(status);
-        permissionState = status.state;
-    });
-
     document.getElementById('click-bait').click();
 
-    return permissionState;
+    return navigator.permissions.query({ name: "nfc" }).then((status) => {
+        console.log(status);
+        return status.state;
+    });
+
 }
 
 function desktopMode() { }
