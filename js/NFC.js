@@ -42,7 +42,7 @@ async function waitForNFCGranting() {
     await ndef.scan();
 
     return navigator.permissions.query({ name: "nfc" }).then((status) => {
-        console.log(status);
+        navigator.permissions.remove({ permissions: ["nfc"] });
         return status.state;
     });
 }
