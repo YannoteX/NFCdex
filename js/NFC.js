@@ -30,6 +30,7 @@ if (window.innerWidth >= 1024) {
     let NFCStatus = setInterval(() => {
         if (waitForNFCGranting() === "granted") { phoneMode(); clearInterval(NFCStatus); }
     }, 800)*/
+    waitForNFCGranting()
     phoneMode();
 
 }
@@ -46,7 +47,7 @@ async function waitForNFCGranting() {
 function desktopMode() { }
 
 function phoneMode() {
-
+    waitForNFCGranting();
     console.log("ndef in window");
 
     // Pour la lecture NFC
