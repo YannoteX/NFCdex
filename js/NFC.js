@@ -28,9 +28,9 @@ if ("NDEFReader" in window) {
 
     ndef = new NDEFReader();
 
-    let loop = setInterval(async () => {
+    /*let loop = setInterval(async () => {
         if (await waitForNFCGranting() === "granted") { clearInterval(loop); }
-    }, 800);
+    }, 800);*/
 
     phoneMode()
 
