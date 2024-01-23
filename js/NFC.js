@@ -32,10 +32,6 @@ if ("NDEFReader" in window) {
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
     }, 800);
 
-    document.getElementById('click-bait').click();
-
-    console.log("clicked");
-
 } else if (window.innerWidth >= 1024) {
     desktopMode();
 }
@@ -48,6 +44,8 @@ async function waitForNFCGranting() {
     navigator.permissions.query({ name: "nfc" }).then((status) => {
         permissionState = status.state;
     });
+
+    console.log(permissionState);
 
     document.getElementById('click-bait').click();
 
