@@ -32,6 +32,7 @@ if (window.innerWidth >= 1024) {
     while (NFCStatus != "granted") {
         navigator.permissions.query({ name: "nfc" }).then((status) => {
             NFCStatus = status
+            console.log("status");
         });
     }
 
