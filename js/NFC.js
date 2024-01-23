@@ -27,9 +27,6 @@ function removeH1H2FromDiv(divSelector) {
 if (window.innerWidth >= 1024) {
     desktopMode();
 } else {
-    if ("NDEFReader" in window) {
-        phoneMode();
-    }
 }
 
 async function desktopMode() { }
