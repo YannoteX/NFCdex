@@ -34,8 +34,8 @@ if ("NDEFReader" in window) {
         } else if (result.state === "prompt") {
 
             const scanButton = document.querySelector("#scanButton");
-            const installApp = document.getElementById('installApp');
-            installApp.onclick = (event) => {
+
+            scanButton.onclick = (event) => {
 
                 scanButton.style.display = "none";
                 phoneMode();
