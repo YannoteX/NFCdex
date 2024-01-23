@@ -29,9 +29,7 @@ if ("NDEFReader" in window) {
     ndef = new NDEFReader();
 
     let loop = setInterval(async () => {
-        waitForNFCGranting().then({
-
-        });
+        if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
     }, 800);
 
 } else if (window.innerWidth >= 1024) {
@@ -47,7 +45,6 @@ async function waitForNFCGranting() {
         console.log(status);
         return status.state;
     });
-
 }
 
 function desktopMode() { }
