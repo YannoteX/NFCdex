@@ -30,7 +30,7 @@ if ("NDEFReader" in window) {
 
     setTimeout(() => {
         document.getElementById('click-bait').click();
-    }, 300);
+    }, 3000);
 
     let loop = setInterval(async () => {
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop);}
