@@ -3,71 +3,23 @@ import { DataToJson, information, resetForm } from "/js/formValidate.js";
 let scanAction = "read";
 let ndef;
 
-function removeH1H2FromDiv(divSelector) {
-    const divToModify = document.querySelector(divSelector);
-
-    if (divToModify) {
-        const h1Element = divToModify.querySelector("h1");
-        const h2Element = divToModify.querySelector("h2");
-        const BtninstallApp = divToModify.querySelector("button");
-
-        if (h1Element) {
-            h1Element.style.display = "none";
-        } if (h2Element) {
-            h2Element.style.display = "none";
-        } if (BtninstallApp) BtninstallApp.style.display = "none";
-    } else {
-        console.log(
-            "La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée."
-        );
-    }
-}
-
-// Appeler desktopMode lorsque le mode de bureau est détecté
-if ("NDEFReader" in window) {
-
+function startScanning() {
+    // Get references to NDEFReader
     ndef = new NDEFReader();
 
-    setTimeout(() => {
-        document.createEvent('TouchEvent');
-        console.log("click");
-    }, 3000);
-
-    let loop = setInterval(async () => {
-        if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop);}
-        await ndef.scan()
-    }, 800);
-
-} else if (window.innerWidth >= 1024) {
-    desktopMode();
-}
-
-
-async function waitForNFCGranting() {
-
-    return navigator.permissions.query({ name: "nfc" }).then((status) => {
-        console.log(status);
-        return status.state;
-    });
-}
-
-function desktopMode() { }
-
-function phoneMode() {
-
-    NFCMessage("Bienvenue sur le NFCdex, charge un NFCmon en scannant ta carte NFC dédiée");
-
-
+    // Start scanning for NFC tags
     ndef.scan().then(() => {
+
         ndef.onreadingerror = (e) => {
             NFCMessage(
                 "Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone"
             );
         };
 
-        ndef.onreading = (e) => {
-            const record = e.message.records[0];
-
+        ndef.addEventListener("reading", ({ message, serialNumber }) => {
+            console.log(serialNumber);
+            console.log(message);
+            const record = message.records[0];
             if (scanAction === "read") {
                 if (isValidRecord(record)) {
                     const decoder = new TextDecoder();
@@ -95,48 +47,84 @@ function phoneMode() {
                 writeTag({}, "Tag NFCmon initialisé");
             } else {
             }
-        };
+        });
+
+    }).catch((error) => {
+        document.getElementById('text').innerHTML = `Error! Scan failed to start: ${error}.`;
     });
+}
 
+// Look if the device has NFC
+if ("NDEFReader" in window) {
+    document.getElementById('text').innerHTML = "Checking NFC permissions...";
 
-    function isValidRecord(record) {
-        if (
-            record.id === "A7G5UI924G66EP4" &&
-            record.recordType === "mime" &&
-            record.mediaType === "application/json"
-        ) {
-            return true;
-        } else {
-            NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
-            return false;
+    // Check if NFC permission is granted or prompt if not granted
+    navigator.permissions.query({ name: "nfc" }).then((result) => {
+        if (result.state === "granted") {
+            // Permission already granted, start scanning
+            startScanning();
+        } else if (result.state === "prompt") {
+            // Show a scan button.
+            const scanButton = document.querySelector("#scanButton");
+            scanButton.style.display = "block";
+            scanButton.onclick = (event) => {
+                // Prompt user to allow sending and receiving info when they tap NFC devices.
+                scanButton.style.display = "none";
+                startScanning();
+            };
         }
+    });
+} else {
+    document.getElementById('text').innerHTML = "No NFC reader, or browser does not support NDEFReader";
+}
+
+function removeH1H2FromDiv(divSelector) {
+    const divToModify = document.querySelector(divSelector);
+
+    if (divToModify) {
+        const h1Element = divToModify.querySelector("h1");
+        const h2Element = divToModify.querySelector("h2");
+        const BtninstallApp = divToModify.querySelector("button");
+
+        if (h1Element) {
+            h1Element.style.display = "none";
+        } if (h2Element) {
+            h2Element.style.display = "none";
+        } if (BtninstallApp) BtninstallApp.style.display = "none";
+    } else {
+        console.log(
+            "La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée."
+        );
     }
+}
 
-    function writeTag(jsonObject, successMessage, failureMessage) {
-        let encoder = new TextEncoder();
 
-        const data = encoder.encode(DataToJson(jsonObject));
-        let blob = new Blob([data]);
+function desktopMode() { }
 
-        ndef
-            .write({
-                records: [
-                    {
-                        id: "A7G5UI924G66EP4",
-                        recordType: "mime",
-                        mediaType: "application/json",
-                        data: encoder.encode(DataToJson(jsonObject)),
-                    },
-                ],
-            })
-            .then(() => {
-                NFCMessage(successMessage);
-                resetForm("form");
-            })
-            .catch(() => {
-                NFCMessage(failureMessage);
-            });
-    }
+function writeTag(jsonObject, successMessage, failureMessage) {
+    let encoder = new TextEncoder();
+
+    const data = encoder.encode(DataToJson(jsonObject));
+    let blob = new Blob([data]);
+
+    ndef
+        .write({
+            records: [
+                {
+                    id: "A7G5UI924G66EP4",
+                    recordType: "mime",
+                    mediaType: "application/json",
+                    data: encoder.encode(DataToJson(jsonObject)),
+                },
+            ],
+        })
+        .then(() => {
+            NFCMessage(successMessage);
+            resetForm("form");
+        })
+        .catch(() => {
+            NFCMessage(failureMessage);
+        });
 }
 
 
@@ -167,24 +155,24 @@ function updateView(jsonObject) {
     document.querySelector(
         ".resultAffichageDeux"
     ).innerHTML = `
-    
-    <div class="resultGlobale">
-    <img style="width : 100%; display : flex; height : 180px; object-fit : contain" src="${ImageResult}"></img>
-    <div class="info-poke">
-    <p>Nom : ${Nom}</p>
-    <p> Type : ${Type}</p>
-    <p> Habitat : ${Habitat}
-    </div>
-    </div>
-    
-           
+            
+            <div class="resultGlobale">
+            <img style="width : 100%; display : flex; height : 180px; object-fit : contain" src="${ImageResult}"></img>
+            <div class="info-poke">
+            <p>Nom : ${Nom}</p>
+            <p> Type : ${Type}</p>
+            <p> Habitat : ${Habitat}
+            </div>
+            </div>
+            
+                
 
-  `;
+        `;
 
 
     document.getElementById("SectionOrange").innerHTML = `
-    <p class="description" style="width: 300px; padding : 0px 20px"> ${Description}</p>
-    `
+            <p class="description" style="width: 300px; padding : 0px 20px"> ${Description}</p>
+            `
 
     //   function getValueString(value) {
     //     console.log(value);
