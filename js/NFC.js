@@ -27,12 +27,18 @@ if (window.innerWidth >= 1024) {
     desktopMode();
 } else if ("NDEFReader" in window) {
 
+    waitForNFCGranting();
+}
+
+async function waitForNFCGranting() {
     let NFCStatus = "";
 
-    navigator.permissions.query({ name: "nfc" }).then((status) => {
-        NFCStatus = status.state
-        console.log(status.state);
-    });
+    while (NFCStatus != "Granted") {
+        navigator.permissions.query({ name: "nfc" }).then((status) => {
+            NFCStatus = status.state
+            console.log(status);
+        });
+    }
 
     phoneMode();
 }
