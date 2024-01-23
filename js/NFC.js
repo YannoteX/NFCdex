@@ -22,11 +22,11 @@ function removeH1H2FromDiv(divSelector) {
     }
 }
 
-"NDEFReader" in window ? phoneMode() : desktopMode();
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if (window.innerWidth >= 1024) {
     desktopMode();
-} else {
+} else if ("NDEFReader" in window) {
+    phoneMode()
 }
 
 async function desktopMode() { }
