@@ -23,14 +23,14 @@ function removeH1H2FromDiv(divSelector) {
 }
 
 // Appeler desktopMode lorsque le mode de bureau est détecté
-if (window.innerWidth >= 1024) {
-    desktopMode();
-} else if ("NDEFReader" in window) {
+if ("NDEFReader" in window) {
 
-    let NFCStatus = setInterval(async () => {
+    setInterval(async () => {
         if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(NFCStatus); }
     }, 800)
 
+} else if (window.innerWidth >= 1024) {
+    desktopMode();
 }
 
 
@@ -42,6 +42,8 @@ async function waitForNFCGranting() {
         console.log(status);
         return status.state;
     });
+
+    ndef.scan();
 }
 
 function desktopMode() { }
