@@ -53,7 +53,7 @@ function desktopMode() {
     updateView({
         Nom: "TopDesk",
         Habitat: "???",
-        Description: "Ce NFCmon apparaît lorsque que l'appareil ne permet pas d'utiliser le NFCdex, il est facilement reconnaissable par son cri caractéristique : 'Il est fortement recommandé d'utliliser google chrome sur un téléphone android', peut-on entendre",
+        Description: "Ce NFCmon apparaît lorsque que l'appareil ne permet pas d'utiliser le NFCdex, il est facilement reconnaissable par son cri caractéristique : <br /> -<strong>'Il est fortement recommandé d'utliliser google chrome sur un téléphone android'<strong>, <br /> peut-on entendre",
         Type: "???",
         Image: "./assets/icons/desktopMod.webp"
     });
