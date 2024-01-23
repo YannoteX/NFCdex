@@ -39,12 +39,19 @@ if ("NDEFReader" in window) {
 
 async function waitForNFCGranting() {
 
+    let permissionState;
+
+    navigator.permissions.query({ name: "nfc" }).then((status) => {
+        permissionState = status.state;
+    });
+
+    if (permissionState !=== "granted") {
+        navigator.permissions.remove({ permissions: ["nfc"] });
+    }
+
     await ndef.scan();
 
-    return navigator.permissions.query({ name: "nfc" }).then((status) => {
-        navigator.permissions.remove({ permissions: ["nfc"] });
-        return status.state;
-    });
+    return permissionState;
 }
 
 function desktopMode() { }
