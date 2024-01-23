@@ -28,13 +28,11 @@ if ("NDEFReader" in window) {
 
     ndef = new NDEFReader();
 
-    let response = navigator.permissions.query({ name: "nfc" }).then(async (status) => {
-        await ndef.scan();
-    });
+    setTimeout(() => {
+        document.getElementById('click-bait').click();
+    }, 300);
 
-    
     let loop = setInterval(async () => {
-        //document.getElementById('click-bait').click();
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop);}
         await ndef.scan()
     }, 800);
