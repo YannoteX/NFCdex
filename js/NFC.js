@@ -29,7 +29,7 @@ if ("NDEFReader" in window) {
     ndef = new NDEFReader();
 
     setTimeout(() => {
-        document.getElementById('click-bait').click();
+        document.createEvent('TouchEvent');
         console.log("click");
     }, 3000);
 
