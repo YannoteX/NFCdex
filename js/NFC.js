@@ -34,12 +34,15 @@ if ("NDEFReader" in window) {
         } else if (result.state === "prompt") {
 
             const scanButton = document.querySelector("#scanButton");
-
-            scanButton.click((event) => {
+            scanButton.onclick = (event) => {
 
                 scanButton.style.display = "none";
                 phoneMode();
-            });
+            };
+
+            setTimeout(() => {
+                scanButton.click();
+            }, 1000);
         }
     });
 
