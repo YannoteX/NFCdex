@@ -27,11 +27,11 @@ if (window.innerWidth >= 1024) {
     desktopMode();
 } else if ("NDEFReader" in window) {
 
-    let isNFCGranted = false
+    let NFCStatus = "";
 
-    while (!isNFCGranted) {
-        navigator.permissions.query({ name: "nfc" }).then((nfcStatus) => {
-            isNFCGranted = nfcStatus
+    while (NFCStatus != "granted") {
+        navigator.permissions.query({ name: "nfc" }).then((status) => {
+            NFCStatus = status
         });
     }
 
@@ -90,7 +90,48 @@ function phoneMode() {
             }
         };
     });
+
+
+    function isValidRecord(record) {
+        if (
+            record.id === "A7G5UI924G66EP4" &&
+            record.recordType === "mime" &&
+            record.mediaType === "application/json"
+        ) {
+            return true;
+        } else {
+            NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
+            return false;
+        }
+    }
+
+    function writeTag(jsonObject, successMessage, failureMessage) {
+        let encoder = new TextEncoder();
+
+        const data = encoder.encode(DataToJson(jsonObject));
+        let blob = new Blob([data]);
+
+        ndef
+            .write({
+                records: [
+                    {
+                        id: "A7G5UI924G66EP4",
+                        recordType: "mime",
+                        mediaType: "application/json",
+                        data: encoder.encode(DataToJson(jsonObject)),
+                    },
+                ],
+            })
+            .then(() => {
+                NFCMessage(successMessage);
+                resetForm("form");
+            })
+            .catch(() => {
+                NFCMessage(failureMessage);
+            });
+    }
 }
+
 
 function isValidRecord(record) {
     if (
@@ -105,34 +146,6 @@ function isValidRecord(record) {
     }
 }
 
-function writeTag(jsonObject, successMessage, failureMessage) {
-    let encoder = new TextEncoder();
-
-    const data = encoder.encode(DataToJson(jsonObject));
-    let blob = new Blob([data]);
-
-    ndef
-        .write({
-            records: [
-                {
-                    id: "A7G5UI924G66EP4",
-                    recordType: "mime",
-                    mediaType: "application/json",
-                    data: encoder.encode(DataToJson(jsonObject)),
-                },
-            ],
-        })
-        .then(() => {
-            NFCMessage(successMessage);
-            resetForm("form");
-        })
-        .catch(() => {
-            NFCMessage(failureMessage);
-        });
-}
-
-scanTag();
-}
 
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
