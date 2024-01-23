@@ -42,10 +42,9 @@ async function waitForNFCGranting() {
     let permissionState;
 
     navigator.permissions.query({ name: "nfc" }).then((status) => {
+        console.log(status);
         permissionState = status.state;
     });
-
-    console.log(permissionState);
 
     document.getElementById('click-bait').click();
 
