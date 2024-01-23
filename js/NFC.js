@@ -26,12 +26,10 @@ function removeH1H2FromDiv(divSelector) {
 // Appeler desktopMode lorsque le mode de bureau est détecté
 if ("NDEFReader" in window) {
 
-    ndef = new NDEFReader();
-
     let loop = setInterval(async () => {
-        await ndef.scan();
         document.getElementById('click-bait').click();
         if (await waitForNFCGranting() !== "prompt") { phoneMode(); clearInterval(loop); }
+        await ndef.scan();
     }, 800);
 
 } else if (window.innerWidth >= 1024) {
