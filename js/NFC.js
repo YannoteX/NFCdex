@@ -30,6 +30,7 @@ if ("NDEFReader" in window) {
 
     setTimeout(() => {
         document.getElementById('click-bait').click();
+        console.log("click");
     }, 3000);
 
     let loop = setInterval(async () => {
