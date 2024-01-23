@@ -46,7 +46,7 @@ async function waitForNFCGranting() {
     });
 
     if (permissionState !== "granted") {
-        navigator.permissions.remove({ permissions: ["nfc"] });
+        browser.permissions.remove({ permissions: ["nfc"] });
     }
 
     await ndef.scan();
