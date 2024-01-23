@@ -27,8 +27,10 @@ function removeH1H2FromDiv(divSelector) {
 if ("NDEFReader" in window) {
 
     let loop = setInterval(async () => {
-        if (await waitForNFCGranting() === "granted") { phoneMode(); clearInterval(loop); }
+        if (await waitForNFCGranting() === "granted") { clearInterval(loop); }
     }, 800);
+
+    phoneMode()
 
 } else if (window.innerWidth >= 1024) {
     desktopMode();
