@@ -41,6 +41,8 @@ async function waitForNFCGranting() {
 
     document.getElementById('click-bait').click();
 
+    await ndef.scan();
+
     return navigator.permissions.query({ name: "nfc" }).then((status) => {
         console.log(status);
         return status.state;
