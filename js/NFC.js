@@ -29,6 +29,8 @@ if ("NDEFReader" in window) {
 
     await ndef.scan();
 
+    phoneMode();
+
 } else if (window.innerWidth >= 1024) {
     desktopMode();
 }
