@@ -26,13 +26,14 @@ function removeH1H2FromDiv(divSelector) {
 if (window.innerWidth >= 1024) {
     desktopMode();
 } else if ("NDEFReader" in window) {
-    phoneMode()
+    phoneMode();
 }
 
-async function desktopMode() { }
+function desktopMode() { }
 
-async function phoneMode() {
-    console.log("ndefreader in window")
+function phoneMode() {
+
+    console.log("ndef in window");
 
     // Pour la lecture NFC
     const ndef = new NDEFReader();
@@ -40,84 +41,88 @@ async function phoneMode() {
 
     NFCMessage("Bienvenue sur le NFCdex, charge un NFCmon en scannant ta carte NFC dédiée");
 
-    await ndef.scan();
-
-    ndef.onreadingerror = (e) => {
-        NFCMessage(
-            "Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone"
-        );
-    };
-
-    ndef.onreading = (e) => {
-        const record = e.message.records[0];
-
-        if (scanAction === "read") {
-            if (isValidRecord(record)) {
-                const decoder = new TextDecoder();
-
-                let json = JSON.parse(decoder.decode(record.data));
-
-                if (json) {
-                    updateView(json);
-                    NFCMessage("Tu as chargé " + json.Nom + " dans le NFCdex");
-                } else {
-                    NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
-                }
-            }
-        } else if (scanAction === "write") {
-            if (isValidRecord(record)) {
-                writeTag(
-                    information,
-                    information.Nom + " a été enregsitré dans ton tag NFCmon",
-                    "Oops... On a pas pu envoyer ton NFCmon, réessaie en gardant plus longtemps la carte sur ton téléphone"
+    async function scanTag() {
+        ndef.scan().then(() => {
+            ndef.onreadingerror = (e) => {
+                NFCMessage(
+                    "Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone"
                 );
+            };
 
-                setAction("none");
-            }
-        } else if (scanAction === "setNFCmon") {
-            writeTag({}, "Tag NFCmon initialisé");
+            ndef.onreading = (e) => {
+                const record = e.message.records[0];
+
+                if (scanAction === "read") {
+                    if (isValidRecord(record)) {
+                        const decoder = new TextDecoder();
+
+                        let json = JSON.parse(decoder.decode(record.data));
+
+                        if (json) {
+                            updateView(json);
+                            NFCMessage("Tu as chargé " + json.nom + "dans le NFCdex");
+                        } else {
+                            NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
+                        }
+                    }
+                } else if (scanAction === "write") {
+                    if (isValidRecord(record)) {
+                        writeTag(
+                            information,
+                            information.Nom + " a été enregsitré dans ton tag NFCmon",
+                            "Oops... On a pas pu envoyer ton NFCmon, réessaie en gardant plus longtemps la carte sur ton téléphone"
+                        );
+
+                        setAction("none");
+                    }
+                } else if (scanAction === "setNFCmon") {
+                    writeTag({}, "Tag NFCmon initialisé");
+                } else {
+                }
+            };
+        });
+    }
+
+    function isValidRecord(record) {
+        if (
+            record.id === "A7G5UI924G66EP4" &&
+            record.recordType === "mime" &&
+            record.mediaType === "application/json"
+        ) {
+            return true;
         } else {
+            NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
+            return false;
         }
     }
-}
 
-function isValidRecord(record) {
-    if (
-        record.id === "A7G5UI924G66EP4" &&
-        record.recordType === "mime" &&
-        record.mediaType === "application/json"
-    ) {
-        return true;
-    } else {
-        NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
-        return false;
+    function writeTag(jsonObject, successMessage, failureMessage) {
+        let encoder = new TextEncoder();
+
+        const data = encoder.encode(DataToJson(jsonObject));
+        let blob = new Blob([data]);
+
+        ndef
+            .write({
+                records: [
+                    {
+                        id: "A7G5UI924G66EP4",
+                        recordType: "mime",
+                        mediaType: "application/json",
+                        data: encoder.encode(DataToJson(jsonObject)),
+                    },
+                ],
+            })
+            .then(() => {
+                NFCMessage(successMessage);
+                resetForm("form");
+            })
+            .catch(() => {
+                NFCMessage(failureMessage);
+            });
     }
-}
 
-function writeTag(jsonObject, successMessage, failureMessage) {
-    let encoder = new TextEncoder();
-
-    const data = encoder.encode(DataToJson(jsonObject));
-    let blob = new Blob([data]);
-
-    ndef
-        .write({
-            records: [
-                {
-                    id: "A7G5UI924G66EP4",
-                    recordType: "mime",
-                    mediaType: "application/json",
-                    data: encoder.encode(DataToJson(jsonObject)),
-                },
-            ],
-        })
-        .then(() => {
-            NFCMessage(successMessage);
-            resetForm("form");
-        })
-        .catch(() => {
-            NFCMessage(failureMessage);
-        });
+    scanTag();
 }
 
 function updateView(jsonObject) {
