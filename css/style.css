@@ -473,13 +473,13 @@ footer {
   transform: translateX(-50%);
   overflow: hidden;
   font-weight: bold;
-  width: 80%;
+  width: 75%;
 }
 
 #nfc-mode-message {
   position: relative;
   white-space: nowrap;
-  animation: defilement 20s infinite linear;
+  animation: defilement 30s infinite linear;
   font-family: var(--paragraphe);
 }
 
