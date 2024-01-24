@@ -11,7 +11,7 @@ const PRECACHE_ASSETS = [
     '/css/style.css',
     '/css/variables.css',
     '/assets/fonts/pokemon-ds/pokemon-ds-font.ttf',
-    '/assets/icons/PhoneScreen2.png',
+    '/assets/icons/PhoneScreen2.webp',
     '/assets/icons/Pwa.svg',
     '/assets/logo/anim1.svg',
     '/assets/logo/Logo2.webp',

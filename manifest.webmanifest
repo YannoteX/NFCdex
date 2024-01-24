@@ -61,7 +61,7 @@
     ],
     "screenshots": [
         {
-            "src": "assets/icons/PhoneScreen2.png",
+            "src": "assets/icons/PhoneScreen2.webp",
             "sizes": "418x828",
             "type": "image/png",
             "form_factor": "narrow",
