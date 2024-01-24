@@ -14,7 +14,7 @@
 
   .resultGlobale {
     width: auto;
-    display: relative !important;
+    position: relative !important;
   }
 
   .imgResult {
