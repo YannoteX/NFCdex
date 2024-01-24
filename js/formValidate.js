@@ -54,7 +54,7 @@ enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
 });
 
-let limiteCaracteres = 100;
+let limiteCaracteres = 250;
 
 textarea.addEventListener("input", function () {
   let longueurTexte = textarea.value.length;
@@ -149,7 +149,7 @@ function showMessage(formulaire) {
   let existingMessage = formulaire.querySelector('.alert');
   if (!existingMessage) {
     const elementMessage = document.createElement("span");
-    elementMessage.textContent = "Attendre que vos informations se mettent dans votre carte NFCmon";
+    elementMessage.textContent = "Attends que le formulaire se vide pour retirer ta carte NFCmon";
     elementMessage.classList.add("alert");
     formulaire.appendChild(elementMessage);
 
@@ -157,7 +157,7 @@ function showMessage(formulaire) {
       if (elementMessage) {
         formulaire.removeChild(elementMessage);
       }
-    }, 3000);
+    }, 4000);
   }
 }
 
