@@ -110,10 +110,9 @@ form {
 }
 
 .styleMessageScanner {
-  white-space: nowrap;
   font-size: 18px;
   font-style: var(--paragraphe);
-  width: 250px !important ;
+  width: 200px !important ;
 }
 
 .nfc-mode-message form input,
@@ -480,7 +479,7 @@ footer {
   overflow: hidden;
   font-weight: bold;
   font-size: 20px;
-  max-width: 250px !important;
+  width: 200px !important;
 }
 
 #nfc-mode-message {
