@@ -475,7 +475,7 @@ footer {
   font-weight: bold;
   font-size: 20px;
   width: 80%;
-  max-width: 170px;
+  min-width: 170px;
 }
 
 #nfc-mode-message {
