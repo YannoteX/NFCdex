@@ -449,7 +449,8 @@ footer {
 }
 
 #envoie,
-#installApp {
+#installApp,
+#scanButton {
   background-color: var(--accent);
   padding: 8px 25px;
   border: none;
