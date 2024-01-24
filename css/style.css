@@ -87,6 +87,7 @@ form {
 .btn-section {
   display: flex;
   flex-wrap: wrap;
+  margin: 20px 0;
   width: 250px;
   min-width: 200px;
   justify-content: space-between;
@@ -463,7 +464,6 @@ footer {
 #installApp {
   text-transform: uppercase;
   font-size: 16px;
-  margin: 20px 0px 0px 0px;
   transition: 1s all;
   font-family: var(--titre);
 }
