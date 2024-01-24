@@ -172,6 +172,8 @@ function isValidRecord(record) {
 }
 
 
+
+
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
     resultAffichage.innerHTML = "";
@@ -187,7 +189,7 @@ function updateView(jsonObject) {
     ).innerHTML = `
     
     <div class="resultGlobale">
-    <img style="width : 100%; display : flex; height : 180px; object-fit : contain" src="${ImageResult}"></img>
+    <img class="imgResult" src="${ImageResult}"></img>
     <div class="info-poke">
     <p>Nom : ${Nom}</p>
     <p> Type : ${Type}</p>

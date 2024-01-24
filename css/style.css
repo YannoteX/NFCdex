@@ -312,17 +312,11 @@ textarea {
 
 .resultGlobale {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.imgResult {
-  height: 70px;
-  width: 70px;
-  object-fit: cover;
-  border-radius: 50%;
-}
+
 
 .resultAffichageDeux p,
 .description {
@@ -459,10 +453,10 @@ footer {
   cursor: pointer;
   color: var(--secondary);
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 #installApp {
-  text-transform: uppercase;
   font-size: 16px;
   transition: 1s all;
   font-family: var(--titre);
