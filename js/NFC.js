@@ -48,7 +48,19 @@ if ("NDEFReader" in window) {
 }
 
 
-function desktopMode() { }
+function desktopMode() {
+
+    console.log("desktop");
+    updateView({
+        Nom: "TopDesk",
+        Habitat: "???",
+        Description: "Ce NFCmon apparaît lorsque que l'appareil ne permet pas d'utiliser le NFCdex, il est facilement reconnaissable par son cri caractéristique : <br> -<strong><font color='white'>'Il est fortement recommandé d'utliliser google chrome sur un téléphone android'</font></strong>,<br> peut-on entendre",
+        Type: "???",
+        Image: "./assets/icons/desktopMod.webp"
+    });
+
+    NFCMessage("Votre appareil n'est pas compatible avec le NFCdex, on te recommande d'utiliser google chrome sur android pour le faire fonctionner");
+}
 
 function phoneMode() {
 
