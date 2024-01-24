@@ -15,7 +15,7 @@ const PRECACHE_ASSETS = [
     '/assets/icons/Pwa.svg',
     '/assets/logo/anim1.svg',
     '/assets/logo/Logo2.webp',
-    '/assets/logo/NFCdex_logo.webps'
+    '/assets/logo/NFCdex_logo.webp'
 ]
 
 // Listener for the install event - pre-caches our assets list on service worker install.
