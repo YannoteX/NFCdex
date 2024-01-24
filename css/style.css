@@ -100,7 +100,7 @@ form {
   content: attr(data-text);
   position: absolute;
   z-index: 100;
-  color: red;
+  color: blue;
   z-index: 100;
 }
 
@@ -110,7 +110,6 @@ form {
 }
 
 .styleMessageScanner {
-  color: red;
   white-space: nowrap;
   font-size: 17px;
   font-style: var(--paragraphe);
