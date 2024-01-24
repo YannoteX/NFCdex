@@ -13,6 +13,7 @@ const PRECACHE_ASSETS = [
     '/assets/fonts/pokemon-ds/pokemon-ds-font.ttf',
     '/assets/icons/PhoneScreen2.webp',
     '/assets/icons/Pwa.svg',
+    '/assets/icons/desktopMod.webp',
     '/assets/logo/anim1.svg',
     '/assets/logo/Logo2.webp',
     '/assets/logo/NFCdex_logo.webp',
