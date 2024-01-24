@@ -10,7 +10,7 @@ function removeH1H2FromDiv(divSelector) {
     if (divToModify) {
         const h1Element = divToModify.querySelector("h1");
         const h2Element = divToModify.querySelector("h2");
-        const BtninstallApp = divToModify.querySelector(".installApp");
+        const BtninstallApp = divToModify.querySelectorAll(".installApp");
         const BtnScanNFC = divToModify.querySelector("#scanButton");
 
 
@@ -21,7 +21,9 @@ function removeH1H2FromDiv(divSelector) {
             h2Element.style.display = "none";
         }
         if (BtninstallApp) {
-            BtninstallApp.style.display = "none";
+            BtninstallApp.forEach(element => {
+                element.style.display = "none";
+            });
         }
         if (BtnScanNFC) {
             BtnScanNFC.style.display = "none";
