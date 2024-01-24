@@ -4,6 +4,10 @@
     text-align: center;
   }
 
+  #installApp {
+    margin-bottom: 10px;
+  }
+
   /* .resultAffichageDeux {
     display: block !important;
   } */
