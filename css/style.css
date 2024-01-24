@@ -532,8 +532,6 @@ footer {
   );
   border: none;
   outline: none;
-  position : absolute; 
-  z-index: 1;
 }
 
 .big-pixel-corners {
