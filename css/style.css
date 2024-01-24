@@ -474,7 +474,7 @@ footer {
   overflow: hidden;
   font-weight: bold;
   font-size: 20px;
-  width: 170px !important;
+  width: 150px !important;
 }
 
 #nfc-mode-message {
@@ -482,6 +482,7 @@ footer {
   white-space: nowrap;
   animation: defilement 10s infinite linear;
   font-family: var(--paragraphe);
+  width: 100%;
 }
 
 #nfc-mode-message::after {
@@ -531,6 +532,8 @@ footer {
   );
   border: none;
   outline: none;
+  position : absolute; 
+  z-index: 1;
 }
 
 .big-pixel-corners {
