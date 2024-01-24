@@ -1,5 +1,6 @@
 import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
+const scanButton = document.querySelector("#scanButton");
 let scanAction = "read";
 let ndef;
 
@@ -29,17 +30,28 @@ if ("NDEFReader" in window) {
     navigator.permissions.query({ name: "nfc" }).then((result) => {
         if (result.state === "granted") {
 
+            scanButton.style.display = "none";
             phoneMode();
 
         } else if (result.state === "prompt") {
 
-            const scanButton = document.querySelector("#scanButton");
 
             scanButton.onclick = (event) => {
 
                 scanButton.style.display = "none";
                 phoneMode();
             };
+        } else if (result.state === "denied") {
+
+            updateView({
+                Nom: "Denied",
+                Habitat: "Paramètres des sites",
+                Description: "Ce NFCmon apparaît lorsque que les permissions NFC sont refusées, tu dois aller dans les paramètres des sites, chercher 'nfcdex', puis autoriser le NFC afin de pouvoir l'utiliser",
+                Type: "Permission",
+                Image: ""
+            });
+
+            NFCMessage("Tu dois autoriser le NFC dans les paramètres de chrome afin d'utiliser le NFCdex");
         }
     });
 
