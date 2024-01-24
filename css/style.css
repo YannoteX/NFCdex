@@ -477,14 +477,13 @@ footer {
   overflow: hidden;
   font-weight: bold;
   font-size: 20px;
-  font-style: var(--titre);
 }
 
 #nfc-mode-message {
   position: relative;
   white-space: nowrap;
   animation: defilement 10s infinite linear;
-  font-family: var(--paragraphes);
+  font-family: var(--paragraphe);
 }
 
 #nfc-mode-message::after {
