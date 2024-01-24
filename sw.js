@@ -29,9 +29,9 @@ const PRECACHE_ASSETS = [
 // Listener for the install event - pre-caches our assets list on service worker install.
 self.addEventListener('install', event => {
     event.waitUntil((async () => {
-        caches.open(CACHE_NAME).then(cache => {
-            cache.addAll(PRECACHE_ASSETS);
-        });
+        const cache = await caches.open(CACHE_NAME);
+        await cache.addAll(PRECACHE_ASSETS);
+        self.skipWainting();
     }));
 });
 
@@ -45,17 +45,8 @@ self.addEventListener('fetch', event => {
 
     event.respondWith((async () => {
 
-        const r = await caches.match(event.request);
+        const response = await caches.match(event.request);
 
-        if (r) {
-            return r;
-        }
-
-        const response = await fetch(e.request);
-        const cache = await caches.open(cacheName);
-
-        cache.put(e.request, response.clone());
-
-        return response
+        return response ? response : await fetch(event.request);
     }));
 });
