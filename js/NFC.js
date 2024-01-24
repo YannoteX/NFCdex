@@ -109,7 +109,7 @@ function phoneMode() {
 
                     if (json) {
                         updateView(json);
-                        NFCMessage("Tu as chargé " + json.nom + "dans le NFCdex");
+                        NFCMessage("Tu as chargé " + json.Nom + "dans le NFCdex");
                     } else {
                         NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
                     }
