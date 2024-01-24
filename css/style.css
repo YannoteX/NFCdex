@@ -482,7 +482,6 @@ footer {
   white-space: nowrap;
   animation: defilement 10s infinite linear;
   font-family: var(--paragraphe);
-  width: 170px !important;
 }
 
 #nfc-mode-message::after {
