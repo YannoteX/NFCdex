@@ -474,7 +474,7 @@ footer {
   overflow: hidden;
   font-weight: bold;
   font-size: 20px;
-  width: 150px !important;
+  width: 170px !important;
 }
 
 #nfc-mode-message {
@@ -482,7 +482,7 @@ footer {
   white-space: nowrap;
   animation: defilement 10s infinite linear;
   font-family: var(--paragraphe);
-  width: 170px;
+  width: 170px !important;
 }
 
 #nfc-mode-message::after {
