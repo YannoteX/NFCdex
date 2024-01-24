@@ -100,7 +100,8 @@ function phoneMode() {
         let encoder = new TextEncoder();
 
         const data = encoder.encode(DataToJson(jsonObject));
-        let blob = new Blob([data]);
+        // let blob = new Blob([data]);
+
 
         ndef
             .write({
@@ -205,15 +206,14 @@ function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
     messageContainer.innerHTML = message;
     messageContainer.style.color = color;
-    messageContainer.style.textAlign = "center";
-    messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "15px";
-    messageContainer.style.fontFamily = "var(--paragraphe)";
+    messageContainer.classList.add("styleMessageScanner")
+    messageContainer.setAttribute("data-text", message)
 }
 
 export const setAction = (action) => {
     scanAction = action;
 };
+
 
 //utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
 //quand le formulaire est envoyé mettre setAction en parametre right

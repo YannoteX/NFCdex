@@ -17,7 +17,6 @@
     <script defer type="module" src="js/formValidate.js"></script>
     <script defer type="module" src="js/installPWA.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 </head>
 
 <body>
@@ -26,13 +25,15 @@
 
         <header>
             <nav>
-                <div class="navigation">
+                <div class="logo">
                     <img src="./assets/logo/NFCdex_logo.webp" alt="nfcdex logo">
-                    <div id="nfc-mode-message"></div>
+                    <div class="container-message">
+                        <div id="nfc-mode-message"></div>
+                    </div>
                 </div>
-                <!-- logo à gauche -->
-                <!-- message au millieu -->
-                <!-- bouton form à gauche -->
+
+
+
                 <input class="pixel-corners" style="position : absolute; z-index: 100000;" type="button" id="btnform"
                     value="Créer">
 
@@ -100,8 +101,10 @@
                         <h2>
                             Tout les NFCmon de la terre en un <strong>contact !</strong>
                         </h2>
-                        <button class="pixel-corners" id="installApp">Télécharger</button>
-
+                        <div class="btn-section">
+                            <button class="pixel-corners" id="installApp">Télécharger</button>
+                            <button id="installApp" class="btnPlus">Activer le nfc</button>
+                        </div>
                 </div>
 
                 <div data-aos="fade-left" id="SectionOrange" class="fond-background-presentation items">
