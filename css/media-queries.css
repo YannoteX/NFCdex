@@ -9,11 +9,11 @@
   }
 
   .container-message {
-    width: 50% !important;
+    width: 55% !important;
   }
 
   #nfc-mode-message {
-    animation: defilement 10s infinite linear;
+    animation: defilement 10s infinite linear !important;
   }
 
   /* .resultAffichageDeux {
