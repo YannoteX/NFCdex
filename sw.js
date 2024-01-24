@@ -2,7 +2,6 @@ const CACHE_NAME = 'NFCdex-offline';
 
 // Add whichever assets you want to pre-cache here:
 const PRECACHE_ASSETS = [
-    '/',
     '/index.html',
     '/js/NFC.js',
     '/js/formValidate.js',
