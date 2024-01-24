@@ -2,9 +2,13 @@
 <html lang="fr">
 
 <head>
+    <title>NFCDex - Tout les NFCmon de la terre en un contact !</title>
+    <meta name="description"
+        content="Enregistre tout tes NFCmon dans une carte NFC dédiée, charge les sur le NFCdex afin de les collectionner tous.">
+    <meta name="google-site-verification" content="PIqXyAZ-HZ7MiIdNxwKnwmehy4WFrRx2GYMPA5gtXu0" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFCDex</title>
+    <meta name="theme-color" content="#cf4307">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/logo/NFCdex_logo.png">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -13,7 +17,6 @@
     <script defer type="module" src="js/formValidate.js"></script>
     <script defer type="module" src="js/installPWA.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 </head>
 
 <body>
@@ -22,14 +25,17 @@
 
         <header>
             <nav>
-                <div class="navigation">
-                    <img src="./assets/logo/NFCdex_logo.png" alt="Logo">
-                    <div id="nfc-mode-message"></div>
+                <div class="logo">
+                    <img src="./assets/logo/NFCdex_logo.webp" alt="nfcdex logo">
+                    <div class="container-message">
+                        <div id="nfc-mode-message"></div>
+                    </div>
                 </div>
-                <!-- logo à gauche -->
-                <!-- message au millieu -->
-                <!-- bouton form à gauche -->
-                <input style="position : absolute; z-index: 100000;" type="button" id="btnform" value="Créer">
+
+
+
+                <input class="pixel-corners" style="position : absolute; z-index: 100000;" type="button" id="btnform"
+                    value="Créer">
             </nav>
 
 
@@ -46,16 +52,17 @@
 
                     <span class="name">
                         <span class="PhotoNom">
-                            <img class="imgResult" id="imagePreview" alt="">
+                            <img class="imgResult" id="imagePreview" alt="nfcmon image preview">
                             <input type="file" id="imageInput" name="Photo" required>
                             <label for="">Nom</label>
-                            <input type="text" name="Nom" placeholder="nom" minlength="5" maxlength="20">
+                            <input class="pixel-corners-outlined" type="text" name="Nom" placeholder="nom" minlength="5"
+                                maxlength="24">
                         </span>
                     </span>
 
                     <span class="Type">
                         <label for="">Type</label>
-                        <select id="Type" name="TypeValue" required>
+                        <select class="pixel-corners-outlined" id="Type" name="TypeValue" required>
                             <option value="Simp">Simp</option>
                             <option value="Chad">Chad</option>
                             <option value="Magneto">Magneto</option>
@@ -66,38 +73,40 @@
                     <span class="Habitatselect">
                         <label for="">Habitat</label>
                         <!-- 50 caracteres -->
-                        <select id="Habitat" name="HabitatValue" required>
+                        <select class="pixel-corners-outlined" id="Habitat" name="HabitatValue" required>
                             <option value="Forêt">Forêt</option>
                             <option value="ENJMIN">ENJMIN</option>
                             <option value="Bled">Bled</option>
                         </select>
                     </span>
 
-                    <span class="textarea" maxlength="100">
+                    <span class="textarea" maxlength="250">
                         <label for="">Description</label>
-                        <textarea name="Description" id="" rows="5"></textarea>
+                        <textarea class="pixel-corners-outlined" name="Description" id="" rows="5"></textarea>
                         <span class="error"></span>
                     </span>
 
-                    <input type="submit" id="envoie" value="Envoyer">
+                    <input class="pixel-corners" type="submit" id="envoie" value="Envoyer">
                     <span class="error"></span>
                 </form>
 
             </section>
 
-            <section class="presentation-section">
+            <section class="presentation-section bigel-pixel-corners">
                 <!-- <span class="resultAffichageForm"></span> -->
-                <div data-aos="fade-right" class="content az items" id="presentation">
-                    <h1><strong>NFCmon</strong></h2>
+                <div data-aos="fade-right" class="content items">
+                    <h1 id="click-bait"><strong>NFCdex</strong></h2>
                         <h2>
-                            Explore le NFCdex : tout les NFCmon de la terre en un <strong>contact !</strong>
+                            Tout les NFCmon de la terre en un <strong>contact !</strong>
                         </h2>
-                        <button id="installApp">Télécharger</button>
-
+                        <div class="btn-section">
+                            <button class="pixel-corners" id="installApp">Télécharger</button>
+                            <button id="scanButton" class="btnPlus pixel-corners">Activer le nfc</button>
+                        </div>
                 </div>
 
                 <div data-aos="fade-left" id="SectionOrange" class="fond-background-presentation items">
-                    <img src="./assets/logo/anim1.svg" alt="Image de présentation">
+                    <img src="./assets/logo/anim1.svg" alt="use guide animation for loading a nfcmon">
                 </div>
 
             </section>
@@ -126,7 +135,8 @@
 
 
                     <div data-aos="fade-left" class="container-phone">
-                        <img class="phone" src="./assets/icons/PhoneScreen2.png" alt="MobileMockup">
+                        <img class="phone" src="./assets/icons/PhoneScreen2.png"
+                            alt="mobile representation of the nfcdex">
                     </div>
                 </div>
             </section>
@@ -135,17 +145,17 @@
                 <div class="pied-de-page" data-aos="zoom-in" data-aos-delay="200">
 
                     <div class="logoFooter">
-                        <img src="./assets/logo/Logo2.png" alt="logo">
+                        <img src="./assets/logo/Logo2.webp" alt="dark nfcdex logo">
                     </div>
 
                     <div class="information-footer">
-                        <a href="">CGU</a>
-                        <a href="">RGPD</a>
-                        <a href="" class="ML">Mentions Légales</a>
+                        <a href="https://nfcdex.netlify.app" aria-label="CGU">CGU</a>
+                        <a href="https://nfcdex.netlify.app" aria-label="RGPD">RGPD</a>
+                        <p class="ML">Mentions Légales</p>
                     </div>
 
                     <div class="svgFooter">
-                        <a href="">
+                        <a href="https://nfcdex.netlify.app" aria-label="Instagram">
                             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 15.7383 19.3889 17.2135 18.3012 18.3012C17.2135 19.3889 15.7383 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 4.26174 0.61107 2.78649 1.69878 1.69878C2.78649 0.61107 4.26174 0 5.8 0ZM5.6 2C4.64522 2 3.72955 2.37928 3.05442 3.05442C2.37928 3.72955 2 4.64522 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C15.3548 18 16.2705 17.6207 16.9456 16.9456C17.6207 16.2705 18 15.3548 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.5815 3.5 15.8995 3.6317 16.1339 3.86612C16.3683 4.10054 16.5 4.41848 16.5 4.75C16.5 5.08152 16.3683 5.39946 16.1339 5.63388C15.8995 5.8683 15.5815 6 15.25 6C14.9185 6 14.6005 5.8683 14.3661 5.63388C14.1317 5.39946 14 5.08152 14 4.75C14 4.41848 14.1317 4.10054 14.3661 3.86612C14.6005 3.6317 14.9185 3.5 15.25 3.5ZM10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5ZM10 7C9.20435 7 8.44129 7.31607 7.87868 7.87868C7.31607 8.44129 7 9.20435 7 10C7 10.7956 7.31607 11.5587 7.87868 12.1213C8.44129 12.6839 9.20435 13 10 13C10.7956 13 11.5587 12.6839 12.1213 12.1213C12.6839 11.5587 13 10.7956 13 10C13 9.20435 12.6839 8.44129 12.1213 7.87868C11.5587 7.31607 10.7956 7 10 7Z"
@@ -153,7 +163,7 @@
                             </svg>
                         </a>
 
-                        <a href="">
+                        <a href="https://nfcdex.netlify.app" aria-label="Facebook">
                             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z"
@@ -161,7 +171,7 @@
                             </svg>
                         </a>
 
-                        <a href="">
+                        <a href="https://nfcdex.netlify.app" aria-label="Linkedin">
                             <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M16 0C16.5304 0 17.0391 0.210714 17.4142 0.585786C17.7893 0.960859 18 1.46957 18 2V16C18 16.5304 17.7893 17.0391 17.4142 17.4142C17.0391 17.7893 16.5304 18 16 18H2C1.46957 18 0.960859 17.7893 0.585786 17.4142C0.210714 17.0391 0 16.5304 0 16V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H16ZM15.5 15.5V10.2C15.5 9.33539 15.1565 8.5062 14.5452 7.89483C13.9338 7.28346 13.1046 6.94 12.24 6.94C11.39 6.94 10.4 7.46 9.92 8.24V7.13H7.13V15.5H9.92V10.57C9.92 9.8 10.54 9.17 11.31 9.17C11.6813 9.17 12.0374 9.3175 12.2999 9.58005C12.5625 9.8426 12.71 10.1987 12.71 10.57V15.5H15.5ZM3.88 5.56C4.32556 5.56 4.75288 5.383 5.06794 5.06794C5.383 4.75288 5.56 4.32556 5.56 3.88C5.56 2.95 4.81 2.19 3.88 2.19C3.43178 2.19 3.00193 2.36805 2.68499 2.68499C2.36805 3.00193 2.19 3.43178 2.19 3.88C2.19 4.81 2.95 5.56 3.88 5.56ZM5.27 15.5V7.13H2.5V15.5H5.27Z"

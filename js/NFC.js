@@ -1,6 +1,8 @@
 import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
+const scanButton = document.querySelector("#scanButton");
 let scanAction = "read";
+let ndef;
 
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
@@ -8,13 +10,23 @@ function removeH1H2FromDiv(divSelector) {
     if (divToModify) {
         const h1Element = divToModify.querySelector("h1");
         const h2Element = divToModify.querySelector("h2");
-        const BtninstallApp = divToModify.querySelector("button");
+        const BtninstallApp = divToModify.querySelector("#installApp");
+        const BtnScanNFC = divToModify.querySelector("#scanButton");
+
 
         if (h1Element) {
             h1Element.style.display = "none";
-        } if (h2Element) {
+        }
+        if (h2Element) {
             h2Element.style.display = "none";
-        } if (BtninstallApp) BtninstallApp.style.display = "none";
+        }
+        if (BtninstallApp) {
+            BtninstallApp.style.display = "none";
+        }
+        if (BtnScanNFC) {
+            BtnScanNFC.style.display = "none";
+        }
+
     } else {
         console.log(
             "La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée."
@@ -22,84 +34,108 @@ function removeH1H2FromDiv(divSelector) {
     }
 }
 
-"NDEFReader" in window ? phoneMode() : desktopMode();
 // Appeler desktopMode lorsque le mode de bureau est détecté
-if (window.innerWidth >= 1024) {
+if ("NDEFReader" in window) {
+
+    navigator.permissions.query({ name: "nfc" }).then((result) => {
+        if (result.state === "granted") {
+
+            scanButton.style.display = "none";
+            phoneMode();
+
+        } else if (result.state === "prompt") {
+
+
+            scanButton.onclick = (event) => {
+
+                scanButton.style.display = "none";
+                phoneMode();
+            };
+        } else if (result.state === "denied") {
+
+            updateView({
+                Nom: "Denied",
+                Habitat: "Paramètres des sites",
+                Description: "Ce NFCmon apparaît lorsque que les permissions NFC sont refusées, tu dois aller dans les paramètres des sites, chercher 'nfcdex', puis autoriser le NFC afin de pouvoir l'utiliser",
+                Type: "Permission",
+                Image: ""
+            });
+
+            NFCMessage("Tu dois autoriser le NFC dans les paramètres de chrome afin d'utiliser le NFCdex");
+        }
+    });
+
+} else if (window.innerWidth >= 1024) {
     desktopMode();
-} else {
-    if ("NDEFReader" in window) {
-        phoneMode();
-    }
 }
 
-function desktopMode() { }
+
+function desktopMode() {
+
+    console.log("desktop");
+    updateView({
+        Nom: "TopDesk",
+        Habitat: "???",
+        Description: "Ce NFCmon apparaît lorsque que l'appareil ne permet pas d'utiliser le NFCdex, il est facilement reconnaissable par son cri caractéristique : <br> -<strong><font color='white'>'Il est fortement recommandé d'utliliser google chrome sur un téléphone android'</font></strong>,<br> peut-on entendre",
+        Type: "???",
+        Image: "./assets/icons/desktopMod.webp"
+    });
+
+    NFCMessage("Votre appareil n'est pas compatible avec le NFCdex, on te recommande d'utiliser google chrome sur android pour le faire fonctionner");
+}
 
 function phoneMode() {
-    // Pour la lecture NFC
-    const ndef = new NDEFReader();
-    //
 
-    async function scanTag() {
-        ndef.scan().then(() => {
-            ndef.onreadingerror = (e) => {
-                NFCMessage(
-                    "Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone"
-                );
-            };
+    ndef = new NDEFReader();
 
-            ndef.onreading = (e) => {
-                const record = e.message.records[0];
+    NFCMessage("Bienvenue sur le NFCdex, charge un NFCmon en scannant ta carte NFC dédiée");
 
-                if (scanAction === "read") {
-                    if (isValidRecord(record)) {
-                        const decoder = new TextDecoder();
 
-                        let json = JSON.parse(decoder.decode(record.data));
+    ndef.scan().then(() => {
+        ndef.onreadingerror = (e) => {
+            NFCMessage(
+                "Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone"
+            );
+        };
 
-                        if (json) {
-                            updateView(json);
-                        } else {
-                            NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
-                        }
+        ndef.onreading = (e) => {
+            const record = e.message.records[0];
+
+            if (scanAction === "read") {
+                if (isValidRecord(record)) {
+                    const decoder = new TextDecoder();
+
+                    let json = JSON.parse(decoder.decode(record.data));
+
+                    if (json) {
+                        updateView(json);
+                        NFCMessage("Tu as chargé " + json.nom + "dans le NFCdex");
+                    } else {
+                        NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
                     }
-                } else if (scanAction === "write") {
-                    if (isValidRecord(record)) {
-                        writeTag(
-                            information,
-                            information.Nom + " a été enregsitré dans ton tag NFCmon",
-                            "Oops... On a pas pu écrire ton NFCmon, réessaie à nouveau"
-                        );
-
-                        setAction("none");
-                    }
-                } else if (scanAction === "setNFCmon") {
-                    writeTag({}, "Tag NFCmon initialisé");
-                } else {
                 }
-            };
-        });
-    }
+            } else if (scanAction === "write") {
+                if (isValidRecord(record)) {
+                    writeTag(
+                        information,
+                        information.Nom + " a été enregsitré dans ton tag NFCmon",
+                        "Oops... On a pas pu envoyer ton NFCmon, réessaie en gardant plus longtemps la carte sur ton téléphone"
+                    );
 
-    function isValidRecord(record) {
-        if (
-            record.id === "A7G5UI924G66EP4" &&
-            record.recordType === "mime" &&
-            record.mediaType === "application/json"
-        ) {
-            return true;
-        } else {
-            NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
-            return false;
-        }
-    }
-
+                    setAction("none");
+                }
+            } else if (scanAction === "setNFCmon") {
+                writeTag({}, "Tag NFCmon initialisé");
+            } else {
+            }
+        };
+    });
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
 
         const data = encoder.encode(DataToJson(jsonObject));
-        let blob = new Blob([data]);
-        console.log(blob.size);
-        console.log(data);
+        // let blob = new Blob([data]);
+
 
         ndef
             .write({
@@ -120,8 +156,22 @@ function phoneMode() {
                 NFCMessage(failureMessage);
             });
     }
-    scanTag();
 }
+
+
+function isValidRecord(record) {
+    if (
+        record.id === "A7G5UI924G66EP4" &&
+        record.recordType === "mime" &&
+        record.mediaType === "application/json"
+    ) {
+        return true;
+    } else {
+        NFCMessage("Ton tag NFC n'est pas un tag NFCmon.");
+        return false;
+    }
+}
+
 
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
@@ -190,14 +240,14 @@ function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
     messageContainer.innerHTML = message;
     messageContainer.style.color = color;
-    messageContainer.style.textAlign = "center";
-    messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "13px";
+    messageContainer.classList.add("styleMessageScanner")
+    messageContainer.setAttribute("data-text", message)
 }
 
 export const setAction = (action) => {
     scanAction = action;
 };
+
 
 //utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
 //quand le formulaire est envoyé mettre setAction en parametre right
