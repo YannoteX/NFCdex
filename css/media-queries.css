@@ -9,7 +9,7 @@
   }
 
   .container-message {
-    width: 40%;
+    width: 10% !important;
   }
 
   #nfc-mode-message {
