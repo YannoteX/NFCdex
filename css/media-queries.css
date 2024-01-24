@@ -8,6 +8,10 @@
     margin-bottom: 10px;
   }
 
+  .container-message {
+    width: 50%;
+  }
+
   /* .resultAffichageDeux {
     display: block !important;
   } */

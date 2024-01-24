@@ -473,9 +473,7 @@ footer {
   transform: translateX(-50%);
   overflow: hidden;
   font-weight: bold;
-  font-size: 20px;
   width: 80%;
-  min-width: 170px;
 }
 
 #nfc-mode-message {
