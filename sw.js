@@ -2,6 +2,7 @@ const CACHE_NAME = 'NFCdex-offline';
 
 // Add whichever assets you want to pre-cache here:
 const PRECACHE_ASSETS = [
+    "/",
     '/index.html',
     '/js/NFC.js',
     '/js/formValidate.js',
@@ -14,7 +15,15 @@ const PRECACHE_ASSETS = [
     '/assets/icons/Pwa.svg',
     '/assets/logo/anim1.svg',
     '/assets/logo/Logo2.webp',
-    '/assets/logo/NFCdex_logo.webp'
+    '/assets/logo/NFCdex_logo.webp',
+    '/assets/PWA icons/icon-192x192.png',
+    '/assets/PWA icons/icon-256x256.png',
+    '/assets/PWA icons/icon-384x384.png',
+    '/assets/PWA icons/icon-512x512.png',
+    '/assets/PWA icons/maskable_icon_x192.png',
+    '/assets/PWA icons/maskable_icon_x256.png',
+    '/assets/PWA icons/maskable_icon_x384.png',
+    '/assets/PWA icons/maskable_icon_x512.png',
 ]
 
 // Listener for the install event - pre-caches our assets list on service worker install.
