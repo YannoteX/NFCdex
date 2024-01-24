@@ -474,7 +474,8 @@ footer {
   overflow: hidden;
   font-weight: bold;
   font-size: 20px;
-  width: 50% !important;
+  width: 80%;
+  max-width: 170px;
 }
 
 #nfc-mode-message {
