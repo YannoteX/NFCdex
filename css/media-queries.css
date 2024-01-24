@@ -4,9 +4,9 @@
     text-align: center;
   }
 
-  .resultAffichageDeux {
+  /* .resultAffichageDeux {
     display: block !important;
-  }
+  } */
 
   .btn-section {
     display: flex;
