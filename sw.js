@@ -10,16 +10,12 @@ const PRECACHE_ASSETS = [
     '/css/media-queries.css',
     '/css/style.css',
     '/css/variables.css',
-    '/assets/fonts/NotoSans_Condensed-Bold.ttf',
-    '/assets/fonts/NotoSansSoraSompeng-Regular.ttf',
+    '/assets/fonts/pokemon-ds/pokemon-ds-font.ttf',
     '/assets/icons/PhoneScreen2.png',
     '/assets/icons/Pwa.svg',
     '/assets/logo/anim1.svg',
     '/assets/logo/Logo2.png',
-    '/assets/logo/NFCdex_logo.png',
-    '/assets/logo/Vector.png',
-    '/assets/logo/Vector-1.png',
-    '/assets/logo/Vector-2.png'
+    '/assets/logo/NFCdex_logo.png', s
 ]
 
 // Listener for the install event - pre-caches our assets list on service worker install.
@@ -39,9 +35,19 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
 
-    event.respondWith(
-        caches.match(event.request).then(cacheRes => {
-            return cacheRes || fetch(event.request);
-        })
-    );
+    event.respondWith((async () => {
+
+        const r = await caches.match(event.request);
+
+        if (r) {
+            return r;
+        }
+
+        const response = await fetch(e.request);
+        const cache = await caches.open(cacheName);
+
+        cache.put(e.request, response.clone());
+
+        return response
+    }));
 });
