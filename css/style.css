@@ -9,7 +9,7 @@
 
 body,
 html {
-  background-color: var(--background);
+  background-color: red;
   overflow-x: hidden;
   transition: 0.5s;
 }

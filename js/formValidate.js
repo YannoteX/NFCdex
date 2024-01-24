@@ -23,7 +23,7 @@ function apparaitElement() {
 }
 
 function isMobile() {
-  return window.innerWidth <= 768;
+  return window.innerWidth <= 768; qsd
 }
 
 input.addEventListener("click", () => {
@@ -71,7 +71,6 @@ textarea.addEventListener("input", function () {
     error.textContent = "";
   }
 });
-
 function resultJsonForm(objectJson) {
   const resultArray = Object.entries(objectJson);
   return resultArray.shift();
