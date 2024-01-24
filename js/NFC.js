@@ -72,7 +72,7 @@ if ("NDEFReader" in window) {
 
 function desktopMode() {
 
-    console.log("desktop");
+    scanButton.style.display = "none";
     updateView({
         Nom: "TopDesk",
         Habitat: "???",
