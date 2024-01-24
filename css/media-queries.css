@@ -12,6 +12,10 @@
     width: 50%;
   }
 
+  #nfc-mode-message {
+    animation: defilement 10s infinite linear;
+  }
+
   /* .resultAffichageDeux {
     display: block !important;
   } */
