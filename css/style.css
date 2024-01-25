@@ -483,8 +483,12 @@ footer {
   font-family: var(--paragraphe);
 }
 
+:root {
+  --maVariable: initialValeur;
+}
+
 #nfc-mode-message::after {
-  content: attr(data-text);
+  content: attr(data-content);
   position: absolute;
   display: inline-block;
   margin-left: 5px;
