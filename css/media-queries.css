@@ -4,6 +4,19 @@
     text-align: center;
   }
 
+  .container-message {
+    font-size: smaller; /* Réduisez la taille de la police pour les écrans plus petits */
+  }
+
+  #nfc-mode-message::after,
+  #nfc-mode-message::before {
+    padding-right: 10vw; /* Moins d'espace entre les répétitions pour les petits écrans */
+  }
+
+  #nfc-mode-message {
+    animation-duration: 20s; /* Ralentissez l'animation pour les écrans mobiles */
+  }
+
   .installApp {
     margin-bottom: 10px;
   }
