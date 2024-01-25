@@ -479,7 +479,6 @@ footer {
 
 #nfc-mode-message::after {
   content: attr(data-content);
-  background-color: red;
 }
 
 @keyframes defilement {
