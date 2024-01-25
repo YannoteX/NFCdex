@@ -471,7 +471,6 @@ footer {
 }
 
 #nfc-mode-message {
-  display: flex;
   position: relative;
   font-family: var(--paragraphe);
   animation: defilement 15s infinite linear;
