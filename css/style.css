@@ -110,12 +110,6 @@ form {
   font-weight: bold;
 }
 
-.styleMessageScanner {
-  font-size: 18px;
-  font-style: var(--paragraphe);
-  width: 200px !important ;
-}
-
 .nfc-mode-message form input,
 select {
   padding: 5px 5px;
