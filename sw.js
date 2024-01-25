@@ -2,7 +2,6 @@ const CACHE_NAME = 'NFCdex-offline';
 
 // Add whichever assets you want to pre-cache here:
 const PRECACHE_ASSETS = [
-    "/",
     '/index.html',
     '/js/NFC.js',
     '/js/formValidate.js',
@@ -22,6 +21,7 @@ const PRECACHE_ASSETS = [
     '/assets/PWA icons/icon-384x384.png',
     '/assets/PWA icons/icon-512x512.png',
     '/assets/PWA icons/maskable_icon_x512.png',
+    'https://unpkg.com/aos@2.3.1/dist/aos.css'
 ]
 
 // Listener for the install event - pre-caches our assets list on service worker install.
