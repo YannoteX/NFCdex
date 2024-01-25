@@ -490,19 +490,6 @@ footer {
   }
 }
 
-@keyframes defilement2 {
-  0% {
-    transform: translateX(100%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
 .pixel-corners {
   clip-path: polygon(
     0px calc(100% - 3px),
