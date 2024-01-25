@@ -479,10 +479,7 @@ footer {
 
 #nfc-mode-message::after {
   content: attr(data-content);
-  position: absolute;
-  display: inline-block;
-  margin-left: 5px;
-  z-index: 1;
+  background-color: red;
 }
 
 @keyframes defilement {
