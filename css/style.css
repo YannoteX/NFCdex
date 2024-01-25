@@ -468,16 +468,21 @@ footer {
   overflow: hidden;
   font-weight: bold;
   width: 75%;
+  white-space: nowrap;
 }
 
 #nfc-mode-message {
+  display: flex;
   position: relative;
-  white-space: nowrap;
-  animation: defilement 5s infinite linear;
+  animation: defilement 10s infinite linear;
   font-family: var(--paragraphe);
 }
 
 #nfc-mode-message::after {
+  content: attr(data-content);
+}
+
+#nfc-mode-message::before {
   content: attr(data-content);
 }
 
@@ -487,7 +492,7 @@ footer {
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
