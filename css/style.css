@@ -474,14 +474,15 @@ footer {
 #nfc-mode-message {
   display: flex;
   position: relative;
-  animation: defilement 10s infinite linear;
+  animation: defilement 20s infinite linear;
   font-family: var(--paragraphe);
+  width: fit-content;
 }
 
 #nfc-mode-message::after,
 #nfc-mode-message::before {
   content: attr(data-content);
-  margin-left: 5px;
+  padding-right: 1em;
 }
 
 @keyframes defilement {

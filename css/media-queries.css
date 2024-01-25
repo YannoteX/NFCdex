@@ -5,16 +5,16 @@
   }
 
   .container-message {
-    font-size: smaller; /* Réduisez la taille de la police pour les écrans plus petits */
+    font-size: smaller;
   }
 
   #nfc-mode-message::after,
   #nfc-mode-message::before {
-    padding-right: 5vw; /* Moins d'espace entre les répétitions pour les petits écrans */
+    padding-right: 2em; 
   }
 
   #nfc-mode-message {
-    animation-duration: 20s; /* Ralentissez l'animation pour les écrans mobiles */
+    animation-duration: 25s; 
   }
 
   .installApp {
