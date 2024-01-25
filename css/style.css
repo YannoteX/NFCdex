@@ -477,10 +477,6 @@ footer {
   font-family: var(--paragraphe);
 }
 
-:root {
-  --maVariable: initialValeur;
-}
-
 #nfc-mode-message::after {
   content: attr(data-content);
   position: absolute;
@@ -495,7 +491,7 @@ footer {
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
