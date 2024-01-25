@@ -14,7 +14,7 @@
   }
 
   #nfc-mode-message {
-    animation-duration: 20s; /* Peut-être ralentir l'animation pour une meilleure lisibilité */
+    animation-duration: 20s !important; /* Peut-être ralentir l'animation pour une meilleure lisibilité */
   }
 
   .installApp {
