@@ -18,11 +18,6 @@ const PRECACHE_ASSETS = [
     'assets/logo/anim1.svg',
     'assets/logo/Logo2.webp',
     'assets/logo/NFCdex_logo.webp',
-    'assets/PWA icons/icon-192x192.png',
-    'assets/PWA icons/icon-256x256.png',
-    'assets/PWA icons/icon-384x384.png',
-    'assets/PWA icons/icon-512x512.png',
-    'assets/PWA icons/maskable_icon_x512.png',
     'https://unpkg.com/aos@2.3.1/dist/aos.css'
 ]
 
