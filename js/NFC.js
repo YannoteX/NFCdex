@@ -241,7 +241,7 @@ function updateView(jsonObject) {
 
 function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
-    messageContainer.innerHTML = `<span class="msgAlerte">message</span>`;
+    messageContainer.textContent = message
     messageContainer.style.color = color;
     messageContainer.classList.add("styleMessageScanner")
     messageContainer.setAttribute("data-content", message)
