@@ -468,7 +468,7 @@ footer {
   overflow: hidden;
   font-weight: bold;
   white-space: nowrap;
-  width: 100vw; /* Utilisez vw pour la largeur complète de la vue */
+  width: 80%;
 }
 
 #nfc-mode-message {
@@ -478,14 +478,10 @@ footer {
   font-family: var(--paragraphe);
 }
 
-#nfc-mode-message::after {
-  content: attr(data-content);
-  padding-right: 20vw; /* Un espace entre les répétitions du contenu basé sur la largeur de la vue */
-}
-
+#nfc-mode-message::after,
 #nfc-mode-message::before {
   content: attr(data-content);
-  padding-right: 20vw; /* Un espace entre les répétitions du contenu basé sur la largeur de la vue */
+  margin-left: 5px;
 }
 
 @keyframes defilement {

@@ -10,7 +10,7 @@
 
   #nfc-mode-message::after,
   #nfc-mode-message::before {
-    padding-right: 10vw; /* Moins d'espace entre les répétitions pour les petits écrans */
+    padding-right: 5vw; /* Moins d'espace entre les répétitions pour les petits écrans */
   }
 
   #nfc-mode-message {
