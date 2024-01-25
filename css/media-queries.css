@@ -14,9 +14,7 @@
   }
 
   #nfc-mode-message {
-    display: flex;
-    position: relative;
-    animation: defilement 8s infinite linear !important;
+    animation-duration: 20s; /* Peut-être ralentir l'animation pour une meilleure lisibilité */
   }
 
   .installApp {
