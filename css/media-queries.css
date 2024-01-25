@@ -5,7 +5,11 @@
   }
 
   .styleMessageScanner {
-    animation-delay: 10s infinite linear !important;
+    animation: defilement 10s infinite ease-in-out !important;
+  }
+
+  #nfc-mode-message {
+    font-size: 13px;
   }
 
   .installApp {
