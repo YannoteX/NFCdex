@@ -474,6 +474,7 @@ footer {
   position: relative;
   font-family: var(--paragraphe);
   animation: defilement 15s infinite linear;
+  width: fit-content;
 }
 
 @keyframes defilement {
