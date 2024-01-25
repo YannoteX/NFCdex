@@ -4,7 +4,7 @@
     text-align: center;
   }
 
-  #nfc-mode-message {
+  .animation {
     animation: defilement2 15s infinite linear !important;
   }
 
@@ -19,6 +19,19 @@
   /* .resultAffichageDeux {
     display: block !important;
   } */
+
+  @keyframes defilement2 {
+    0% {
+      transform: translateX(100%);
+    }
+    50% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
   .resultGlobale {
     width: auto;
