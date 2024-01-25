@@ -477,11 +477,6 @@ footer {
   animation: defilement 15s infinite linear;
 }
 
-/* #nfc-mode-message::after {
-  content: attr(data-content);
-  background-color: red;
-} */
-
 @keyframes defilement {
   0% {
     transform: translateX(110%);
