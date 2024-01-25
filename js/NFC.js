@@ -244,7 +244,7 @@ function NFCMessage(message, color = "#CF4307") {
     messageContainer.textContent = message
     messageContainer.style.color = color;
     messageContainer.classList.add("styleMessageScanner")
-    messageContainer.setAttribute("data-content", message)
+    // messageContainer.setAttribute("data-content", message)
 }
 
 export const setAction = (action) => {

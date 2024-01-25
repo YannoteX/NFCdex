@@ -5,16 +5,18 @@
   }
 
   .container-message {
-    font-size: smaller;
-  }
-
-  #nfc-mode-message::after,
-  #nfc-mode-message::before {
-    padding-right: 2em; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    font-weight: bold;
+    white-space: nowrap;
   }
 
   #nfc-mode-message {
-    animation-duration: 25s; 
+    display: flex;
+    position: relative;
+    animation: defilement2 5s infinite linear;
   }
 
   .installApp {
@@ -25,8 +27,17 @@
     width: 55% !important;
   }
 
-  #nfc-mode-message {
-    animation: defilement 3s infinite linear !important;
+  @keyframes defilement2 {
+    0% {
+      transform: translateX(250%);
+    }
+    50% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-250%);
+    }
   }
 
   /* .resultAffichageDeux {
