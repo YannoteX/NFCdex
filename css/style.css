@@ -473,7 +473,7 @@ footer {
 #nfc-mode-message {
   position: relative;
   white-space: nowrap;
-  animation: defilement 5s infinite linear;
+  animation: defilement 5s infinite linear forwards;
   font-family: var(--paragraphe);
 }
 
@@ -491,7 +491,7 @@ footer {
   }
 
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
