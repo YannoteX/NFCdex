@@ -23,6 +23,8 @@ const PRECACHE_ASSETS = [
 // Listener for the install event - pre-caches our assets list on service worker install.
 self.addEventListener('install', event => {
     event.waitUntil((async () => {
+        cache.delete(CACHE_NAME);
+
         const cache = await caches.open(CACHE_NAME);
         await cache.addAll(PRECACHE_ASSETS);
         self.skipWainting();
