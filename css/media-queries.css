@@ -5,7 +5,7 @@
   }
 
   .styleMessageScanner {
-    animation: defilement 10s infinite ease-in-out !important;
+    animation: defilement 10s infinite linear !important;
   }
 
   #nfc-mode-message {
