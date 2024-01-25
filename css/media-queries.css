@@ -5,7 +5,7 @@
   }
 
   #nfc-mode-message {
-    animation-duration: 20s !important; /* Peut-être ralentir l'animation pour une meilleure lisibilité */
+    animation: defilement2 15s infinite linear !important;
   }
 
   .installApp {
@@ -14,6 +14,19 @@
 
   .container-message {
     width: 55% !important;
+  }
+
+  @keyframes defilement2 {
+    0% {
+      transform: translateX(100%) !important;
+    }
+    50% {
+      transform: translateX(0%) !important;
+    }
+
+    100% {
+      transform: translateX(-100%) !important;
+    }
   }
 
   /* .resultAffichageDeux {
