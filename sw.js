@@ -38,9 +38,13 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
 
+    console.log(event);
+
     event.respondWith((async () => {
 
         const response = await caches.match(event.request);
+
+        console.log(response);
 
         return response ? response : await fetch(event.request);
     }));
