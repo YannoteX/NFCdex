@@ -16,19 +16,6 @@
     width: 55% !important;
   }
 
-  @keyframes defilement2 {
-    0% {
-      transform: translateX(100%) !important;
-    }
-    50% {
-      transform: translateX(0%) !important;
-    }
-
-    100% {
-      transform: translateX(-100%) !important;
-    }
-  }
-
   /* .resultAffichageDeux {
     display: block !important;
   } */
