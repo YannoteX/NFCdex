@@ -21,9 +21,6 @@ const PRECACHE_ASSETS = [
     '/assets/PWA icons/icon-256x256.png',
     '/assets/PWA icons/icon-384x384.png',
     '/assets/PWA icons/icon-512x512.png',
-    '/assets/PWA icons/maskable_icon_x192.png',
-    '/assets/PWA icons/maskable_icon_x256.png',
-    '/assets/PWA icons/maskable_icon_x384.png',
     '/assets/PWA icons/maskable_icon_x512.png',
 ]
 
