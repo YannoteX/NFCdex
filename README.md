@@ -33,12 +33,12 @@ Dans le cadre expérimental du projet NFCdex et afin de faciliter le débbugage,
 
 En appuyant sur l'un des boutons télécharger, vous bénéfécierez d'un mode hors-ligne (WIP) afin de pouvoir profiter du NFCdex sans connexion.
 
-### Observations sur le NFCdex
+## Observations sur le NFCdex
 
 En développant le NFCdex, voici les observations que nous avons pus emettre.
 
-## Avantages
+### Avantages
 
 Le NFCdex ne nécessite pas d'infrastructures réseaux complexes ou de développement back-end. Cela permet de s'affranchir de coûts serveurs.
 
-## Inconvénients
+### Inconvénients
