@@ -1,5 +1,6 @@
 # NFCdex
 # https://nfcdex.netlify.app/
+# site annexe pour le test sw : https://nfcdexbis.netlify.app/
 
 ## Contexte
 
