@@ -36,7 +36,7 @@ self.addEventListener('activate', event => {
 });
 
 
-self.addEventListener('fetch', event => {
+/*self.addEventListener('fetch', event => {
 
     console.log(event);
 
@@ -48,4 +48,4 @@ self.addEventListener('fetch', event => {
 
         return response ? response : await fetch(event.request);
     }));
-});
+});*/
