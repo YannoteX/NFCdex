@@ -476,13 +476,11 @@ footer {
   position: relative;
   animation: defilement 20s infinite linear;
   font-family: var(--paragraphe);
-  width: fit-content;
 }
 
 #nfc-mode-message::after,
 #nfc-mode-message::before {
   content: attr(data-content);
-  padding-right: 1em;
 }
 
 @keyframes defilement {
@@ -491,7 +489,7 @@ footer {
   }
 
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
