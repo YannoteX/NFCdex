@@ -52,17 +52,12 @@ parentElementSection.addEventListener("click", function () {
 
 enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
-
-
-
 });
 
-let limiteCaracteres = 100;
+let limiteCaracteres = 250;
 
 textarea.addEventListener("input", function () {
   let longueurTexte = textarea.value.length;
-
-  //si la longueur du text est plus grande que la limite
   if (longueurTexte > limiteCaracteres) {
     textarea.value = textarea.value.substring(0, limiteCaracteres);
     error.textContent = limiteCaracteres + " caractères (limite atteinte)";
@@ -72,26 +67,26 @@ textarea.addEventListener("input", function () {
   }
 });
 
-function resultJsonForm(objectJson) {
-  const resultArray = Object.entries(objectJson);
-  return resultArray.shift();
-  // const resultAffichage = document.querySelector(".resultAffichageForm");
+// function resultJsonForm(objectJson) {
+//   const resultArray = Object.entries(objectJson);
+//   return resultArray.shift();
+//   // const resultAffichage = document.querySelector(".resultAffichageForm");
 
-  // // let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
-  // //   return index === 1 ? elementPhoto.name : "";
-  // // });
+//   // // let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
+//   // //   return index === 1 ? elementPhoto.name : "";
+//   // // });
 
-  // // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
-  // resultAffichage.innerHTML = resultArray
-  //   .map(([key, element], index) => {
-  //     if (index !== 0) {
-  //       return `
-  //           <p>${key} : ${element}</p>
-  //           `;
-  //     }
-  //   })
-  //   .join("");
-}
+//   // // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
+//   // resultAffichage.innerHTML = resultArray
+//   //   .map(([key, element], index) => {
+//   //     if (index !== 0) {
+//   //       return `
+//   //           <p>${key} : ${element}</p>
+//   //           `;
+//   //     }
+//   //   })
+//   //   .join("");
+// }
 
 export function DataToJson(Data) {
   return JSON.stringify(Data);
@@ -99,23 +94,21 @@ export function DataToJson(Data) {
 
 let URLBase64;
 
-document
-  .getElementById("imageInput")
-  .addEventListener("change", async function (event) {
-    const file = event.target.files[0];
-    console.log("change");
-    if (file) {
-      try {
-        const base64String = window.URL.createObjectURL(file);
-        URLBase64 = base64String;
-        const imagePreview = document.getElementById("imagePreview");
-        imagePreview.src = URLBase64;
-      } catch (error) {
-        console.error(error);
-      }
+document.getElementById("imageInput").addEventListener("change", async function (event) {
+  const file = event.target.files[0];
+  console.log("change");
+  if (file) {
+    try {
+      const base64String = window.URL.createObjectURL(file);
+      URLBase64 = base64String;
+      const imagePreview = document.getElementById("imagePreview");
+      imagePreview.src = URLBase64; d
+    } catch (error) {
+      console.error(error);
     }
-    return URLBase64;
-  });
+  }
+  return URLBase64;
+});
 
 //voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
 //une fois que l'image à charger dans le formulaire
@@ -149,7 +142,28 @@ function informationSubmit(e) {
     information.Image = shrinkImageBase64(canvas, img);
     canvas.remove();
   });
+  showMessage(formulaire)
 }
+
+function showMessage(formulaire) {
+  let existingMessage = formulaire.querySelector('.alert');
+  if (!existingMessage) {
+    const elementMessage = document.createElement("span");
+    elementMessage.textContent = "Attends que le formulaire se vide pour retirer ta carte NFCmon";
+    elementMessage.classList.add("alert");
+    formulaire.appendChild(elementMessage);
+
+    setTimeout(() => {
+      if (elementMessage) {
+        formulaire.removeChild(elementMessage);
+      }
+    }, 4000);
+  }
+}
+
+// Supposons que 'formulaire' est votre élément de formulaire
+// Vous pouvez appeler showMessage(formulaire) lorsque vous voulez afficher le message
+
 
 //prend en parametre l'id du formulaire dans le html donc form
 export function resetForm(formId) {
@@ -162,11 +176,12 @@ export function resetForm(formId) {
         element.value = "";
       });
 
-    document.querySelector(".imgResult").removeAttribute('src')
 
+    document.querySelector(".imgResult").removeAttribute('src')
   } else {
     console.log("Le formulaire avec l'ID '" + formId + "' n'a pas été trouvé.");
   }
+
 }
 
 // Exemple d'utilisation : resetForm("monFormulaire");

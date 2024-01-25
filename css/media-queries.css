@@ -1,54 +1,85 @@
-@media screen and (max-width: 500px) {
-    h1, p{
-        text-align: center;
-    }
+@media screen and (max-width: 700px) {
+  h1,
+  p {
+    text-align: center;
+  }
 
-    .resultAffichageDeux{
-        display: block !important;
-    }
+  .installApp {
+    margin-bottom: 10px;
+  }
 
-    #btnform{
-        display: block !important;
-    }
+  .container-message {
+    width: 55% !important;
+  }
 
-    .pied-de-page{
-        flex-direction: column;
-        grid-gap: 50px;
-    }
+  #nfc-mode-message {
+    animation: defilement 10s infinite linear !important;
+  }
 
-    .application{
-        flex-direction: column;
-        grid-gap: 5px;
-    }
+  /* .resultAffichageDeux {
+    display: block !important;
+  } */
 
-    .application h2{
-        margin-bottom: 20px;
-    }
+  .resultGlobale {
+    width: auto;
+    position: relative !important;
+    left: 0 !important;
+  }
 
-    .presentation-section{
-        display: flex;
-        flex-direction: column;
-    }
+  .imgResult {
+    width: 100%;
+    display: flex;
+    height: 180px;
+    object-fit: contain;
+  }
 
-    .item{
-        border: solid 2Px red;
-        height: 100%;
-    }
-  
-    .fond-background-presentation{
-        height: 50% !important;
-    }
+  .btn-section {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .presentation-section{
-        padding: 100px 0px 0px 0px;
-    }
+  #btnform {
+    display: block !important;
+  }
 
-    form {
-        display: flex;
-        flex-direction: column;
-    }
+  .pied-de-page {
+    flex-direction: column;
+    grid-gap: 50px;
+  }
 
-    .fond-background-presentation{
-        clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%) !important;
-    }
+  .application {
+    flex-direction: column;
+    grid-gap: 5px;
+  }
+
+  .application h2 {
+    margin-bottom: 20px;
+  }
+
+  .presentation-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item {
+    border: solid 2px red;
+    height: 100%;
+  }
+
+  .fond-background-presentation {
+    height: 50% !important;
+  }
+
+  .presentation-section {
+    padding: 100px 0px 0px 0px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fond-background-presentation {
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%) !important;
+  }
 }

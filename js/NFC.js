@@ -1,5 +1,6 @@
 import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
+const scanButton = document.querySelector("#scanButton");
 let scanAction = "read";
 let ndef;
 
@@ -9,13 +10,25 @@ function removeH1H2FromDiv(divSelector) {
     if (divToModify) {
         const h1Element = divToModify.querySelector("h1");
         const h2Element = divToModify.querySelector("h2");
-        const BtninstallApp = divToModify.querySelector("button");
+        const BtninstallApp = divToModify.querySelectorAll(".installApp");
+        const BtnScanNFC = divToModify.querySelector("#scanButton");
+
 
         if (h1Element) {
             h1Element.style.display = "none";
-        } if (h2Element) {
+        }
+        if (h2Element) {
             h2Element.style.display = "none";
-        } if (BtninstallApp) BtninstallApp.style.display = "none";
+        }
+        if (BtninstallApp) {
+            BtninstallApp.forEach(element => {
+                element.style.display = "none";
+            });
+        }
+        if (BtnScanNFC) {
+            BtnScanNFC.style.display = "none";
+        }
+
     } else {
         console.log(
             "La div avec le sélecteur '" + divSelector + "' n'a pas été trouvée."
@@ -29,17 +42,28 @@ if ("NDEFReader" in window) {
     navigator.permissions.query({ name: "nfc" }).then((result) => {
         if (result.state === "granted") {
 
+            scanButton.style.display = "none";
             phoneMode();
 
         } else if (result.state === "prompt") {
 
-            const scanButton = document.querySelector("#scanButton");
 
             scanButton.onclick = (event) => {
 
                 scanButton.style.display = "none";
                 phoneMode();
             };
+        } else if (result.state === "denied") {
+
+            updateView({
+                Nom: "Denied",
+                Habitat: "Paramètres des sites",
+                Description: "Ce NFCmon apparaît lorsque que les permissions NFC sont refusées, tu dois aller dans les paramètres des sites, chercher 'nfcdex', puis autoriser le NFC afin de pouvoir l'utiliser",
+                Type: "Permission",
+                Image: ""
+            });
+
+            NFCMessage("Tu dois autoriser le NFC dans les paramètres de chrome afin d'utiliser le NFCdex");
         }
     });
 
@@ -50,7 +74,7 @@ if ("NDEFReader" in window) {
 
 function desktopMode() {
 
-    console.log("desktop");
+    scanButton.style.display = "none";
     updateView({
         Nom: "TopDesk",
         Habitat: "???",
@@ -87,7 +111,7 @@ function phoneMode() {
 
                     if (json) {
                         updateView(json);
-                        NFCMessage("Tu as chargé " + json.nom + "dans le NFCdex");
+                        NFCMessage("Tu as chargé " + json.Nom + "dans le NFCdex");
                     } else {
                         NFCMessage("Tu n'as pas enregistré de NFCmon dans ton tag");
                     }
@@ -110,9 +134,9 @@ function phoneMode() {
     });
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
-
         const data = encoder.encode(DataToJson(jsonObject));
-        let blob = new Blob([data]);
+        // let blob = new Blob([data]);
+
 
         ndef
             .write({
@@ -150,6 +174,8 @@ function isValidRecord(record) {
 }
 
 
+
+
 function updateView(jsonObject) {
     const resultAffichage = document.querySelector(".resultAffichageDeux");
     resultAffichage.innerHTML = "";
@@ -165,7 +191,7 @@ function updateView(jsonObject) {
     ).innerHTML = `
     
     <div class="resultGlobale">
-    <img style="width : 100%; display : flex; height : 180px; object-fit : contain" src="${ImageResult}"></img>
+    <img class="imgResult" src="${ImageResult}"></img>
     <div class="info-poke">
     <p>Nom : ${Nom}</p>
     <p> Type : ${Type}</p>
@@ -217,15 +243,14 @@ function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
     messageContainer.innerHTML = message;
     messageContainer.style.color = color;
-    messageContainer.style.textAlign = "center";
-    messageContainer.style.whiteSpace = "nowrap";
-    messageContainer.style.fontSize = "15px";
-    messageContainer.style.fontFamily = "var(--paragraphe)";
+    messageContainer.classList.add("styleMessageScanner")
+    messageContainer.setAttribute("data-text", message)
 }
 
 export const setAction = (action) => {
     scanAction = action;
 };
+
 
 //utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
 //quand le formulaire est envoyé mettre setAction en parametre right

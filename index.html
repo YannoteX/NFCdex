@@ -17,7 +17,6 @@
     <script defer type="module" src="js/formValidate.js"></script>
     <script defer type="module" src="js/installPWA.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 </head>
 
 <body>
@@ -26,13 +25,15 @@
 
         <header>
             <nav>
-                <div class="navigation">
+                <div class="logo">
                     <img src="./assets/logo/NFCdex_logo.webp" alt="nfcdex logo">
-                    <div id="nfc-mode-message"></div>
+                    <div class="container-message">
+                        <div id="nfc-mode-message"></div>
+                    </div>
                 </div>
-                <!-- logo à gauche -->
-                <!-- message au millieu -->
-                <!-- bouton form à gauche -->
+
+
+
                 <input class="pixel-corners" style="position : absolute; z-index: 100000;" type="button" id="btnform"
                     value="Créer">
             </nav>
@@ -98,8 +99,10 @@
                         <h2>
                             Tout les NFCmon de la terre en un <strong>contact !</strong>
                         </h2>
-                        <button class="pixel-corners" id="installApp">Télécharger</button>
-
+                        <div class="btn-section">
+                            <button class="pixel-corners installApp">Télécharger</button>
+                            <button id="scanButton" class="btnPlus pixel-corners">Activer le nfc</button>
+                        </div>
                 </div>
 
                 <div data-aos="fade-left" id="SectionOrange" class="fond-background-presentation items">
@@ -115,7 +118,8 @@
             <section class="download">
                 <div class="application">
                     <div data-aos="fade-right" class="left-application">
-                        <h2>Utiliser le <strong>NFCmon</strong> Uniquement sur téléphone avec un <strong>NFC</strong>
+                        <h2>Utilise le <strong>NFCdex</strong> Uniquement sur téléphone avec un <strong>tag NFC
+                                valide</strong>
                         </h2>
                         <svg viewBox="0 0 512 193" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -128,8 +132,9 @@
                                 d="M48.912 126.595H80.65C90.264 126.595 98.825 125.522 106.333 123.375L114.541 98.088L137.481 27.414C135.719 24.6248 133.716 21.9954 131.495 19.556C119.716 6.518 102.484 0 79.795 0H0V192.77H48.912V126.595ZM90.922 44.348C95.523 48.978 97.823 55.175 97.823 62.938C97.823 70.76 95.8 76.964 91.754 81.549C87.319 86.644 79.152 89.191 67.254 89.191H48.912V37.404H67.388C78.478 37.404 86.322 39.718 90.922 44.348Z"
                                 fill="#3D3D3D" />
                         </svg>
-                    </div>
 
+                        <button class="pixel-corners installApp">Télécharger</button>
+                    </div>
 
                     <div data-aos="fade-left" class="container-phone">
                         <img class="phone" src="./assets/icons/PhoneScreen2.png"
