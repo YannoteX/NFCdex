@@ -42,7 +42,7 @@
     ],
     "screenshots": [
         {
-            "src": "assets/icons/PhoneScreen2.png",
+            "src": "/assets/icons/PhoneScreen2.png",
             "sizes": "404x820",
             "type": "image/png",
             "form_factor": "narrow",
