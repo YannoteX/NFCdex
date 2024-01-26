@@ -110,12 +110,6 @@ form {
   font-weight: bold;
 }
 
-.styleMessageScanner {
-  font-size: 18px;
-  font-style: var(--paragraphe);
-  width: 200px !important ;
-}
-
 .nfc-mode-message form input,
 select {
   padding: 5px 5px;
@@ -473,31 +467,26 @@ footer {
   transform: translateX(-50%);
   overflow: hidden;
   font-weight: bold;
-  width: 75%;
+  white-space: nowrap;
 }
 
 #nfc-mode-message {
   position: relative;
-  white-space: nowrap;
-  animation: defilement 30s infinite linear;
   font-family: var(--paragraphe);
-}
-
-#nfc-mode-message::after {
-  content: attr(data-text);
-  position: absolute;
-  display: inline-block;
-  margin-left: 5px;
-  z-index: 1;
+  animation: defilement 15s infinite linear;
+  width: fit-content;
 }
 
 @keyframes defilement {
   0% {
-    margin-left: 0;
+    transform: translateX(110%);
+  }
+  50% {
+    transform: translateX(0%);
   }
 
   100% {
-    margin-left: -100%;
+    transform: translateX(-110%);
   }
 }
 
