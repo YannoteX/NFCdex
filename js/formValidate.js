@@ -5,7 +5,7 @@ import { setAction } from "/js/NFC.js";
 const formulaire = document.querySelector("form");
 const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
-const input = document.querySelector("input");
+const input = document.querySelector("#btnform");
 const inputClose = document.querySelector(".close");
 
 

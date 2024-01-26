@@ -143,20 +143,18 @@ function phoneMode() {
     function writeTag(jsonObject, successMessage, failureMessage) {
         let encoder = new TextEncoder();
         const data = encoder.encode(DataToJson(jsonObject));
-        // let blob = new Blob([data]);
 
 
-        ndef
-            .write({
-                records: [
-                    {
-                        id: "A7G5UI924G66EP4",
-                        recordType: "mime",
-                        mediaType: "application/json",
-                        data: encoder.encode(DataToJson(jsonObject)),
-                    },
-                ],
-            })
+        ndef.write({
+            records: [
+                {
+                    id: "A7G5UI924G66EP4",
+                    recordType: "mime",
+                    mediaType: "application/json",
+                    data: encoder.encode(DataToJson(jsonObject)),
+                },
+            ],
+        })
             .then(() => {
                 NFCMessage(successMessage);
                 resetForm("form");
