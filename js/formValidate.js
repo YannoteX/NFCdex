@@ -1,7 +1,7 @@
 import { setAction } from "/js/NFC.js";
 
 
-
+const limiteCaracteres = 250;
 const formulaire = document.querySelector("form");
 const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
@@ -10,6 +10,8 @@ const inputClose = document.querySelector(".close");
 const parentElementSection = document.querySelector(".form-section");
 
 let enfantElementForm = formulaire;
+let URLBase64;
+
 
 export let information = {
   Nom: "",
@@ -56,9 +58,12 @@ function closeForm() {
   isMobile() ? setAction("read") : "";
 }
 
+
+
 inputClose.addEventListener("click", () => {
   closeForm();
 });
+
 
 
 parentElementSection.addEventListener("click", function () {
@@ -70,10 +75,6 @@ parentElementSection.addEventListener("click", function () {
 enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
 });
-
-
-
-let limiteCaracteres = 250;
 
 
 
@@ -95,8 +96,6 @@ export function DataToJson(Data) {
 }
 
 
-
-let URLBase64;
 
 document.getElementById("imageInput").addEventListener("change", async function (event) {
   const file = event.target.files[0];
@@ -192,6 +191,8 @@ export function resetForm(formId) {
 
 
 formulaire.addEventListener("submit", informationSubmit);
+
+
 
 document.querySelector(".ML").addEventListener("click", (e) => {
   e.preventDefault();
