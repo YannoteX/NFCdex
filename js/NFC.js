@@ -102,6 +102,7 @@ function phoneMode() {
 
 
     ndef.scan().then(() => {
+
         ndef.onreadingerror = (e) => {
             NFCMessage(
                 "Oops... Une erreur s'est produite, essaie de garder ton tag plus longtemps devant ton telephone"
@@ -154,14 +155,12 @@ function phoneMode() {
                     data: encoder.encode(DataToJson(jsonObject)),
                 },
             ],
-        })
-            .then(() => {
-                NFCMessage(successMessage);
-                resetForm("form");
-            })
-            .catch(() => {
-                NFCMessage(failureMessage);
-            });
+        }).then(() => {
+            NFCMessage(successMessage);
+            resetForm("form");
+        }).catch(() => {
+            NFCMessage(failureMessage);
+        });
     }
 }
 
