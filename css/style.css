@@ -69,7 +69,6 @@ form {
   max-width: 350px;
   margin: 60px auto 0px auto;
   padding: 20px;
-  border-radius: 20px;
   flex-direction: column;
   grid-gap: 10px;
   background: var(--primaryColor);
