@@ -5,6 +5,9 @@ const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
 const input = document.querySelector("input");
 const inputClose = document.querySelector(".close");
+const parentElementSection = document.querySelector(".form-section");
+
+let enfantElementForm = formulaire;
 
 export let information = {
   Nom: "",
@@ -40,8 +43,7 @@ inputClose.addEventListener("click", () => {
   isMobile() ? setAction("read") : "";
 });
 
-let parentElementSection = document.querySelector(".form-section");
-let enfantElementForm = formulaire;
+
 
 parentElementSection.addEventListener("click", function () {
   formulaire.classList.remove("display");
