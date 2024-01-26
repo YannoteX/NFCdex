@@ -1,8 +1,12 @@
 import { DataToJson, information, resetForm } from "/js/formValidate.js";
 
+
+
 const scanButton = document.querySelector("#scanButton");
 let scanAction = "read";
 let ndef;
+
+
 
 function removeH1H2FromDiv(divSelector) {
     const divToModify = document.querySelector(divSelector);
@@ -36,7 +40,8 @@ function removeH1H2FromDiv(divSelector) {
     }
 }
 
-// Appeler desktopMode lorsque le mode de bureau est détecté
+
+
 if ("NDEFReader" in window) {
 
     navigator.permissions.query({ name: "nfc" }).then((result) => {
@@ -72,6 +77,7 @@ if ("NDEFReader" in window) {
 }
 
 
+
 function desktopMode() {
 
     scanButton.style.display = "none";
@@ -83,8 +89,10 @@ function desktopMode() {
         Image: "./assets/icons/desktopMod.webp"
     });
 
-    NFCMessage("Votre appareil n'est pas compatible avec le NFCdex, on te recommande d'utiliser google chrome sur android pour le faire fonctionner");
+    NFCMessage("Ton appareil n'est pas compatible avec le NFCdex, on te recommande d'utiliser google chrome sur android pour le faire fonctionner");
 }
+
+
 
 function phoneMode() {
 
@@ -160,6 +168,7 @@ function phoneMode() {
 }
 
 
+
 function isValidRecord(record) {
     if (
         record.id === "A7G5UI924G66EP4" &&
@@ -207,64 +216,21 @@ function updateView(jsonObject) {
     document.getElementById("SectionOrange").innerHTML = `
     <p class="description" style="width: 300px; padding : 0px 20px"> ${Description}</p>
     `
-
-    //   function getValueString(value) {
-    //     console.log(value);
-    //     if (typeof value === "object" && value !== null) {
-    //       // Capture the results of the .map function in an array
-    //       const mappedResults = Object.entries(value).map(
-    //         (nestedValue, nestedIndex) => {
-    //         }
-    //       );
-
-    //       // Join the results for display
-    //       return mappedResults.join("");
-
-    //     } else {
-    //       return `<img src="${jsonObject.Image} alt=""></img>`;
-    //       // For non-object values, just return the string representation of the value
-    //     }
-    //   }
-
-    //   function isImageUrl(value) {
-    //     return (
-    //       typeof value === "string" &&
-    //       (value.endsWith(".jpg") ||
-    //         value.endsWith(".png") ||
-    //         value.endsWith(".gif"))
-    //     );
-    //   }
-
     removeH1H2FromDiv(".content");
     document.querySelector(".resultAffichageDeux").style.opacity = 1;
 }
+
+
 
 function NFCMessage(message, color = "#CF4307") {
     const messageContainer = document.getElementById("nfc-mode-message");
     messageContainer.textContent = message
     messageContainer.style.color = color;
     messageContainer.classList.add("styleMessageScanner")
-    // messageContainer.setAttribute("data-content", message)
 }
+
+
 
 export const setAction = (action) => {
     scanAction = action;
 };
-
-
-//utiliser la fonction setAction quand il appuie sur le bouton inscription et mettre en parametre string vide
-//quand le formulaire est envoyé mettre setAction en parametre right
-
-//ouvrir le form -> setAction("none")
-//envoie le form -> setAction("right")
-//ferme form -> setAction("read")
-//mentions légales -> setAction("setNFCmon")
-
-//click sur mentions legales (setnfcmon)
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.getElementById("god").addEventListener("click", () => {
-//         setAction("setNFCmon");
-//         setTimeout(() => setAction("read"), 4_000)
-//     });
-// });

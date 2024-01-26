@@ -1,10 +1,16 @@
 let deferredPrompt;
 
+
+
 window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt = e;
 });
 
+
+
 const installApp = document.querySelectorAll('.installApp');
+
+
 
 installApp.forEach(element => {
     element.addEventListener('click', async () => {
