@@ -1,9 +1,11 @@
 import { setAction } from "/js/NFC.js";
 
+
+
 const formulaire = document.querySelector("form");
 const textarea = document.querySelector("textarea");
 const error = document.querySelector(".error");
-const input = document.querySelector("input");
+const input = document.querySelector("#btnform");
 const inputClose = document.querySelector(".close");
 const parentElementSection = document.querySelector(".form-section");
 
@@ -17,17 +19,25 @@ export let information = {
   Image: "",
 };
 
+
+
 function cacherElement() {
   document.querySelector(".form-section").style.display = "none";
 }
+
+
 
 function apparaitElement() {
   document.querySelector(".form-section").style.display = "block";
 }
 
+
+
 function isMobile() {
   return window.innerWidth <= 768;
 }
+
+
 
 input.addEventListener("click", () => {
   formulaire.classList.add("display");
@@ -36,27 +46,36 @@ input.addEventListener("click", () => {
   setTimeout(apparaitElement);
 });
 
-inputClose.addEventListener("click", () => {
+
+
+function closeForm() {
   formulaire.classList.remove("display");
+  setAction("read");
   document.querySelector(".form-section").classList.remove("dark");
   setTimeout(cacherElement, 1000);
   isMobile() ? setAction("read") : "";
-});
+}
 
+inputClose.addEventListener("click", () => {
+  closeForm();
+});
 
 
 parentElementSection.addEventListener("click", function () {
-  formulaire.classList.remove("display");
-  document.querySelector(".form-section").classList.remove("dark");
-  setTimeout(cacherElement, 1000);
-  isMobile() ? setAction("read") : "";
+  closeForm();
 });
+
+
 
 enfantElementForm.addEventListener("click", function (event) {
   event.stopPropagation();
 });
 
+
+
 let limiteCaracteres = 250;
+
+
 
 textarea.addEventListener("input", function () {
   let longueurTexte = textarea.value.length;
@@ -69,30 +88,13 @@ textarea.addEventListener("input", function () {
   }
 });
 
-// function resultJsonForm(objectJson) {
-//   const resultArray = Object.entries(objectJson);
-//   return resultArray.shift();
-//   // const resultAffichage = document.querySelector(".resultAffichageForm");
 
-//   // // let filteredElementsPhoto = resultArray[0].map((elementPhoto, index) => {
-//   // //   return index === 1 ? elementPhoto.name : "";
-//   // // });
-
-//   // // resultAffichage.innerHTML = `<img class="resultImg" src=${imagePreview.src} alt="Logo">`;
-//   // resultAffichage.innerHTML = resultArray
-//   //   .map(([key, element], index) => {
-//   //     if (index !== 0) {
-//   //       return `
-//   //           <p>${key} : ${element}</p>
-//   //           `;
-//   //     }
-//   //   })
-//   //   .join("");
-// }
 
 export function DataToJson(Data) {
   return JSON.stringify(Data);
 }
+
+
 
 let URLBase64;
 
@@ -112,11 +114,13 @@ document.getElementById("imageInput").addEventListener("change", async function 
   return URLBase64;
 });
 
-//voici l'url de l'image en base 64 si tu l'as copié est colle dans l'url tu récupéreras l'image sur le navigateur
-//une fois que l'image à charger dans le formulaire
+
+
 export function GetImageBase64() {
   return URLBase64;
 }
+
+
 
 function informationSubmit(e) {
   e.preventDefault();
@@ -147,6 +151,8 @@ function informationSubmit(e) {
   showMessage(formulaire)
 }
 
+
+
 function showMessage(formulaire) {
   let existingMessage = formulaire.querySelector('.alert');
   if (!existingMessage) {
@@ -163,11 +169,8 @@ function showMessage(formulaire) {
   }
 }
 
-// Supposons que 'formulaire' est votre élément de formulaire
-// Vous pouvez appeler showMessage(formulaire) lorsque vous voulez afficher le message
 
 
-//prend en parametre l'id du formulaire dans le html donc form
 export function resetForm(formId) {
   let form = document.getElementById(formId);
 
@@ -186,7 +189,7 @@ export function resetForm(formId) {
 
 }
 
-// Exemple d'utilisation : resetForm("monFormulaire");
+
 
 formulaire.addEventListener("submit", informationSubmit);
 
@@ -195,7 +198,7 @@ document.querySelector(".ML").addEventListener("click", (e) => {
   isMobile() ? setAction("setNFCmon") : "";
 });
 
-// Image compression
+
 
 function shrinkImageBase64(canvas, image) {
   const base64 = refreshCanvas(canvas, image);
@@ -216,6 +219,8 @@ function shrinkImageBase64(canvas, image) {
   }
 }
 
+
+
 function refreshCanvas(canvas, image) {
   const context = canvas.getContext("2d");
 
@@ -224,6 +229,8 @@ function refreshCanvas(canvas, image) {
 
   return canvas.toDataURL("image/webp", 0.5);
 }
+
+
 
 const loadImage = (src) =>
   new Promise((resolve, reject) => {

@@ -4,16 +4,20 @@
     text-align: center;
   }
 
+  .styleMessageScanner {
+    animation: defilement 15s infinite linear !important;
+  }
+
+  #nfc-mode-message {
+    font-size: 13px;
+  }
+
   .installApp {
     margin-bottom: 10px;
   }
 
   .container-message {
     width: 55% !important;
-  }
-
-  #nfc-mode-message {
-    animation: defilement 10s infinite linear !important;
   }
 
   /* .resultAffichageDeux {
